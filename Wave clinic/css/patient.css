@@ -1,0 +1,507 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url(//fonts.googleapis.com/css?family=Lato:300:400:bold);
+/* Importing Google Fonts */
+
+/* nav header start */
+
+
+#nav-header {
+    position: relative;
+    top: 40px;
+    z-index: 1000;
+    background-color: transparent;
+}
+
+#nav-header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    padding: 40px;
+}
+
+#nav-header ul li a {
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#nav-header ul li a:hover {
+    font-weight: bolder;
+}
+
+/* nav header end */
+
+
+.header {
+    position: relative;
+    text-align: center;
+    /* Centering text */
+    /* Adding gradient background animation */
+    background: linear-gradient(-45deg, #30cfd0, #4478e3, #764ba2, #330867);
+    background-size: 400% 400%;
+    /* Allowing the background to move */
+    animation: gradient 15s ease infinite;
+    /* Animating the gradient */
+    color: white;
+    /* Text color white */
+}
+
+.inner-header {
+    height: 65vh;
+    /* The height is 65% of the viewport */
+    width: 100%;
+    /* Full width */
+    display: flex;
+    /* Using flexbox for centering content */
+    justify-content: center;
+    /* Horizontally centering content */
+    align-items: center;
+    /* Vertically centering content */
+    text-align: center;
+    /* Text aligned to the center */
+}
+
+.inner-header h1 {
+    font-size: 66px;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em rgb(255, 255, 255), 0 0 0.2em blue;
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    /* Full width */
+    height: 15vh;
+    /* The height is 15% of the viewport */
+    margin-bottom: -7px;
+    /* Fixes a gap issue for Safari */
+    min-height: 100px;
+    /* Minimum height */
+    max-height: 150px;
+    /* Maximum height */
+}
+
+/* Animation for wave parallax */
+.wave-parallax>use {
+    /* Infinite animation to move the waves */
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+/* Animating different wave layers at varying speeds */
+.wave-parallax>use:nth-child(1) {
+    animation-delay: -2s;
+    /* Delayed by 2 seconds */
+    animation-duration: 7s;
+    /* Animation duration is 7 seconds */
+}
+
+.wave-parallax>use:nth-child(2) {
+    animation-delay: -3s;
+    /* Delayed by 3 seconds */
+    animation-duration: 10s;
+    /* Animation duration is 10 seconds */
+}
+
+.wave-parallax>use:nth-child(3) {
+    animation-delay: -4s;
+    /* Delayed by 4 seconds */
+    animation-duration: 13s;
+    /* Animation duration is 13 seconds */
+}
+
+.wave-parallax>use:nth-child(4) {
+    animation-delay: -5s;
+    /* Delayed by 5 seconds */
+    animation-duration: 20s;
+    /* Animation duration is 20 seconds */
+}
+
+/* Animation for the wave movement */
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+        /* Starting position */
+    }
+
+    100% {
+        transform: translate3d(85px, 0, 0);
+        /* Ending position */
+    }
+}
+
+/* Animation for the background gradient */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+        /* Starting position of the gradient */
+    }
+
+    50% {
+        background-position: 100% 50%;
+        /* Midway position of the gradient */
+    }
+
+    100% {
+        background-position: 0% 50%;
+        /* Ending position of the gradient */
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .waves {
+        height: 40px;
+        /* Reducing wave height on mobile */
+        min-height: 40px;
+    }
+
+    .content {
+        height: 30vh;
+        /* Adjusting content height for smaller screens */
+    }
+
+    h1 {
+        font-size: 24px;
+        /* Smaller font size for mobile devices */
+    }
+}
+
+/* Subscribe button styles */
+.subscribe-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: var(--accent-color);
+}
+
+/* SVG inside subscribe button */
+.subscribe-btn svg {
+    height: 60px;
+    width: 60px;
+}
+
+/* Floating YouTube Button Styling */
+.youtube-button {
+    position: fixed;
+    bottom: 20px;
+    /* Distance from the bottom */
+    right: 20px;
+    /* Distance from the right */
+    background-color: #ff0000;
+    /* YouTube red color */
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+/* Icon Styling */
+.youtube-button i {
+    font-size: 24px;
+}
+
+/* Hover Effect */
+.youtube-button:hover {
+    background-color: #e60000;
+    /* Darker shade of red */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    /* Slight upward movement */
+}
+
+/* header end */
+
+/* form start */
+
+.form-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+
+form {
+    border: dashed 2px black;
+    padding: 30px;
+}
+
+
+.form-group-visit {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* Set the parent container to relative */
+    width: 100%;
+    /* Ensure it's wide enough for the textarea to align to the right */
+    height: 200px;
+    /* Set a height for the container */
+    border: 1px solid #ccc;
+    /* Optional, just for visibility */
+}
+
+#visit-reason {
+    display: block;
+    position: relative;
+    /* Position the textarea absolutely */
+    width: 250px;
+    /* Set a specific width */
+    height: 100px;
+    /* Set a height */
+}
+
+#first-name,
+#last-name {
+    width: 250px;
+}
+
+#emergency-name,
+#emergency-phone {
+    width: 250px;
+}
+
+/* footer start*/
+
+
+@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
+
+footer {
+    display: flex;
+    width: 100vw;
+}
+
+footer div {
+    background-color: #4478e3;
+    margin: -5px 0px 0px 0px;
+    padding: 0px;
+    color: #fff;
+    text-align: center;
+}
+
+svg {
+    width: 100%;
+}
+
+.arrow {
+    stroke-width: .3px;
+    stroke: yellow;
+}
+
+.topball {
+    animation: ball 1.5s ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: 0.3s;
+    cursor: pointer;
+}
+
+.wave {
+    animation: wave 3s linear;
+    animation-iteration-count: infinite;
+    fill: #4478e3;
+}
+
+.drop {
+    fill: transparent;
+    animation: drop 5s ease infinite normal;
+    stroke: #4478e3;
+    stroke-width: 0.5;
+    opacity: .6;
+    transform: translateY(80%);
+}
+
+.drop1 {
+    transform-origin: 20px 3px;
+}
+
+.drop2 {
+    animation-delay: 3s;
+    animation-duration: 3s;
+    transform-origin: 25px 3px;
+}
+
+.drop3 {
+    animation-delay: -2s;
+    animation-duration: 3.4s;
+    transform-origin: 16px 3px;
+}
+
+.gooeff {
+    filter: url(#goo);
+}
+
+#wave2 {
+    animation-duration: 5s;
+    animation-direction: reverse;
+    opacity: .6
+}
+
+#wave3 {
+    animation-duration: 7s;
+    opacity: .3;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(80%);
+        opacity: .6;
+    }
+
+    80% {
+        transform: translateY(80%);
+        opacity: .6;
+    }
+
+    90% {
+        transform: translateY(10%);
+        opacity: .6;
+    }
+
+    100% {
+        transform: translateY(0%) scale(1.5);
+        stroke-width: 0.2;
+        opacity: 0;
+    }
+}
+
+@keyframes wave {
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes ball {
+    to {
+        transform: translateY(20%);
+    }
+}
+
+
+/* footer navigation */
+
+
+nav {
+    position: relative;
+    z-index: 1000;
+    background-color: #4478e3;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    padding: 40px;
+}
+
+nav ul li a {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    font-weight: bolder;
+}
+
+
+
+/* media section */
+
+/* General Styling for the Navbar */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+/* Navbar Menu Styling (for large screens) */
+#nav-header {
+    display: flex;
+}
+
+#menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#menu li {
+    margin: 0 20px;
+}
+
+#menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#menu li a:hover {
+    color: #f4b400;
+}
+
+/* Hamburger Menu Icon Styling (hidden by default) */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 25px;
+    width: 30px;
+}
+
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+
+    /* Hide the normal navbar on mobile */
+    #nav-header {
+        display: none;
+
+    }
+
+    /* Show hamburger icon only on mobile */
+    .hamburger {
+        display: flex;
+    }
+
+    /* When the menu is active, show the navbar items */
+    #hamburger.active {
+        display: flex;
+    }
+}

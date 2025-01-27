@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration Form</title>
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+
+
+    <header>
+
+        <div id="top" class="header">
+            <nav id="nav-header">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="">Patient Registration</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="inner-header">
+                <h1>Wave Clinic</h1>
+            </div>
+            <div>
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                    <defs>
+                        <path id="gentle-wave"
+                            d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="wave-parallax">
+                        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <div class="form-wrapper">
+        <form action="/submit-form" method="POST">
+            <!-- Personal Information Section -->
+            <figcaption>Patient Registration Form</figcaption>
+            <section>
+                <h1>Personal Information</h1>
+                <div class="form-group-n">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+                </div>
+
+                <div class="form-group-n">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not-to-say">Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+            </section>
+
+            <!-- Medical History Section -->
+            <section>
+                <h2>Medical History</h2>
+                <div class="form-group">
+                    <label for="allergies">Do you have any allergies?</label><br>
+                    <input type="radio" id="allergies-yes" name="allergies" value="yes"
+                        onclick="toggleTextBox('allergies', 'allergies-text')" /> Yes
+                    <input type="radio" id="allergies-no" name="allergies" value="no"
+                        onclick="toggleTextBox('allergies', 'allergies-text')" /> No
+                    <textarea id="allergies-text" name="allergies-text" rows="4"
+                        placeholder="List any allergies you have" style="display:none;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="surgeries">Any past surgeries?</label><br>
+                    <input type="radio" id="surgeries-yes" name="surgeries" value="yes"
+                        onclick="toggleTextBox('surgeries', 'surgeries-text')" /> Yes
+                    <input type="radio" id="surgeries-no" name="surgeries" value="no"
+                        onclick="toggleTextBox('surgeries', 'surgeries-text')" /> No
+                    <textarea id="surgeries-text" name="surgeries-text" rows="4" placeholder="List any past surgeries"
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="medications">Are you currently taking any medications?</label><br>
+                    <input type="radio" id="medications-yes" name="medications" value="yes"
+                        onclick="toggleTextBox('medications', 'medications-text')" /> Yes
+                    <input type="radio" id="medications-no" name="medications" value="no"
+                        onclick="toggleTextBox('medications', 'medications-text')" /> No
+                    <textarea id="medications-text" name="medications-text" rows="4"
+                        placeholder="List any medications you are taking" style="display:none;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="conditions">Do you have any ongoing medical conditions?</label><br>
+                    <input type="radio" id="conditions-yes" name="conditions" value="yes"
+                        onclick="toggleTextBox('conditions', 'conditions-text')" /> Yes
+                    <input type="radio" id="conditions-no" name="conditions" value="no"
+                        onclick="toggleTextBox('conditions', 'conditions-text')" /> No
+                    <textarea id="conditions-text" name="conditions-text" rows="4"
+                        placeholder="Describe your ongoing medical conditions" style="display:none;"></textarea>
+                </div>
+            </section>
+
+            <!-- Emergency Contact Section -->
+            <section>
+                <h2>Emergency Contact</h2>
+                <div class="form-group-emergency">
+                    <label for="emergency-name">Contact Name:</label>
+                    <input minlength="9" maxlength="14" type="text" id="emergency-name" name="emergency-name"
+                        placeholder="Enter emergency contact's name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="emergency-phone">Contact Phone:</label>
+                    <input minlength="9" maxlength="14" type="tel" id="emergency-phone" name="emergency-phone"
+                        placeholder="Enter emergency contact's phone number" required>
+                </div>
+            </section>
+
+            <!-- Survey Section (optional) -->
+            <section>
+                <h2>Survey (Optional)</h2>
+                <div class="form-group">
+                    <label for="how-did-you-hear">How did you hear about us?</label>
+                    <select id="how-did-you-hear" name="how-did-you-hear">
+                        <option value="google">Google Search</option>
+                        <option value="recommendation">Recommendation</option>
+                        <option value="advertisement">Advertisement</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+            </section>
+
+            <section>
+                <div class="form-group">
+                    <h2 for="visit-reason">Why are you visiting today?</h2>
+                    <textarea id="visit-reason" name="visit-reason" rows="4"
+                        placeholder="Please describe your reason for visiting"></textarea>
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit">Submit Registration</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- footer start -->
+
+
+    <footer>
+        <svg viewBox="0 0 120 28">
+            <defs>
+                <mask id="xxx">
+                    <circle cx="7" cy="12" r="40" fill="#fff" />
+                </mask>
+
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="
+                   1 0 0 0 0  
+                   0 1 0 0 0  
+                   0 0 1 0 0  
+                   0 0 0 13 -9" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+                <path id="wave"
+                    d="M 0,10 C 30,10 30,15 60,15 90,15 90,10 120,10 150,10 150,15 180,15 210,15 210,10 240,10 v 28 h -240 z" />
+            </defs>
+
+            <use id="wave3" class="wave" xlink:href="#wave" x="0" y="-2"></use>
+            <use id="wave2" class="wave" xlink:href="#wave" x="0" y="0"></use>
+
+            <g class="topball">
+                <a href="#top">
+                    <circle class="ball" cx="110" cy="8" r="4" stroke="none" stroke-width="0" fill="red" />
+
+                    <g class="arrow">
+                        <polyline class="" points="108,8 110,6 112,8" fill="none" />
+                        <polyline class="" points="110,6 110,10.5" fill="none" />
+                    </g>
+                </a>
+
+            </g>
+            <g class="gooeff">
+
+                <circle class="drop drop1" cx="20" cy="2" r="1.8" />
+                <circle class="drop drop2" cx="25" cy="2.5" r="1.5" />
+                <circle class="drop drop3" cx="16" cy="2.8" r="1.2" />
+                <use id="wave1" class="wave" xlink:href="#wave" x="0" y="1" />
+
+            </g>
+        </svg>
+
+    </footer>
+    <nav class="nav-footer">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Patient Registration</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </nav>
+
+
+
+    <!-- Link to external JavaScript file -->
+    <script src="./js/form.js"></script>
+</body>
+
+</html>

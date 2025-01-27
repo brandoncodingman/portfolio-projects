@@ -1,0 +1,285 @@
+@charset "utf-8";
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Playpen Sans", serif;
+}
+
+/* navigation start */
+
+/* Navbar with a fixed position at the top */
+.fixed-nav {
+  background-color: black;
+  color: white;
+  padding: 10px 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  list-style-type: none;
+}
+
+ul a {
+  color: white;
+  background-color: black;
+  font-size: 36px;
+  text-decoration: none;
+  position: relative;
+  /* Add position relative to anchor tag for positioning the pseudo-element */
+}
+
+ul a:hover {
+  color: rgb(251, 255, 0);
+  /* Change color on hover */
+}
+
+ul a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #FEFEFE;
+  transform-origin: bottom right;
+  transition: transform 0.5s ease;
+  transform: scaleX(0);
+  /* Initially hide the underline effect */
+}
+
+ul a:hover::after {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+  /* Display underline effect on hover */
+}
+
+ul li {
+  position: relative;
+}
+
+ul li a+a {
+  margin-left: 16px;
+}
+
+/* navigation end */
+
+/* header */
+.header-wrapper {
+  background-image: url('../images/header.gif');
+  background-size: cover;
+  background-position: center center;
+  height: 475px;
+  border-left: solid 50px black;
+  border-right: solid 50px black;
+  border-bottom: solid 30px black;
+  position: relative;
+  /* Ensure the text is positioned relative to this container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent;
+}
+
+.header-wrapper:hover {
+  filter: grayscale(100%);
+  /* Apply full grayscale effect on hover */
+  font-size: 206px;
+  /* Adjust as needed */
+  font-weight: bold;
+  /* Optional styling */
+  text-align: center;
+}
+
+
+/* header end*/
+
+/* games and images */
+/* Perspective for the 3D effect, though not needed here */
+.game-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: black;
+  width: 100%;
+  height: auto;
+  background-color: rgb(0, 0, 0);
+}
+
+.image-block {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 30px;
+  overflow: hidden;
+  /* Ensures zooming doesn't overflow outside the block */
+}
+
+.image-block a img {
+  width: 300px;
+  height: 300px;
+  border: solid 10px white;
+  filter: grayscale(100%);
+  /* Starts with grayscale */
+  transition: transform 0.3s ease, filter 0.3s ease;
+  /* Transition for both zoom and color */
+}
+
+/* Hover effect to remove grayscale, add zoom */
+.image-block a:hover img {
+  filter: grayscale(0%);
+  /* Removes grayscale on hover */
+  transform: scale(1.8);
+  /* Zooms in the image */
+}
+
+/* Centering the caption text inside the image */
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  text-align: center;
+  width: 80%;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+/* games and images */
+
+
+/* typing box */
+/* Container around about-wrapper */
+.box {
+  max-height: 400px;
+  /* Set a maximum height for the box (adjust as needed) */
+  overflow-y: auto;
+  /* Enable vertical scrolling inside the box */
+  padding: 10px;
+  /* Add some padding to the box */
+  background-color: black;
+}
+
+.box::-webkit-scrollbar {
+  width: 10px;
+  /* Width of the scrollbar */
+  height: 10px;
+  /* Height of the horizontal scrollbar */
+}
+
+/* Track (background of the scrollbar) */
+.box::-webkit-scrollbar-track {
+  background: #000000;
+  /* Light grey background for the scrollbar track */
+  border-radius: 10px;
+  width: 33px;
+  ;
+}
+
+/* Handle (the draggable part of the scrollbar) */
+.box::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  /* Green color for the scrollbar thumb */
+  border-radius: 10px;
+  /* Rounded corners */
+  width: 33px;
+}
+
+/* Hover effect on the thumb */
+.box::-webkit-scrollbar-thumb:hover {
+  background: #f6ff00;
+  /* Darker green when hovered */
+}
+
+/* Optional: Customize the corner where the horizontal and vertical scrollbars meet */
+.box::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+/* The about-wrapper with dynamic content */
+.about-wrapper {
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  padding-left: 150px;
+  padding-right: 150px;
+  white-space: pre-wrap;
+  /* Ensure the text inside the span respects line breaks */
+}
+
+.typeing {
+  color: yellow;
+  font-family: monospace;
+}
+
+/* Blinking cursor for typing effect */
+.blinker {
+  opacity: 1;
+  margin-bottom: -2px;
+  height: 15px;
+  margin-left: -5px;
+  border-left: 7px solid yellow;
+  animation: blinker 0.9s steps(2, start) infinite;
+}
+
+@keyframes blinker {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* typing box */
+
+
+/* footer section */
+
+.nav {
+  background-color: black;
+  color: white;
+  padding: 10px 50px;
+  position: sticky;
+  top: 0;
+}
+
+/* music player */
+
+/* Style for the music toggle button */
+#music-toggle {
+  background-color: rgba(0, 255, 0, 0.6);
+  /* Green background */
+  color: rgb(0, 0, 0);
+  /* White text */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 15px;
+}
+
+#music-toggle:hover {
+  background-color: rgba(0, 255, 0, 1.0);
+  color: white;
+  /* Darker green when hovered */
+}

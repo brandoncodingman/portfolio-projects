@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark | Common</title>
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<!-- Background and lightning effect -->
+
+<body>
+    <!-- Navbar with a music toggle button -->
+    <header class="navbar">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Manga</a></li>
+                <li><a href="#">Anime</a></li>
+                <li><button id="music-toggle" onclick="toggleMusic()">Music On</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="bg">
+        <div class="lightning flashit">
+
+            <!-- Main Content Section -->
+            <section class="main-content">
+                <div class="container">
+                    <video poster="https://sb.vox1.net/video/poligonBG.jpg" playsinline autoplay muted loop>
+                        <source src="https://sb.vox1.net/video/poligons.mp4" type="video/mp4">
+                    </video>
+                    <p class="text">Horizon</p>
+                </div>
+            </section>
+
+
+            <main>
+                <div class="terminal-container">
+                    <div class="terminal">
+                        <pre id="terminal-output"></pre>
+                    </div>
+                </div>
+
+                <div class="image-wrapper">
+                    <img src="https://www.businessinsider.in/photo/49194199/This-image-is-very-spooky-indeed-time-to-go-to-bed-.jpg"
+                        alt="">
+                </div>
+            </main>
+        </div>
+        <!-- Footer Section -->
+        <footer class="footer">
+            <nav>
+                <ul>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li> <!-- Footer Links -->
+                    <li><a href="#">Test</a></li> <!-- Footer Links -->
+                    <li><a href="#">Test</a></li> <!-- Footer Links -->
+                    <li><a href="#">Test</a></li> <!-- Footer Links -->
+                </ul>
+            </nav>
+        </footer>
+    </div>
+
+    <!-- Audio Element for Music -->
+    <audio id="background-music" loop autoplay>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="./js/storm.js"></script>
+    <script src="./js/musicplayer.js"></script>
+    <script src="./js/type.js"></script>
+</body>
+
+</html>

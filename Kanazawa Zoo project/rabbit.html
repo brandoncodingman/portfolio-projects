@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easter Egg</title>
+    <link rel="stylesheet" href="./CSS/common.css">
+    <link rel="stylesheet" href="./CSS/rabbit.css">
+
+    <!-- Include jQuery (add this) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Your custom JS -->
+    <script src="./JS/rabbit.js"></script>
+</head>
+
+<body>
+    <h1>動物をクリックすると戻ることができます!</h1><br>
+    <h2>Good Luck!</h2>
+    <h4 style="color:red">**注意: リンクはランダムです!**</h4>
+    <div class="a">
+        <a href="./index.html" target="_blank">
+            <img src="https://pngimg.com/d/rabbit_PNG3781.png" alt="Clickable Image" />
+        </a>
+    </div>
+    <div class="b">
+        <a href="./about.html" target="_blank">
+            <img src="./image/redpandarunner.png" alt="Clickable Image" />
+        </a>
+    </div>
+    <div class="c">
+        <a href="./info.html" target="_blank">
+            <img src="./image/tigerrunner.png" alt="Clickable Image" />
+        </a>
+    </div>
+    <div class="d">
+        <a href="./shop.html" target="_blank">
+            <img src="./image/turtlerunner.png" alt="Clickable Image" />
+        </a>
+    </div>
+
+    <!-- music code start -->
+    <audio id="background-music" autoplay loop>
+        <source src="./music/chasetheme.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // JavaScript to play the audio on page load
+        window.onload = function () {
+            var audio = document.getElementById('background-music');
+            audio.play(); // Starts playing the music
+        }
+    </script>
+
+
+    <!-- Other JS files -->
+    <script src="./JS/navbar.js"></script>
+    <script src="./JS/script.js"></script>
+    <script src="./JS/shop.js"></script>
+    <script src="./JS/data.js"></script>
+    <script src="./JS/cart.js"></script>
+    <script src="./JS/transition.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

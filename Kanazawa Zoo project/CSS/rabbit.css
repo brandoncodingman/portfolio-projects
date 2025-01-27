@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Playpen Sans", serif;
+    cursor: crosshair;
+}
+
+body {
+    background-image: url(https://images.photowall.com/products/62137/zoo-animals.jpg?h=699&q=85);
+    background-repeat: repeat;
+    text-align: center;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+div.a {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+}
+
+div.a img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+div.b {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+}
+
+div.b img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+div.c {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+}
+
+div.c img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+div.d {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+}
+
+div.d img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
