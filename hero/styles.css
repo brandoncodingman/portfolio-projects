@@ -1,0 +1,898 @@
+/* GLOBAL STYLES */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&family=Lobster&display=swap");
+
+
+* {
+
+  box-sizing: border-box;
+   background-color: black;
+  
+}
+head, home
+{
+  background-color: black;
+}
+
+body*
+{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  background-color:black;
+  text-align:center;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  
+}
+
+.Introduction
+{color:gold;
+}
+
+.GD
+{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  text-align:center;
+   font-size: 2em;
+   padding:0 10px 0 10px;
+   margin:0 10px 0 10px;
+}
+
+#introduction
+{color:gray;
+padding:0px;
+margin:0px;}
+  
+}
+
+#xbox
+{
+  font-size:1em;
+}
+
+.intro
+{
+ display: flex;
+ flex-wrap:row-wrap;
+  padding:50px 0 10px 0;
+  margin:0px;
+  justify-content: space-around;
+  text-align:center;
+}
+
+#intro1
+{
+   max-width: 40%;
+  height: auto;
+  justify-content: start;
+}
+
+#intro2
+{
+max-width: 40%;
+  height: auto;
+  justify-content:end;
+}
+
+#heroes
+{
+text-align:center;
+font-size:4rem;
+color:white;
+
+}
+
+#publish
+{
+text-align:center;
+font-size:1.5rem;
+color:white;
+padding:0px 0 0px 0;
+  margin:0px;
+
+}
+
+#publish1
+{
+text-align:center;
+font-size:1rem;
+color:white;
+padding:0px 0 0px 0;
+}
+
+#like
+{
+text-align:center;
+font-size:4rem;
+color:white;
+
+}
+
+.container {
+  width: 90%;
+  height:auto;
+  margin: 0 auto;
+  text-align: center;
+  color: black;
+}
+
+/* HEADER STYLES */
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  height: 50px;
+  z-index: 3;
+  transition: 0.5s;
+}
+#header-img {
+  padding: 5px;
+  margin:20px;
+  height:100px;
+  width:100px;
+  
+}
+
+/* Navbar  */
+.navbar-brand
+{
+  font-size: 24px;
+}
+
+.navbar-scrolled
+{background-color:red;
+}
+ 
+.navbar
+{
+  font-size: 2rem !important;
+}
+
+/* SECTION #1 - Play Now */
+
+.hero {
+  background-color:black;
+  text-align:center;
+  padding: 0px;
+  margin:0px;
+   margin-top: 170px;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+
+.hero .container {
+  color: orange;
+  background: none;
+  padding: 0px;
+  margin:0px;
+}
+.hero .container h2 {
+   padding: 0px;
+  margin:0px;
+  
+}
+.hero .container p {
+  padding: 0px;
+  margin:0px;
+  
+}
+.hero .container span {
+  font-family: 'Impact, fantasy';
+  font-size: 1.1em;
+  font-weight:bold;
+  
+}
+.hero a {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px 15px;
+  border: 1px solid gold;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 2.5em;
+  color: orange;
+  background: rgba(256, 256, 256, 0.1);
+  z-index: 1;
+  transition: transform 0.25s;
+}
+.hero a:hover {
+  transform: translateY(2px);
+  border-color: green;
+  background: rgba(0, 0, 0, 0.1);
+  color:green;
+  transition: 0.25s;
+}
+.hero a:active {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/*slides*/
+
+@media screen and (min-width: 1500px) {
+  .hero::after {
+    background: url(https://i.imgur.com/KeAM8Ad.png);
+    background-size: cover;
+  }
+}
+@media screen and (min-width: 600px) {
+  #purchase-section .container {
+    width: 60%;
+  }
+}
+
+footer, footer::before
+{
+  background-color:black;
+}
+
+@keyframes tonext {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: 100%;
+  }
+  98% {
+    left: 100%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes tostart {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: -300%;
+  }
+  98% {
+    left: -300%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes snap {
+  96% {
+    scroll-snap-align: center;
+  }
+  97% {
+    scroll-snap-align: none;
+  }
+  99% {
+    scroll-snap-align: none;
+  }
+  100% {
+    scroll-snap-align: center;
+  }
+}
+
+
+
+
+* {
+  -ms-overflow-style: none;
+}
+
+ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel {
+  position: relative;
+  padding-top:75%;
+  margin-right:8%;
+  margin-left:8%;
+  filter: drop-shadow(0 0 10px #0003);
+  perspective: 100px;
+  
+}
+
+.carousel__viewport {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding:0;
+  margin:0;
+}
+
+.carousel__slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  background-color: #f99;
+  counter-increment: item;
+  
+}
+
+.carousel__slide:nth-child(even) {
+  background-color: #99f;
+}
+
+.carousel__slide:before {
+  content: counter(item);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-40%,70px);
+  font-size: 2em;
+}
+
+.carousel__snapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+}
+
+@media (hover: hover) {
+  .carousel__snapper {
+    animation-name: tonext, snap;
+    animation-timing-function: ease;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    
+  }
+
+  .carousel__slide:last-child .carousel__snapper {
+    animation-name: tostart, snap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__snapper {
+    animation-name: none;
+  }
+}
+
+.carousel:hover .carousel__snapper,
+.carousel:focus-within .carousel__snapper {
+  animation-name: none;
+}
+
+.carousel__navigation {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.carousel__navigation-list,
+.carousel__navigation-item {
+  display: inline-block;
+}
+
+.carousel__navigation-button {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #333;
+  background-clip: content-box;
+  border: 0.25rem solid transparent;
+  border-radius: 50%;
+  font-size: 0;
+  transition: transform 0.1s;
+}
+
+.carousel::before,
+.carousel::after,
+.carousel__prev,
+.carousel__next {
+  position: absolute;
+  top: 0;
+  margin-top: 37.5%;
+  width: 4rem;
+  height: 4rem;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  font-size: 0;
+  outline: 0;
+}
+
+.carousel::before,
+.carousel__prev {
+  left: -1rem;
+}
+
+.carousel::after,
+.carousel__next {
+  right: -1rem;
+}
+
+.carousel::before,
+.carousel::after {
+  content: '';
+  z-index: 1;
+  background-color: black;
+  background-size: 1.5rem 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.carousel::before {
+  background-image: url("https://cdn3.iconfinder.com/data/icons/ui-set-8/512/arrow_back_arrows_before-512.png");
+  background-color: white;
+}
+
+.carousel::after {
+  background-image: url("https://www.svgrepo.com/show/305136/arrow-forward.svg");
+   background-color: white;
+}
+
+@import "bootstrap/scss/helpers/_visually-hidden";
+
+#slide1
+{
+  display: block;
+  margin: auto;
+  
+}
+
+#slide2
+{
+  display: block;
+  margin: auto;
+  
+}
+
+#slide3
+{
+  display: block;
+  margin: auto;
+  width:40%;
+  padding-top:30px;
+  
+}
+
+
+#slide4
+{
+  display: block;
+  margin: auto;
+  width:50%;
+  padding-top:30px;
+  
+}
+
+
+
+/* SECTION #2 - FEATURES */
+
+#cover {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  align-content: center;
+  width: 100vw;
+  margin: 50px auto;
+  margin-bottom:0;
+  padding:0px 50px 0 50px;
+	background-color: black;
+}
+
+#cover > img {
+  float: left;
+  border: 0 solid black;
+  width: 40%;
+  margin: 1.66%;
+}
+
+#sale
+{
+  font-size:3rem;
+  color:green;
+  padding:0;
+  margin:0;
+}
+
+/* SECTION #3 - Video */
+
+#video
+{
+  color:white;
+  margin:0;
+  padding:0;
+  text-align:center;
+}
+
+#video-section
+{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  text-align:center;
+}
+
+#video-section .container {
+  max-height: 800px;
+  max-width: 800px;
+  margin:0;
+  padding:0;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  max-width: 720px;
+  margin: 30px auto;
+}
+iframe {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  max-height: 405px;
+}
+
+/* SECTION #4 - PURCHASE */
+#buy
+{color:white;
+}
+#buy:hover
+{color:green;
+}
+
+#remastered
+{
+  font-size:2rem;
+  padding:0 0 50px 0;
+}
+
+#products
+{
+  color:white;
+  padding:0;
+  margin:0;
+}
+
+#purchase-section
+{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  text-align:center;
+}
+
+#purchase-section .container {
+  width: 100%;
+}
+#purchase-section .container {
+  position: relative;
+  top: 20px;
+  margin: 0;
+  color:white;
+}
+form {
+  font-size: 3em;
+  margin: 0 auto;
+}
+.inputs-form-section {
+  background: linear-gradient(rgb(121, 17, 218, .8), rgb(5, 17, 190, .8));
+  border-top: 20px solid rgb(100, 149, 237, .8);
+  border-radius: 5px;
+}
+form > * {
+  margin: 20px auto;
+  padding: 20px 0;
+  border: none;
+  max-width: 800px;
+  width: 100%;
+}
+legend {
+  position: relative;
+  border: none;
+  margin: 0;
+  top: 30px;
+}
+.form-color-container {
+  margin: 0px auto;
+  display: inline;
+}
+.form-color-container input {
+  display: none;
+}
+.form-color-container label {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border: 2px solid dodgerblue;
+  border-radius: 10px;
+  transition: 0.25s;
+  margin: 8px;
+}
+.form-color-container input:checked + label {
+  border: 5px solid lime;
+  opacity: 1;
+}
+label[for="black"] {
+  background: url(https://store-images.s-microsoft.com/image/apps.4890.68457563540891771.312beba3-d5c5-42ae-ab4d-c7c3e9f25923.518f43ee-ba68-4eba-8ab3-5f8914f11a4d);
+  background-size: cover;
+  opacity: .5;
+}
+label[for="silver"] {
+  background: url(https://static.tvtropes.org/pmwiki/pub/images/Guardian_Heroes.jpg);
+  background-size: cover;
+  opacity: .5;
+}
+label[for="rose"] {
+  background: url(https://pbs.twimg.com/media/DgDYGMOXUAEGYFw?format=jpg&name=4096x4096);
+  background-size: cover;
+  opacity: .4;
+}
+
+.form-color-container input + label[for="black"]:hover, 
+.form-color-container input + label[for="silver"]:hover,
+.form-color-container input + label[for="rose"]:hover {
+  opacity: .75;
+  cursor: pointer;
+}
+
+.form-color-container input + label:hover {
+  opacity: 0.5
+}
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  justify-content: space-evenly;
+}
+fieldset input{
+  width: 90%;
+  height: 1.75em;
+  resize: none;
+  margin: 5px auto;
+  font-size: 2rem;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+.cards-container {
+  
+  color: white;
+  font-size: 1.5em;
+}
+.date-cvv {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  grid-gap: 2.5%;
+  width: 90%;
+  margin: 0 auto 20px auto;
+  height: 1.75em !important;
+}
+#month, #year, #cvv {
+  width: 100%;
+}
+input {
+  padding-left: 5px;
+}
+input::placeholder {
+  font-family: 'Roboto', sans-serif;
+  padding-left: 5px;
+}
+form label[for="submit"] {
+  font-size: 3rem;
+  padding: 5px 30px;
+  margin: 10px auto;
+  color: white;
+  background: yellowgreen;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: .25s;
+  cursor: pointer;
+}
+form label[for="submit"]:hover {
+  background: rgb(142, 189, 50);
+  transform: translateY(2px);
+}
+form label[for="submit"]:active {
+  background: rgb(109, 141, 46);
+  outline: none;
+}
+#submit {
+  display: none;
+}
+
+/* SECTION #5 - REVIEWS */
+
+#show
+{
+  margin:0;
+  padding:0;
+  color:white;
+}
+
+#sort
+{
+  margin:0;
+  padding:0;
+  color:white;
+}
+
+.review-container
+{
+  border: 1px solid white;
+  margin:50px;
+  padding:10px;
+}
+
+#reviews-section .container{
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  margin: 30px auto;
+  color: white;
+}
+.reviews-count {
+  color: gold;
+  font-size: .75rem;
+  font-family: 'Righteous', serif;
+  font-weight: lighter;
+}
+.reviews-count h2 span {
+  font-size: 3em;
+  color: gold;
+}
+.stars {
+  font-size: 2rem;
+  color: gold;
+	
+}
+.reviews-count h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+  color: white;
+  font-size: 2rem;
+}
+.rev-sort {
+  display: flex;
+  justify-content: space-between;
+  justify-items: left;
+  margin: 20px;
+}
+.rev-sort:nth-child(2) {
+  justify-self: right;
+}
+.reviews {
+  padding: 10px;
+  
+}
+.rev {
+  margin: 10px auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  text-align: left;
+  border-radius: 30px;
+  color: white;
+}
+.rev h3 {
+  overflow-wrap: break-word;
+  font-size: 1.6rem;
+  font-weight: lighter;
+  color: white;
+}
+.rev-header {
+  display: grid;
+  grid-template-rows: 25px 25px;
+  grid-template-columns: 50px calc(100% - 50px);
+  align-items: center;
+  color: white;
+}
+.rev-header img {
+  width: 40px;
+  height: 40px;
+  grid-row: 1 / span 2;
+  border-radius: 50%;
+}
+.rev-header h2 {
+  font-size: 2rem;
+  grid-row: 0 / 1;
+  padding: 0;
+  color: white;
+}
+.rev-header .rev-stars {
+  grid-row: 1 / 2;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  color: gold;
+}
+.rev-stars
+{
+	padding-bottom: 20px;
+}
+
+  #reviews-section .container {
+    margin: 20px auto;
+    width: 70%;
+  }
+
+
+
+/* SECTION #6 - FOOTER */
+.site-footer {
+  background-color: black;
+	text-align: center;
+	margin: 10px 0;
+	padding: 10px 0;
+}
+
+#social-wrapper {
+	text-align: center;
+}
+
+/*Social Media Icons*/
+.social-wrapper {
+	text-align: center;
+}
+
+.social-wrapper ul li {
+	display: inline;
+	margin: 0 5px;
+}
+
+.twitter-icon,
+.facebook-icon,
+.instagram-icon,
+.l,
+.g,
+.youtube-icon,
+.f{
+	margin-top: .625em;
+	width: 40px;
+	height: 40px;
+	opacity: .6;
+	filter: alpha(opacity=60); /* For IE8 and earlier */
+  border-radius: 25px;
+}
+
+.twitter-icon:hover,
+.facebook-icon:hover,
+.instagram-icon:hover,
+.youtube-icon:hover {
+	opacity: 1.0;
+	filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.footer-nav p {
+	text-align: center;
+}
+
+:root
+{
+	-bs-body-bg: black;
+	background-color: black;
+}
