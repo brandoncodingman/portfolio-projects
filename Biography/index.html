@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./cs/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Knewave&family=Playpen+Sans:wght@100..800&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <title>Interactive Background and GIF Change</title>
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loadingScreen">
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbngwNWFrZXdreHV3cndqYW9sM2Zsd2s4dmZ3dG85bmh1M3M0Y3BvaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WiIuC6fAOoXD2/giphy.gif" alt="Loading..." class="loading-gif">
+    <p id="loading-text">Loading...</p>
+  </div>
+
+  <div id="background-container">
+    <!-- Centered image element -->
+    <img id="cherryblossoms" src="https://i.gifer.com/2yqT.gif" alt="cherryblossoms">
+    <img src="./img/monster (2).gif" alt="character" id="character">
+
+    <!-- Placeholder Text and Images -->
+    <div id="placeholder-text" class="placeholder">Welcome to Brandon's Biography! The life of an underdog who
+        doesn't know how to give up.</div>
+    <img id="placeholder-image" class="placeholder" src="./img/image1.jpeg" alt="placeholder image">
+
+    <div id="placeholder-text-2" class="placeholder">I have an awesome supportive family!</div>
+    <img id="placeholder-image-2" class="placeholder" src="./img/image2.jpg" alt="placeholder image 2">
+
+    <div id="placeholder-text-3" class="placeholder">I graduated in 2007 with a Bachelor's degree in Science and
+        Kinesiology.</div>
+    <img id="placeholder-image-3" class="placeholder" src="./img/image3.jpeg" alt="placeholder image 3">
+
+    <div id="placeholder-text-4" class="placeholder">I moved to the land of snow and camo and became a nurse.</div>
+    <img id="placeholder-image-4" class="placeholder" src="./img/image4.jpeg" alt="placeholder image 4">
+
+    <div id="placeholder-text-5" class="placeholder">In 2017 I got my Masters degree in Athletic Training.</div>
+    <img id="placeholder-image-5" class="placeholder" src="./img/image5.jpeg" alt="placeholder image 5">
+
+    <div id="placeholder-text-6" class="placeholder">I presented my Masters thesis paper in Chiba, Japan</div>
+    <img id="placeholder-image-6" class="placeholder" src="./img/image6.jpeg" alt="placeholder image 6">
+
+    <div id="placeholder-text-7" class="placeholder">I met my wife in 2019 and we got married in 2022.</div>
+    <img id="placeholder-image-7" class="placeholder" src="./img/image7.jpeg" alt="placeholder image 7">
+
+    <div id="placeholder-text-8" class="placeholder">I became a father in 2023.</div>
+    <img id="placeholder-image-8" class="placeholder" src="./img/image8.jpeg" alt="placeholder image 8">
+
+    <div id="placeholder-text-9" class="placeholder">My father passed away shortly after...</div>
+    <img id="placeholder-image-9" class="placeholder" src="./img/image9.jpeg" alt="placeholder image 9">
+
+    <div id="placeholder-text-10" class="placeholder"><strong id="strong">Skills</strong>
+        <br><br>
+        HTML &#x2B50; &#x2B50; &#x2B50; &#x2B50;
+        <br>
+        CSS &#x2B50; &#x2B50; &#x2B50;
+        <br>
+        JavaScript &#x2B50; &#x2B50; &#x2B50;
+        <br>
+        PHP &#x2B50; &#x2B50; &#x2B50;
+        <br>
+        Bootstrap &#x2B50; &#x2B50; &#x2B50;
+        <br>
+        MySQL &#x2B50; 
+        <br>
+        JQuery &#x2B50;
+        <br>
+        AJAX &#x2B50;
+    </div>
+    <img id="placeholder-image-10" class="placeholder" src="https://i.gifer.com/3BBS.gif"
+        alt="placeholder image 10">
+
+       <a href="https://brandoncodingman.github.io/portfolio-projects/portfoliojp/"><div id="placeholder-text-11" class="placeholder">Return to my profile page</div>
+        <img id="placeholder-image-11" class="placeholder" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWJnZjByaTRoODZsZHZtNnR4MWkxZGE5ejljeTRua2J4YmQzbzFqbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ohhwEZqxzKbNUHzji/giphy.gif" alt="placeholder image 11">
+    </a>
+    <!-- Language Toggle Image -->
+    <div id="language-toggle" class="language-toggle">
+        <button id="language-toggle-button" class="language-toggle-button">English | 日本語</button>
+    </div>
+
+    <!-- Music Toggle Button -->
+    <div id="music-toggle" class="music-toggle">
+        <button onclick="toggleMusic()">Toggle Music</button>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+        <source src="./mp3/Press Play  (16-Bit Arcade No Copyright Music).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
