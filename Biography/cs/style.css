@@ -156,7 +156,7 @@
 
 /* Language Toggle and Music Toggle styles */
 
-#language-toggle-button {
+#language-toggle-button  {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -167,8 +167,64 @@
 }
 
 #language-toggle-button.toggled {
-    background-color: #f44336;
+  background-color: #00b7ff;
+  color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
+
+#language-toggle-button.toggled:hover {
+    background-color: #026fc9;
+    color: rgb(189, 188, 188);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+
+}
+
+/* Default button styling */
+.language-toggle-button {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  border-radius: 20px;
+  opacity: .5;
+}
+
+.language-toggle-button:hover {
+  background-color: #c20000;
+  color: rgb(180, 178, 178);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  border-radius: 20px;
+}
+
+/* Styling when language is toggled to Japanese */
+.language-toggle-button.toggled {
+  background-color: #e00303;  /* Change to a different color when Japanese is toggled */
+  color: rgb(196, 196, 196);  /* Change text color */
+  font-weight: bold;  /* Make the text bold */
+}
+
+/* Music toggle button styles */
+#music-toggle button.toggled {
+  background-color: #2196F3; /* Example styling when music is on */
+  color: white;
+}
+
 
 #music-toggle button {
     background-color: #2196F3;
@@ -211,6 +267,7 @@
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    opacity: .5;
 }
 
 /* Styling when music is on (button is toggled) */
@@ -221,10 +278,10 @@
 
 /* Optional: Add hover effect for the button */
 #music-toggle button:hover {
-    background-color: #45a049;
+    background-color: #464646;
+    color: rgb(255, 255, 255);
 }
 
-/* Loading Screen */
 /* Loading Screen */
 #loadingScreen {
     position: fixed;

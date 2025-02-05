@@ -123,9 +123,11 @@ function checkVisibility() {
     if (Math.abs(backgroundPositionX) >= 39000) {
         document.getElementById("placeholder-text-11").style.opacity = 1;
         document.getElementById("placeholder-image-11").style.opacity = 1;
+        document.getElementById('profile-warp').style.display = 'block';
     } else {
         document.getElementById("placeholder-text-11").style.opacity = 0;
         document.getElementById("placeholder-image-11").style.opacity = 0;
+        document.getElementById('profile-warp').style.display = 'none';
     }
 }
 
@@ -234,7 +236,7 @@ function toggleLanguage() {
 
     // Change the language toggle button text
     const button = document.getElementById('language-toggle-button');
-    button.innerText = isEnglish ? 'English | 日本語' : '日本語 | English';
+    button.innerText = isEnglish ? '日本語' : 'English';
 }
 
 
