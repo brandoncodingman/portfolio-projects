@@ -1,0 +1,331 @@
+{
+    "characters": [
+      {
+        "id": "goku",
+        "name": "Goku",
+        "race": "Saiyan",
+        "gender": "Male",
+        "health": "500,000",
+        "attack": "50,000",
+        "defense": "50,000",
+        "kiRestoreSpeed": "50,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Super Kamehameha",
+          "Super Dragon Fist"
+        ],
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4OKe1DFGg3stwlr4kKgwmyOHsc6Su1FOMg&s"
+      },
+      {
+        "id": "vegeta",
+        "name": "Vegeta",
+        "race": "Saiyan",
+        "gender": "Male",
+      
+        "health": "490,000",
+        "attack": "49,000",
+        "defense": "49,000",
+        "kiRestoreSpeed": "49,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Final Flash",
+          "Big Bang Attack"
+        ],
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR03BsyUBrK09tn4omQBkx_q1EpJZftWfwVIg&s"
+      },
+      {
+        "id": "gohan",
+        "name": "Gohan",
+        "race": "Human/Saiyan",
+        "gender": "Male",
+       
+        "health": "440,000",
+        "attack": "38,000",
+        "defense": "38,000",
+        "kiRestoreSpeed": "39,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Super Kamehameha",
+          "Masenko"
+        ],
+        "img": "assets/gohan.png"
+      },
+      {
+        "id": "trunks",
+        "name": "Trunks",
+        "race": "Human/Saiyan",
+        "gender": "Male",
+        
+        "health": "470,000",
+        "attack": "44,000",
+        "defense": "43,000",
+        "kiRestoreSpeed": "40,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Galic Gun",
+          "Finish Buster"
+        ],
+        "img": "assets/trunks.png"
+      },
+      {
+        "id": "frieza",
+        "name": "Frieza",
+        "race": "Unknown",
+        "gender": "Male",
+       
+        "health": "475,000",
+        "attack": "47,000",
+        "defense": "47,000",
+        "kiRestoreSpeed": "44,000",
+        "abilities": [
+          "Eye Laser",
+          "Death Beam",
+          "Death Ball"
+        ],
+        "img": "assets/frieza.png"
+      },
+      {
+        "id": "cell",
+        "name": "Cell",
+        "race": "Android",
+        "gender": "Male",
+        
+        "health": "200,000",
+        "attack": "20,000",
+        "defense": "20,000",
+        "kiRestoreSpeed": "20,000",
+        "abilities": [
+          "Energy Shield",
+          "Super Kamehameha",
+          "Destructo Disk"
+        ],
+        "img": "assets/cell.png"
+      },
+      {
+        "id": "buu",
+        "name": "Buu",
+        "race": "Majin",
+        "gender": "Male",
+       
+        "health": "350,000",
+        "attack": "29,000",
+        "defense": "29,000",
+        "kiRestoreSpeed": "28,000",
+        "abilities": [
+          "Absorption",
+          "Healing",
+          "Chocolate Beam"
+        ],
+        "img": "assets/buu.png"
+      },
+      {
+        "id": "beerus",
+        "name": "Beerus",
+        "race": "God",
+        "gender": "Male",
+      
+        "health": "600,000",
+        "attack": "60,000",
+        "defense": "60,000",
+        "kiRestoreSpeed": "50,000",
+        "abilities": [
+          "Destruction Sphere",
+          "Destruction Gods, Fierce Attack",
+          "Hakai"
+        ],
+        "img": "assets/beerus.png"
+      },
+      {
+        "id": "piccolo",
+        "name": "Piccolo",
+        "race": "Namekian",
+        "gender": "Male",
+        "health": "230,000",
+        "attack": "25,000",
+        "defense": "25,000",
+        "kiRestoreSpeed": "25,000",
+        "abilities": [
+          "Special Beam Cannon",
+          "Tri-Form",
+          "Light Grenade"
+        ],
+        "img": "assets/piccolo.png"
+      },
+      {
+        "id": "gotenks",
+        "name": "Gotenks",
+        "race": "Human/Saiyan",
+        "gender": "Male",
+        "health": "320,000",
+        "attack": "35,000",
+        "defense": "35,000",
+        "kiRestoreSpeed": "35,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Galactic Donut",
+          "Super Ghost Kamikaze Attack"
+        ],
+        "img": "assets/gotenks.png"
+      },
+      {
+        "id": "hit",
+        "name": "Hit",
+        "race": "Unknown",
+        "gender": "Male",
+        "health": "460,000",
+        "attack": "46,000",
+        "defense": "46,000",
+        "kiRestoreSpeed": "46,000",
+        "abilities": [
+          "Time Skip",
+          "Death Blow",
+          "Vital Point Attack"
+        ],
+        "img": "assets/hit.png"
+      },
+      {
+        "id": "krillin",
+        "name": "Krillin",
+        "race": "Human",
+        "gender": "Male",
+        "health": "180,000",
+        "attack": "20,000",
+        "defense": "20,000",
+        "kiRestoreSpeed": "20,000",
+        "abilities": [
+          "Kamehameha Wave",
+          "Destrcuto Disk",
+          "Solar Flare"
+        ],
+        "img": "assets/krillin.png"
+      },
+      {
+        "id": "jiren",
+        "name": "Jiren",
+        "race": "Unknown",
+        "gender": "Male",
+        "health": "740,000",
+        "attack": "74,000",
+        "defense": "74,000",
+        "kiRestoreSpeed": "74,000",
+        "abilities": [
+          "Invisisble Eye Blast",
+          "Energy Barrier",
+          "Overheat Magnetron"
+        ],
+        "img": "assets/jiren.png"
+      },
+      {
+        "id": "tien",
+        "name": "Tien",
+        "race": "Human",
+        "gender": "Male",
+        "health": "170,000",
+        "attack": "18,000",
+        "defense": "18,000",
+        "kiRestoreSpeed": "19,000",
+        "abilities": [
+          "Tri Beam",
+          "Solar Flare",
+          "Tri-Form"
+        ],
+        "img": "assets/tien.png"
+      },
+      {
+        "id": "android 17",
+        "name": "Android 17",
+        "race": "Android",
+        "gender": "Male",
+        "health": "440,000",
+        "attack": "43,000",
+        "defense": "42,000",
+        "kiRestoreSpeed": "42,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Super Kamehameha",
+          "Super Dragon Fist"
+        ],
+        "img": "assets/android17.png"
+      },
+      {
+        "id": "android 18",
+        "name": "Android 18",
+        "race": "Android",
+        "gender": "Female",
+        "health": "420,000",
+        "attack": "40,000",
+        "defense": "40,000",
+        "kiRestoreSpeed": "40,000",
+        "abilities": [
+          "Android Barrier",
+          "Full Power Energy Ball",
+          "Power Blitz"
+        ],
+        "img": "assets/android18.png"
+      },
+      {
+        "id": "broly",
+        "name": "Broly",
+        "race": "Saiyan",
+        "gender": "Male",
+        "health": "800,000",
+        "attack": "80,000",
+        "defense": "80,000",
+        "kiRestoreSpeed": "80,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Eraser Cannon",
+          "Gigantic Slam"
+        ],
+        "img": "assets/broly.png"
+      },
+      {
+        "id": "vegito",
+        "name": "Vegito",
+        "race": "Saiyan",
+        "gender": "Male",
+        "health": "780,000",
+        "attack": "70,000",
+        "defense": "60,000",
+        "kiRestoreSpeed": "60,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Final Kamehameha",
+          "Beam Sword Slash"
+        ],
+        "img": "assets/vegito.png"
+      },
+      {
+        "id": "gogeta",
+        "name": "Gogeta",
+        "race": "Saiyan",
+        "gender": "Male",
+        "health": "700,000",
+        "attack": "60,000",
+        "defense": "55,000",
+        "kiRestoreSpeed": "55,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Big Bang Kamehameha",
+          "Stardust Breaker"
+        ],
+        "img": "assets/gogeta.png"
+      },
+      {
+        "id": "goku black",
+        "name": "Goku Black",
+        "race": "Saiyan",
+        "gender": "Male",
+        "health": "480,000",
+        "attack": "480,000",
+        "defense": "48,000",
+        "kiRestoreSpeed": "48,000",
+        "abilities": [
+          "Super Saiyan Transformations",
+          "Black Kamehameha",
+          "God Slicer"
+        ],
+        "img": "assets/gokublack.png"
+      }
+    ]
+  }

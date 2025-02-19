@@ -1,0 +1,72 @@
+[
+   {
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROYGCwFtreTGAu9ijpZ1415mTUkUyp51QkbA&s",
+      "name" : "ピカチュウ",
+      "classification" : "ねずみポケモン",
+      "type" : "でんき",
+      "move" : "10まんボルト"
+   },
+   {
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvGokzKJCd2k18nthHuIVAjl4XUWWtZZQkVA&s",
+      "name" : "フシギダネ",
+      "classification" : "たねポケモン",
+      "type" : "くさ",
+      "move" : "はっぱカッター"
+   },
+   {
+      "picture": "https://pbs.twimg.com/media/EY8GmTRUEAElqk7?format=png&name=360x360",
+      "name" : "ヒトカゲ",
+      "classification" : "とかげポケモン",
+      "type" : "ほのお",
+      "move" : "ひのこ"
+   },
+   {
+      "picture": "https://pbs.twimg.com/media/E8Ji1UpVIAMGy0H.jpg",
+      "name" : "ゼニガメ",
+      "classification" : "かめのこポケモン",
+      "type" : "みず",
+      "move" : "みずでっぽう"
+   },
+   {
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf6x0fQsF4iP2tiPMIXB_7wsSjCCzRDyYHNA&s",
+      "name" : "ロコン",
+      "classification" : "きつねポケモン",
+      "type" : "ほのお",
+      "move" : "かえんほうしゃ"
+   },
+   {
+      "picture": "https://preview.redd.it/best-eevee-sprite-v0-iy9cuwusr40e1.jpeg?auto=webp&s=7be5431ce5a9a1b925e04ca903a0c594e56fa4bb",
+      "name" : "イーブイ",
+      "classification" : "しっぽポケモン",
+      "type" : "ノーマル",
+      "move" : "たいあたり"
+   },
+   {
+      "picture": "https://preview.redd.it/snorlax-sprite-from-pok%C3%A9mon-crystal-v0-msy79gcuo0g91.jpg?width=300&format=pjpg&auto=webp&s=4b0ba9517272c9990c62c5d200077a6c4eb4c2fc",
+      "name" : "カビゴン",
+      "classification" : "いねむりポケモン",
+      "type" : "ノーマル",
+      "move" : "のしかかり"
+   },
+   {
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6E972Blak84-KFPpJLxxtkttHCQ12T4JTrg&s",
+      "name" : "フーディン",
+      "classification" : "サイコポケモン",
+      "type" : "エスパー",
+      "move" : "サイコキネシス"
+   },
+   {
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAFULiGk8pmK20aKqLQJ1KsQk-8UoAxDFIew&s",
+      "name" : "カメックス",
+      "classification" : "かめポケモン",
+      "type" : "みず",
+      "move" : "ハイドロポンプ"
+   },
+   {
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaHWUEauipV5KKjtINtA1-iXVnNsXDrKYcEw&s",
+      "name" : "ギャラドス",
+      "classification" : "おおがらすポケモン",
+      "type" : "みず/ひこう",
+      "move" : "たきのぼり"
+   }
+]

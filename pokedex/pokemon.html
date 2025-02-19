@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Table</title>
+
+    <style>
+        /* Basic table styling */
+        table {
+            width: 80%;  /* Set table width */
+            margin: 20px auto; /* Center the table */
+            border-collapse: collapse; /* Collapse borders */
+            font-family: Arial, sans-serif; /* Set font */
+        }
+
+        /* Styling for table headers */
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: left;
+            padding: 12px 15px;
+        }
+
+        /* Styling for table cells */
+        td {
+            text-align: left;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd; /* Border between rows */
+        }
+
+        /* Alternating row colors for better readability */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Hover effect on rows */
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Styling for the table container */
+        .table-container {
+            max-width: 1000px; /* Limit width */
+            margin: 0 auto; /* Center the table */
+            overflow-x: auto; /* Allow horizontal scroll if necessary */
+        }
+
+        /* Optional: Styling for the table caption */
+        caption {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        /* Styling for Pokémon images */
+        .pokemon-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+
+        /* Styling for Pokémon name and type */
+        .pokemon-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .pokemon-info span {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Table container for responsiveness -->
+    <div class="table-container">
+        <!-- Pokemon table -->
+        <table>
+            <caption>Pokemon List</caption>
+            <thead>
+                <tr>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Classification</th>
+                    <th>Type</th>
+                    <th>Move</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <!-- Pokemon data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Fetch the Pokémon data from the JSON file
+            $.ajax({
+                url: 'pokemon.json', // Make sure this path points to the correct location of your pokemon.json file
+                dataType: 'json'
+            })
+            .done(function(pokemonData) {
+                const tbody = $('#tbody');
+                // Loop through each Pokémon and populate the table
+                pokemonData.forEach(function(pokemon) {
+                    let row = $('<tr></tr>');
+                    // Create a cell for the Pokémon image
+                    row.append('<td><img src="' + pokemon.picture + '" class="pokemon-img" alt="' + pokemon.name + '"></td>');
+                    // Create cells for the other Pokémon details
+                    row.append('<td>' + pokemon.name + '</td>');
+                    row.append('<td>' + pokemon.classification + '</td>');
+                    row.append('<td>' + pokemon.type + '</td>');
+                    row.append('<td>' + pokemon.move + '</td>');
+                    // Append the row to the table body
+                    tbody.append(row);
+                });
+            })
+            .fail(function() {
+                alert('Failed to load Pokémon data!');
+            });
+        });
+
+
+        row.append('<td><img src="' + pokemon.picture + '" class="pokemon-img" alt="' + pokemon.name + '"></td>');
+                    // Create cells for the other Pokémon details
+                    row.append('<td>' + pokemon.name + '</td>');
+                    row.append('<td>' + pokemon.classification + '</td>');
+                    row.append('<td>' + pokemon.type + '</td>');
+                    row.append('<td>' + pokemon.move + '</td>');
+                    // Append the row to the table body
+                    tbody.append(row);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball Characters</title>
+    <style>
+        /* Basic table styling */
+        table {
+            width: 80%; /* Set table width */
+            margin: 20px auto; /* Center the table */
+            border-collapse: collapse; /* Collapse borders */
+            font-family: Arial, sans-serif; /* Set font */
+        }
+
+        /* Styling for table headers */
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: left;
+            padding: 12px 15px;
+        }
+
+        /* Styling for table cells */
+        td {
+            text-align: left;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd; /* Border between rows */
+        }
+
+        /* Alternating row colors for better readability */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Hover effect on rows */
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Styling for the table container */
+        .table-container {
+            max-width: 1000px; /* Limit width */
+            margin: 0 auto; /* Center the table */
+            overflow-x: auto; /* Allow horizontal scroll if necessary */
+        }
+
+        /* Optional: Styling for the table caption */
+        caption {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        /* Styling for Character images */
+        .character-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Table container for responsiveness -->
+    <div class="table-container">
+        <!-- Dragon Ball characters table -->
+        <table>
+            <caption>Dragon Ball Character List</caption>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Race</th>
+                    <th>Gender</th>
+                    <th>Health</th>
+                    <th>Attack</th>
+                    <th>Defense</th>
+                    <th>Ki Restore Speed</th>
+                    <th>Abilities</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <!-- Character data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- jQuery for ease of AJAX usage -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // AJAX request to load the data from db.json
+            $.ajax({
+                url: 'db.json', // Make sure this path points to the correct location of your db.json file
+                dataType: 'json',
+                success: function(data) {
+                    const tbody = $('#tbody');
+
+                    // Loop through each character in the "characters" array and populate the table
+                    data.characters.forEach(function(character) {
+                        let row = $('<tr></tr>');
+
+                        // Add character details in their respective columns
+                        row.append('<td>' + character.id + '</td>');
+                        row.append('<td>' + character.name + '</td>');
+                        row.append('<td>' + character.race + '</td>');
+                        row.append('<td>' + character.gender + '</td>');
+                        row.append('<td>' + character.health + '</td>');
+                        row.append('<td>' + character.attack + '</td>');
+                        row.append('<td>' + character.defense + '</td>');
+                        row.append('<td>' + character.kiRestoreSpeed + '</td>');
+
+                        // Join abilities array into a comma-separated string//
+                        let abilities = character.abilities.join(", ");
+                        row.append('<td>' + abilities + '</td>');
+
+                        // Add the character's image
+                        row.append('<td><img src="' + character.img + '" class="character-img" alt="' + character.name + '"></td>');
+
+                        // Append the row to the table body
+                        tbody.append(row);
+                    });
+                },
+                error: function() {
+                    alert('Failed to load character data from db.json!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ajax練習</title>
+<style>
+/* General body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0f93ff;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: border-box;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    text-align: left;
+    padding: 12px 15px;
+}
+
+th {
+    background-color: #fffb00;
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    font-weight: bolder;
+}
+/* when i hover the th i want the td under it to change background color
+ */
+
+td {
+    background-color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+}
+tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+tr:hover td {
+    background-color: #fcb7b7;
+    border: black solid 3px;
+    filter: saturate(2.0);
+}
+
+
+/* Special class for the name column */
+.name {
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+#header {
+    position: relative;
+    opacity: 1.5;
+    width: 100%;
+    height: 80%;
+    border: black solid 5px;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+#sortOptions {
+    margin: 20px 0;
+    padding: 5px;
+    font-size: 24px;
+}
+
+#border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #333 solid 5px;
+    background-color: rgb(0, 0, 0);
+}
+/* change brightness and */
+/* make a scale up and down animation for the #header image */
+@keyframes scale {
+    0% {
+        transform: scale(0.97);
+        
+    }
+    50% {
+        transform: scale(1.0);
+        opacity: 1.5;
+        filter: saturate(2.0);
+    }
+    100% {
+        transform: scale(0.97);
+       
+    }
+}
+
+#header {
+    animation: scale 4s infinite;
+}
+
+#title {
+    font-size: 104px;
+    font-weight: bolder;
+    margin: 15px 0 0 0;
+    text-shadow: #333 3px 3px 3px;
+}
+
+nav {
+    margin-bottom: 0px;
+    padding: 0;
+    width: 100%;
+    background-color: #fffb00;
+    padding: 10px;
+    display: flex;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    justify-content: space-around;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+ul li {
+    margin: 0 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">Game</a></li>
+        <li><a href="">Information</a></li>
+    </ul>
+</nav>
+
+    <div id="border">
+<img id="header" src="https://trulyoutofcharacter.wordpress.com/wp-content/uploads/2016/07/pokemon-header2.jpg" alt="">
+</div>
+<h1 id="title" style="text-align: center; color: #fffb00;">Pokemon List</h1>
+
+<!-- Dropdown for sorting -->
+<select id="sortOptions">
+    <option value="a-z">Sort A-Z</option>
+    <option value="z-a">Sort Z-A</option>
+    <option value="reset">Reset</option>
+</select>
+
+<table border="1">
+    <!-- Table content will be added dynamically here -->
+</table>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+    let pokemonData = [];
+    let originalData = [];  // Store the original data for resetting
+
+    // Fetch the JSON data
+    $.ajax({
+        url: 'pokemon.json',  // The URL of the JSON file
+        dataType: 'json',  // Expecting JSON format
+        success: function(data) {
+            pokemonData = data;  // Store data globally for sorting
+            originalData = [...data];  // Make a copy of the original data for reset
+            renderTable(pokemonData);  // Render the initial table
+        },
+        error: function() {
+            alert("There was an error loading the data.");
+        }
+    });
+
+    // Function to render the table based on sorted data
+    function renderTable(data) {
+        let table = $('table');
+        table.empty();  // Clear the table before appending new rows
+        table.append('<tr><th>写真</th><th>名前</th><th>分類</th><th>タイプ</th><th>技</th></tr>');
+        
+        // Append each Pokémon as a row in the table
+        for (let i = 0; i < data.length; i++) {
+            table.append('<tr><td class="name"><img src="' + data[i].picture + '" alt="' + data[i].name + '"></td><td>' + data[i].name + '</td><td>' + data[i].classification + '</td><td>' + data[i].type + '</td><td>' + data[i].move + '</td></tr>');
+        }
+    }
+
+    // Sort the table based on the selected option
+    $('#sortOptions').on('change', function() {
+        let sortOption = $(this).val();
+        let sortedData;
+
+        // Sorting logic based on the selected option
+        if (sortOption === 'a-z') {
+            sortedData = pokemonData.sort((a, b) => a.name.localeCompare(b.name));  // Sort by name A-Z
+        } else if (sortOption === 'z-a') {
+            sortedData = pokemonData.sort((a, b) => b.name.localeCompare(a.name));  // Sort by name Z-A
+        } else if (sortOption === 'reset') {
+            sortedData = [...originalData];  // Reset to the original data
+        }
+
+        renderTable(sortedData);  // Render the table with the sorted data
+    });
+
+});
+
+headerAnimation();
+</script>
+</body>
+</html>
