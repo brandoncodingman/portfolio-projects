@@ -13,6 +13,12 @@ body {
   background-color: #000000;
 }
 
+main {
+  width: 97%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* navigation start */
 
 /* Navbar with a fixed position at the top */
