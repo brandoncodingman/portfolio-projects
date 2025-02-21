@@ -77,4 +77,15 @@ const resetDisplay = () => {
     speed.textContent = '';
 }
 
+const op = document.getElementById('op');
+const opHeader = document.getElementById('op-h1');
 
+op.addEventListener('click', ()=>{
+    op.style.display = 'none';
+    opHeader.style.display = 'none'; 
+});
+
+opHeader.addEventListener('click', ()=>{
+    op.style.display = 'none';
+    opHeader.style.display = 'none'; 
+});

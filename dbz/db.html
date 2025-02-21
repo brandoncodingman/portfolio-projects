@@ -58,10 +58,16 @@
             height: 50px;
             border-radius: 5px;
         }
+
+        #op{
+            position:absolute;
+            width: 100vw;
+            height: 100vh;
+        }
     </style>
 </head>
 <body>
-
+    <img id="op" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGdkYzhobzc2YjN6N2l3eDJiMDE0Yzc1OWc0MDkwd2d4eTVqZmNqdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UlWjcEII2Wbu07TPR2/giphy.gif" alt="op">
     <!-- Table container for responsiveness -->
     <div class="table-container">
         <!-- Dragon Ball characters table -->
@@ -128,6 +134,20 @@
                 }
             });
         });
+
+         const op = document.getElementById('op');
+        window.onload = function() {
+  // Set the timing delay (in milliseconds)
+  setTimeout(function() {
+    op.style.display = 'none';
+    // Your code to run after the page loads and the delay
+    console.log("Page loaded, and delay passed!");
+  }, 2000); // 2000 ms = 2 seconds delay
+  setTimeout(function(){
+
+  }, 3000)
+};
+
     </script>
 </body>
 </html>

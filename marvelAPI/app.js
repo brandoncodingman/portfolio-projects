@@ -64,6 +64,9 @@ button.addEventListener(
     });
   })
 );
+
 window.onload = () => {
   getRsult();
 };
+
+

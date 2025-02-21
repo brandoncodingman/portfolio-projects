@@ -25,4 +25,25 @@ for (var j = 0; j < allElements.length; j++) {
     })();
 }
 
+const op = document.getElementById('op');
+const opHeader = document.getElementById('op-header');
+const oph2 = document.getElementById('op-h2');
 
+op.addEventListener('click', ()=>{
+    op.style.display = 'none';
+    opHeader.style.display = 'none';
+    oph2.style.display = 'none';
+});
+
+opHeader.addEventListener('click', ()=>{
+    op.style.display = 'none';
+    opHeader.style.display = 'none';
+    oph2.style.display = 'none';
+});
+
+oph2.addEventListener('click', ()=>{
+    op.style.display = 'none';
+    opHeader.style.display = 'none';
+    oph2.style.display = 'none';
+
+});

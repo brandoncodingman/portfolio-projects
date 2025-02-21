@@ -19,6 +19,58 @@ main {
   margin-right: auto;
 }
 
+#op {
+  position: fixed;        
+  top: 0;                
+  left: 0;                
+  width: 100vw;          
+  height: 100vh;          
+  object-fit: cover;      
+  z-index: 9979;          
+}
+/* op-header center */
+#op-header {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  left: 65%;
+  top:55%;
+  transform: translate(-50%, -50%);
+  font-family: "Nosifer", serif;
+  z-index: 9999;
+  font-size: 40px;
+  color: rgb(212, 0, 255);
+  text-shadow:  2px 2px 5px rgb(102, 102, 102);
+  z-index: 9999;   
+  opacity: .8; 
+}
+
+#op-header:hover {
+  opacity: 1;
+}
+
+#op-h2 {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  left: 70%;
+  top: 69%;
+  margin: 10px;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  text-shadow:  2px 2px 5px rgb(102, 102, 102);
+  transform: translate(-50%, -50%);
+  font-family: "Nosifer", serif;
+  text-align: center;
+  z-index: 9998;
+  opacity: .8; 
+}
+
+#op-h2 :hover {
+  opacity: 1.5;
+  filter: brightness(2.4)
+
+}
 /* navigation start */
 
 /* Navbar with a fixed position at the top */
