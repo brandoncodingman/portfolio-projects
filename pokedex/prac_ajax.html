@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ajax練習</title>
+<title>pokedex</title>
 <style>
 /* General body styles */
 body {
@@ -19,7 +19,9 @@ body {
 
 /* Table styling */
 table {
-    width: 100%;
+    width: 80%;
+    margin-right: auto !important;
+    margin-left: auto !important;
     border-collapse: collapse;
     margin: 20px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -85,7 +87,9 @@ img {
 }
 
 #sortOptions {
-    margin: 20px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10%;
     padding: 5px;
     font-size: 24px;
 }
@@ -94,6 +98,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     border: #333 solid 5px;
     background-color: rgb(0, 0, 0);
 }
@@ -131,11 +136,11 @@ nav {
     padding: 0;
     width: 100%;
     background-color: #fffb00;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     z-index: 999;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    justify-content: space-around;
+    justify-content: center;
 }
 
 nav ul {
@@ -143,7 +148,6 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: space-around;
 }
 
 ul li {
@@ -158,15 +162,87 @@ ul li a {
     font-size: 18px;
     font-weight: bold;
     transition: color 0.3s ease;
+    margin-right: 40px;
+    margin-left: 40px;
+    padding: 15px;
+    &:hover {
+        border: white solid 3px;
+        background-color: #d3cf02;
+    }
 }
+
+ul li a:active{
+    background-color: #0f93ff;
+    color: red;
+}
+/* footer */
+
+
+footer nav {
+    margin-bottom: 0px;
+    padding: 0;
+    width: 100%;
+    background-color: #fffb00;
+    padding: 20px;
+    display: flex;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    justify-content: center;
+}
+
+footer nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    margin-right: 40px;
+    margin-left: 40px;
+    padding: 15px;
+    &:hover {
+        border: white solid 3px;
+        background-color: #d3cf02;
+    }
+}
+
+footer ul li a:active{
+    background-color: #0f93ff;
+    color: red;
+}
+
+a #arrow {
+    position: fixed;
+    bottom: 5px;   
+    right: 10px;    
+    z-index: 99;
+    height: auto;
+    width: 100px;
+    /* grayscale */
+    filter: grayscale(100%);
+}
+
+a #arrow:hover {
+    filter: grayscale(0%);
+    filter:opacity(1.9);
+}
+
 </style>
 </head>
 <body>
-<nav>
+<nav id="top">
     <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="">Game</a></li>
-        <li><a href="">Information</a></li>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#table">Table</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
@@ -182,10 +258,21 @@ ul li a {
     <option value="reset">Reset</option>
 </select>
 
-<table border="1">
+<table id="table" border="1">
     <!-- Table content will be added dynamically here -->
 </table>
 
+<footer>
+<nav id="contact">
+    <ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#table">Table</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<a href="#top"><img id="arrow" src="https://i.gifer.com/origin/1d/1d3edf4117eda83437351472d63b242f_w200.gif" alt="arrow"></a>
+</footer>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function() {
