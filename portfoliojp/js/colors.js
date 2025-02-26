@@ -38,4 +38,3 @@ function resetColors() {
 header.addEventListener('click', changeColorsRandomly);
 header.addEventListener('mouseleave', resetColors);
 
-

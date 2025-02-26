@@ -1,4 +1,3 @@
-const apiKey = '0cf4c9b55dfc803690986c8add1d0099'; // Replace with your OpenWeather API key
 
 const weatherInfo = document.getElementById('weather-info');
 const temperatureElem = document.getElementById('temperature');
@@ -21,7 +20,14 @@ const img = document.getElementById('img');
       }
       
 
+      
 
+      require('dotenv').config();
+
+      const apiKey = process.env.API_KEY;
+      
+      console.log(apiKey);  // For testing purposes
+      
 
 
 

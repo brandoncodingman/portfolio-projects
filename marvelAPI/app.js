@@ -69,4 +69,12 @@ window.onload = () => {
   getRsult();
 };
 
+require('dotenv').config();
+
+const ts = process.env.TS;
+const publicKey = process.env.PUBLIC_KEY;
+const privateKey = process.env.PRIVATE_KEY;
+const hashVal = process.env.HASH_VAL;
+
+console.log(ts, publicKey, privateKey, hashVal);  // For testing purposes
 
