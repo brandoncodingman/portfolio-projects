@@ -166,7 +166,6 @@ ul li a+a {
 /* header end*/
 
 /* games and images */
-/* Perspective for the 3D effect, though not needed here */
 .game-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -187,7 +186,6 @@ ul li a+a {
   flex-wrap: wrap;
   margin: 30px;
   overflow: hidden;
-  /* Ensures zooming doesn't overflow outside the block */
 }
 
 .image-block a img {
@@ -195,20 +193,14 @@ ul li a+a {
   height: 300px;
   border: solid 10px white;
   filter: grayscale(100%);
-  /* Starts with grayscale */
   transition: transform 0.3s ease, filter 0.3s ease;
-  /* Transition for both zoom and color */
 }
 
-/* Hover effect to remove grayscale, add zoom */
 .image-block a:hover img {
   filter: grayscale(0%);
-  /* Removes grayscale on hover */
   transform: scale(1.8);
-  /* Zooms in the image */
 }
 
-/* Centering the caption text inside the image */
 .caption {
   position: absolute;
   top: 50%;
