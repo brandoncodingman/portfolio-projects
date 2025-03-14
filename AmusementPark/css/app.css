@@ -4,7 +4,9 @@
     box-sizing:border-box;
   }
 
- 
+ body{
+  background-color: #fdffb6;
+ }
 
 /* Slider Styles */
 .slider-container {
@@ -111,11 +113,13 @@
 
 .game-container {
     background-color: #fdffb6;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-header{
   display: flex;
-position: relative;
+position: sticky;
 top: 0;
 left: 0;
 width: 100%;
@@ -161,13 +165,25 @@ z-index: 998;
     color: #fff;
     margin: 0 20px;
     font-size: 18px;
-    transition: color 0.3s ease;
+    /* transition: color 0.3s ease; */
+    transition: color .7s ease-in-out, box-shadow .7s ease-in-out;
 }
 
 .nav-header nav ul li a:hover{
     color: #fdffb6;
-   border: #f0f0f0 1px solid;
-   padding: 5px;
+   /* border: #f0f0f0 1px solid; */
+   border-radius: 25px;
+   padding: 8px;
+   color: rgb(0, 0, 0);
+    	box-shadow: inset 120px 0 0 0 #fdffb6;
+}
+
+.nav-header nav ul li a.active{
+ border: #f0f0f0 1px solid; 
+ border-radius: 25px;
+ padding: 8px;
+ color: rgb(0, 0, 0);
+ 
 }
 
 .content{
@@ -268,6 +284,7 @@ footer {
   min-height: 100px;
   border: white 5px solid;
   border-bottom: 0;
+  margin-top: 50px;
 }
 
 footer .logo {
@@ -341,7 +358,7 @@ footer nav ul li a:hover {
 
 
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   footer nav ul {
       flex-direction: column;
       gap: 10px;
@@ -365,7 +382,7 @@ footer nav ul li a:hover {
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   footer nav ul {
       flex-direction: column;
       gap: 10px;

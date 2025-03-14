@@ -1,0 +1,48 @@
+#space{
+    display: flex;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('../img/spacebackground.gif');
+    color: rgb(255, 255, 255);
+    font-size: 99px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: black 3px 3px 3px;
+    width: 80%;
+}
+
+#space span{
+    font-size: 120px;
+    font-weight: bolder;
+    
+}
+
+#space span:hover{
+    font-size: 150px;
+    font-weight: bolder;
+    background-color: rgb(255, 255, 255, 0.5);
+    border: black 3px solid;
+    
+}
+
+body {
+    background-color: #fdffb6;
+   
+}
+
+
+.map-guide {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    overflow-y: hidden;
+  }
+  
+  .map-guide img {
+    width: 100%;
+    height: auto;
+  }

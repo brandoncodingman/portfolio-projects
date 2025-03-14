@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/tickets.css">
     <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="./css/egg.css">
 </head>
 <body>
 
@@ -24,7 +25,7 @@
                     <ul>
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="./attractions.html">Attractions</a></li>
-                        <li><a href="./tickets.html">Tickets</a></li>
+                        <li><a class="active" href="./tickets.html">Tickets</a></li>
                         <li><a href="./directions.html">Directions</a></li>
                         <li id="ghost-info">👻</li>
                     </ul>
@@ -74,7 +75,7 @@
             
            </div>
 
-            <form action="">
+            <form action="POST">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" placeholder="Enter your name" required>
                 <label for="email">Email:</label>
@@ -97,22 +98,29 @@
                 <input type="text" name="cv" id="cv" placeholder="Enter your CV" required>
                 <label for="expiry-date">Expiry Date:</label>
                 <input type="month" name="expiry-date" id="expiry-date" required>
-                <button type="submit">Submit</button>   
+                <button id="egg" type="submit">Submit</button>   
+                
             </form>
+               
+            <a id="space" style="display: none;" href="../spacegame/index.html"><br> <br><span>Space Game!</span><br> <br>
+            Click outside this pop-up to close the screen.</a>
+        
+
+        </div>
+
            <div class="map">
             <img src="./img/map.gif" alt="">
            </div>
-
 
            <div class="map-guide">
             <img src="./img/3dmap.jfif" alt="Theme Park Map">
             
             <!-- Map overlays -->
-            <a href="castle.html" class="map-link castle">Castle</a>
-            <a href="rollercoaster.html" class="map-link rollercoaster">Roller Coaster</a>
-            <a href="waterpark.html" class="map-link waterpark">Water Park</a>
-            <a href="foodcourt.html" class="map-link foodcourt">Food Court</a>
-            <a href="entrance.html" class="map-link entrance">Entrance</a>
+            <a href="./attractions.html#castle" class="map-link castle">Castle</a>
+            <a href="./attractions.html#rollercoaster" class="map-link rollercoaster">Roller Coaster</a>
+            <a href="./attractions.html#waterpark" class="map-link waterpark">Water Park</a>
+            <a href="attractions.html#foodcourt" class="map-link foodcourt">Food Court</a>
+            <a href="attractions.html#entrance" class="map-link entrance">Entrance</a>
         </div>
         
 
@@ -147,5 +155,6 @@
     <script src="./js/hamburger.js"></script>
     <script src="./js/slides.js" ></script>
     <script src="./js/return.js"></script>
+    <script src="./js/egg.js"></script>
 </body>
 </html>

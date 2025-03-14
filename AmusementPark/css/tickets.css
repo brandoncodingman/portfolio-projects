@@ -1,11 +1,25 @@
 /* General form styling */
+
+.map-guide {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.map-guide img {
+  width: 100%;
+  height: auto;
+}
+
 form {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #bdb2ff;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: #333 2px solid;
   }
   
   /* Style for form labels */
