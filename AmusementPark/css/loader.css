@@ -1,0 +1,59 @@
+.loader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    z-index: 9999;
+}
+
+.door {
+    width: 50%;
+    height: 100%;
+    background-image: url(../img/door1.png);
+    position: absolute;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    transition: transform 2s ease-in-out;
+}
+
+.left-door { left: 0; }
+.right-door { right: 0; }
+.left-door.open { transform: translateX(-100%); }
+.right-door.open { transform: translateX(100%); }
+
+.wheel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180px;
+    height: 180px;
+    background-image: url("../img/wheel1.png");
+    transform: translate(-50%, -50%) rotate(0deg);
+    transition: transform 1s ease;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.wheel:hover {
+    transform: translate(-50%, -50%) rotate(90deg);    
+    transition: transform 1s ease;
+    animation: fadeout 1s ease;
+}
+
+/* @keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+} */
+
+#arrow{
+    position: absolute;
+    top: 65%;
+    left: 44%;
+    width: 180px;
+    height: 180px;
+    background-image: url("../img/arrow.png");
+    transform: translate(-50%, -50%) rotate(0deg);
+    transition: transform 1s ease;
+    cursor: pointer;
+    z-index: 999;
+}

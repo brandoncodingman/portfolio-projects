@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directional Navigation</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/directions.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=zoom_in" />
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+
+    <svg id="home" class="return" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000"><path d="M450-160v-526L202-438l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
+
+    <div class="game-container">
+        <div class="content">
+            <div id="ghost-text">Try moving the arrow keys!</div>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <div class="bar"><img src="./img/hamburger.png" alt=""></div>
+              </div>
+
+            <div class="nav-header">
+                <nav>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./attractions.html">Attractions</a></li>
+                        <li><a href="./tickets.html">Tickets</a></li>
+                        <li><a href="./directions.html">Directions</a></li>
+                        <li id="ghost-info">👻</li>
+                    </ul>
+                </nav>
+            </div>
+        
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slides">
+                        <div class="slide active"><img src="./img/castle1.jfif" alt="Theme Park Attraction 1"></div>
+                        <div class="slide"><img src="./img/rollercoaster1.jfif" alt="Theme Park Attraction 2"></div>
+                        <div class="slide"><img src="./img/waterpark1.jfif" alt="Theme Park Attraction 3"></div>
+                        <div class="slide"><img src="./img/foodcourt1.jfif" alt="Theme Park Attraction 4"></div>
+                        <div class="slide"><img src="./img/entrance1.jfif" alt="Theme Park Attraction 5"></div>
+                    </div>
+                    <button class="slider-btn prev-btn">&#10094;</button>
+                    <button class="slider-btn next-btn">&#10095;</button>
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                    <span class="dot" data-index="4"></span>
+                </div>
+            </div>
+
+    <div class="room-indicator">Page: Directions</div>
+        
+        <div class="player" id="player">
+            <img src="./img/ghost1.png" alt="" class="ghost">
+        </div>
+
+        <div class="main">
+           <div class="title">
+            <img src="./img/directions.gif" alt="">
+           </div>
+
+           <div class="new">
+            <h1 class="new-h1">Beware!</h1>
+            
+                <p class="new-p"><span class="date-span">Rabbits!</span>They look friendly but will eat you!</p>
+                <p class="new-p"><span class="date-span">Random kids</span>They are small and run into everything.</p>
+                <p class="new-p"><span class="date-span">Broken rides</span>Sometimes rollercoasters break and you got to hang on!</p>
+                <p class="new-p"><span class="date-span">Food</span>There is a lot of food to eat! Some is poisonous.</p>
+                <p class="new-p"><span class="date-span">The castles knight</span>He uses a real sword on customers.</p>
+            
+           </div>
+
+            
+           <div class="title">
+            <img src="./img/busmap.gif" alt=""> 
+           
+           </div>
+           <div class="bus">
+            <img src="./img/busmap.jfif" alt="">
+           </div>
+
+           <div class="title">
+            <img src="./img/googlemap.gif" alt="">
+           </div>
+           
+           <div class="zombie-map">
+                <img id="map1" src="./img/zombie-map1.jpg" alt="">
+                <button id="zoom-in"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFF55"><path d="M796-121 533-384q-30 26-69.96 40.5Q423.08-329 378-329q-108.16 0-183.08-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.13-57.5Q572-504 572-585t-56.87-138.5Q458.25-781 377-781q-82.08 0-139.54 57.5Q180-666 180-585t57.46 138.5Q294.92-389 377-389Zm-31-85v-82h-82v-60h82v-81h60v81h81v60h-81v82h-60Z"/></svg></button>
+                <button id="zoom-out" ><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFF55"><path d="M796-121 533-384q-30 26-69.96 40.5Q423.08-329 378-329q-108.16 0-183.08-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.13-57.5Q572-504 572-585t-56.87-138.5Q458.25-781 377-781q-82.08 0-139.54 57.5Q180-666 180-585t57.46 138.5Q294.92-389 377-389ZM275-556v-60h201v60H275Z"/></svg></button>
+        </div>
+        
+        
+           <div class="map">
+            <img src="./img/map.gif" alt="">
+           </div>
+          
+     
+
+           <div class="map-guide">
+            <img src="./img/3dmap.jfif" alt="Theme Park Map">
+            
+            <!-- Map overlays -->
+            <a href="castle.html" class="map-link castle">Castle</a>
+            <a href="rollercoaster.html" class="map-link rollercoaster">Roller Coaster</a>
+            <a href="waterpark.html" class="map-link waterpark">Water Park</a>
+            <a href="foodcourt.html" class="map-link foodcourt">Food Court</a>
+            <a href="entrance.html" class="map-link entrance">Entrance</a>
+        </div>
+        
+
+    </div>
+    </div>
+
+    <footer>
+  
+        <img class="logo" src="./img/ghost4.png" alt="dragon">
+    
+    <div class="footer-info">
+        <p>© 2025 CODEMAN LAND Co., Ltd. All Rights Reserved.
+            © 2025 BRANDONCODINGMAN</p>
+    </div>
+   
+        <nav>
+            <ul>
+                <li><a href="">🎵👻</a></li>
+                <li><a href="">Profile Page</a></li>
+                <li><a href="">Linkedin Page</a></li>
+                <li><a href="">Email</a></li>
+            </ul>
+           
+        </nav>
+       
+    
+</footer>
+    </div>
+
+
+    <script src="./js/app.js"></script>
+     <script src="./js/map.js"></script>
+    <script src="./js/slides.js" ></script>
+    <script src="./js/hamburger.js"></script>
+    <script src="./js/return.js"></script>
+</body>
+</html>

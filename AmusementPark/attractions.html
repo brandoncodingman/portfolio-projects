@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directional Navigation</title>
+   
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="./css/attractions.css">
+    
+</head>
+<body>
+
+    <svg id="home" class="return" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000"><path d="M450-160v-526L202-438l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
+
+    <div class="game-container">
+        <div class="content">
+            <div id="ghost-text">Try moving the arrow keys!</div>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <div class="bar"><img src="./img/hamburger.png" alt=""></div>
+              </div>
+
+            <div class="nav-header">
+                <nav>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./attractions.html">Attractions</a></li>
+                        <li><a href="./tickets.html">Tickets</a></li>
+                        <li><a href="./directions.html">Directions</a></li>
+                        <li id="ghost-info">👻</li>
+                    </ul>
+                </nav>
+            </div>
+        
+        
+
+    <div class="room-indicator">Page: Attractions</div>
+        
+        <div class="player" id="player">
+            <img src="./img/ghost1.png" alt="" class="ghost">
+        </div>
+
+        <div class="main">
+
+
+            
+           <div class="title">
+            <img src="./img/attractions (2).gif" alt="">
+           </div>
+           
+
+           <div class="new">
+            <h1 class="new-h1">Click on the map to see our attractions!</h1>
+            
+                <p class="new-p"><time datetime="2023-01-01"></time><span class="date-span">2023-01-01</span>New Roller Coaster!  We instroduced the biggest coaster in the land!</p>
+                <p class="new-p"><time datetime="2023-02-01"></time><span class="date-span">2023-02-01</span>New Water Park! Our water park now has a new water park!</p>
+                <p class="new-p"><time datetime="2023-03-01"></time><span class="date-span">2023-03-01</span>New Food Court! Our food court now has a new food court!</p>
+                <p class="new-p"><time datetime="2023-04-01"></time><span class="date-span">2023-04-01</span>New Entrance! Our entrance now has a new entrance!</p>
+                <p class="new-p"><time datetime="2023-05-01"></time><span class="date-span">2023-05-01</span>New Castle! Our castle now has a new castle inside it!</p>
+            
+           </div>
+
+           <div class="map">
+            <img src="./img/map.gif" alt="">
+           </div>
+           <div class="map-guide">
+            <img src="./img/3dmap.jfif" alt="Theme Park Map">
+            
+            <!-- Map overlays -->
+            <a href="#castle" class="map-link castle">Castle</a>
+            <a href="#rollercoaster" class="map-link rollercoaster">Roller Coaster</a>
+            <a href="#waterpark" class="map-link waterpark">Water Park</a>
+            <a href="#foodcourt" class="map-link foodcourt">Food Court</a>
+            <a href="#entrance" class="map-link entrance">Entrance</a>
+        </div>
+
+        <div class="titles-castle">
+            <img src="./img/Castle.gif" alt="">
+           </div>
+        <div class="attraction-container">
+            <div class="curtain left-curtain"></div>
+    <div class="curtain right-curtain"></div>
+  
+     <button class="arrow left-arrow">◀</button>
+            <div id="castle" class="attraction-slider">
+                <img class="slides" src="./img/castle2.jfif" alt="ghost">
+                <img class="slides" src="./img/castle1.jfif" alt="ghost">
+            </div>
+            <button class="arrow right-arrow">▶</button>
+        </div>
+
+        <div class="titles-rollercoaster">
+            <img src="./img/rollercoaster.gif" alt="">
+           </div>
+        <div class="attraction-container">
+            <div class="curtain left-curtain"></div>
+    <div class="curtain right-curtain"></div>
+     <button class="arrow left-arrow">◀</button>
+            <div id="rollercoaster" class="attraction-slider">
+                <img class="slides" src="./img/rollercoaster4.jfif" alt="ghost">
+                <img class="slides" src="./img/rollercoaster1.jfif" alt="ghost">
+                <img class="slides" src="./img/rollercoaster2.jfif" alt="ghost">
+                <img class="slides" src="./img/rollercoaster3.jfif" alt="ghost">
+            </div>
+            <button class="arrow right-arrow">▶</button>
+        </div>
+
+        <div class="titles-waterpark">
+            <img class="slides" src="./img/waterpark.gif" alt="">
+           </div>
+        <div class="attraction-container">
+            <div class="curtain left-curtain"></div>
+    <div class="curtain right-curtain"></div>
+     <button class="arrow left-arrow">◀</button>
+            <div id="waterpark" class="attraction-slider">
+                <img class="slides" src="./img/waterpark1.jfif" alt="ghost">
+                <img class="slides" src="./img/waterpark2.jfif" alt="ghost">
+            </div>
+            <button class="arrow right-arrow">▶</button>
+        </div>
+
+        <div class="titles-foodcourt">
+            <img src="./img/foodcourt.gif" alt="">
+           </div>
+        <div class="attraction-container">
+            <div class="curtain left-curtain"></div>
+    <div class="curtain right-curtain"></div>
+     <button class="arrow left-arrow">◀</button>
+            <div id="foodcourt" class="attraction-slider">
+                <img class="slides" src="./img/foodcourt1.jfif" alt="ghost">
+                <img class="slides" src="./img/foodcourt2.jfif" alt="ghost">
+                <img class="slides" src="./img/foodcourt3.jfif" alt="ghost">
+                <img class="slides" src="./img/foodcourt4.jfif" alt="ghost">
+                <img class="slides" src="./img/foodcourt5.jfif" alt="ghost">
+            </div>
+            <button class="arrow right-arrow">▶</button>
+        </div>
+
+        <div class="titles-entrance">
+            <img src="./img/entrance.gif" alt="">
+           </div>
+        <div class="attraction-container">
+            <div class="curtain left-curtain"></div>
+    <div class="curtain right-curtain"></div>
+     <button class="arrow left-arrow">◀</button>
+            <div id="entrance" class="attraction-slider">
+                <img  class="slides" src="./img/entrance1.jfif" alt="ghost">
+                <img  class="slides" src="./img/entrance2.jfif" alt="ghost">
+            </div>
+            <button class="arrow right-arrow">▶</button>
+        </div>
+
+        
+    </div>
+    </div>
+
+    <footer>
+  
+        <img class="logo" src="./img/ghost4.png" alt="dragon">
+    
+    <div class="footer-info">
+        <p>© 2025 CODEMAN LAND Co., Ltd. All Rights Reserved.
+            © 2025 BRANDONCODINGMAN</p>
+    </div>
+   
+        <nav>
+            <ul>
+                <li><a href="">🎵👻</a></li>
+                <li><a href="">Profile Page</a></li>
+                <li><a href="">Linkedin Page</a></li>
+                <li><a href="">Email</a></li>
+            </ul>
+           
+        </nav>
+       
+    
+</footer>
+    </div>
+
+    <script src="./js/return.js"></script>
+    <script src="./js/app.js"></script>
+     <script src="./js/curtains.js"></script>
+    <script src="./js/slides.js" ></script>
+    <script src="./js/hamburger.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+</body>
+</html>

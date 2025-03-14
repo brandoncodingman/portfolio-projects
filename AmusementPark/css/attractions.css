@@ -1,0 +1,157 @@
+.attraction-container {
+    position: relative;
+    overflow: hidden;
+    width: 90%; 
+    max-width: 1200px;
+    margin: auto;
+    height: auto;
+}
+
+.attraction-slider {
+    display: flex; 
+    gap: 10px; 
+    transition: transform 0.5s ease-in-out;
+}
+
+.attraction-slider img {
+    width: 100%; 
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px; 
+}
+
+.curtain {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1616434602533-32fcefcc3621?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+    background-size: cover;
+    z-index: 3; 
+}
+
+.left-curtain {
+    left: 0;
+}
+
+.right-curtain {
+    right: 0;
+}
+
+
+.right-arrow{
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+
+.left-arrow{
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+.arrow{
+    background-color: rgb(250, 194, 250, 0.7);
+    padding: 15px 15px;
+    border-radius: 45px;
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    margin: 30px auto; 
+    text-align: center;
+}
+
+.map img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; 
+}
+
+.map-guide {
+    position: relative;
+    display: block;
+    max-width: 1000px; 
+    width: 90%; 
+    margin: 0 auto;
+    text-align: center;
+}
+
+.map-guide img {
+    width: 100%;
+    height: auto;
+    display: block; 
+}
+
+
+.castle { top: 35%; right: 10%; }
+.rollercoaster { top: 15%; left: 45%; }
+.waterpark { top: 40%; left: 60%; }
+.foodcourt { top: 65%; left: 40%; }
+.entrance { top: 60%; left: 75%; }
+
+.titles-castle {
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 50px;
+}
+
+.titles-castle img{
+    width: 300px;
+    height: auto;
+}
+
+.titles-rollercoaster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    }
+    
+    .titles-rollercoaster img{
+        width: 700px;
+        height: auto;
+    }
+
+    .titles-waterpark {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 50px;
+        }
+        
+        .titles-waterpark img{
+            width: 600px;
+            height: auto;
+        }
+
+        .titles-foodcourt{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px;
+            }
+            
+            .titles-foodcourt img{
+                width: 600px;
+                height: auto;
+            }
+
+            .titles-entrance{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 50px;
+                }
+                
+                .titles-entrance img{
+                    width: 600px;
+                    height: auto;
+                }

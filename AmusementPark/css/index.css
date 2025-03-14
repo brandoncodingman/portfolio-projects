@@ -1,0 +1,86 @@
+.new {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    background-color: #a0c4ff;
+    width: 100%;
+    line-height: 2.5em;
+    margin: 30px 0;
+    padding: 30px;
+}
+
+.new-h1 {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    color: white;
+    text-shadow: black 2px 2px 2px;
+    padding: 10px;
+}
+
+.new-p {
+    display: flex;
+    align-items: center; 
+    width: 80%; 
+    max-width:100%; 
+    text-align: center;
+}
+
+.date-span {
+    flex: 0 0 220px; 
+    text-align: left;
+    font-weight: bold;
+}
+
+.new-p span + text {
+    margin-left: 20px; 
+}
+
+.new-p time {
+    display: none; 
+}
+
+.title, .map{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+
+.map-guide {
+    position: relative;
+    display: inline-block;
+}
+
+.map-guide img {
+    width: 100%;
+    height: auto;
+}
+
+.map-link {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    transition: background 0.3s ease;
+}
+
+.map-link:hover {
+    background: rgba(255, 255, 255, 0.973); /* Highlight on hover */
+    transform: scale(1.5);
+}
+
+.map-link:active{
+    background: rgba(126, 247, 190, 0.973);
+}
+
+/* Adjust these positions manually based on your image */
+.castle { top: 450px; right: 50px; }
+.rollercoaster { top: 150px; left: 450px; }
+.waterpark { top: 450px; left: 600px; }
+.foodcourt { top: 650px; left: 400px; }
+.entrance { top: 600px; left: 750px; }
