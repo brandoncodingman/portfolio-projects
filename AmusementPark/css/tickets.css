@@ -1,16 +1,5 @@
 /* General form styling */
 
-.map-guide {
-  padding: 0;
-  margin: 0;
-  position: relative;
-  display: inline-block;
-}
-
-.map-guide img {
-  width: 100%;
-  height: auto;
-}
 
 form {
     max-width: 500px;
