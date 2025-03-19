@@ -1,9 +1,7 @@
-// Smooth scroll to projects section
 document.querySelector('.projects__button').addEventListener('click', function () {
     document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
 });
 
-// Highlight active section
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav__links');
 
@@ -27,7 +25,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Show more projects
 const projectTiles = document.querySelectorAll('.project-tile');
 projectTiles.forEach((tile, index) => {
     if (index >= 3) {

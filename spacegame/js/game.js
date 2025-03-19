@@ -18,7 +18,7 @@ function createRandomBlock() {
   
   setTimeout(() => {
     block.remove();
-  }, 5000); // blocks remove cycle
+  }, 5000); 
   
   return block;
 }
@@ -32,13 +32,13 @@ function getRandomColor() {
   return color;
 }
 
-// Update the score
+// Update score
 function updateScore() {
   score++;
   document.getElementById('score').textContent = score;
 }
 
-// Game over function
+// Game over 
 function gameOverScreen() {
   const gameOverElement = document.querySelector('.game-over');
   gameOverElement.style.display = 'block';
@@ -59,7 +59,7 @@ function checkCollision(spaceman, block) {
   );
 }
 
-// Restart the game
+// Restart game
 function resetGame() {
   document.querySelector('.game-over').style.display = 'none';
   score = 0;
@@ -68,7 +68,7 @@ function resetGame() {
   startGame();
 }
 
-// Main game loop
+// Main loop
 function startGame() {
   let lastBlockTime = 0;
   const spaceman = document.querySelector('.spaceman');
@@ -96,7 +96,7 @@ function startGame() {
   requestAnimationFrame(gameLoop);
 }
 
-// Start the game
+// Start game
 window.addEventListener('load', function() {
   startGame();
 });

@@ -25,7 +25,6 @@ nav ul {
     border-color: transparent;
 }
 
-/* Create the "carved" line effect */
 .carved-divider {
     position: relative;
     width: 100%;
@@ -56,8 +55,6 @@ nav ul {
     margin-right: 50px;
 }
 
-/* Shop items styles are here
-*/
 
 .shop {
     display: grid;
@@ -178,7 +175,6 @@ nav ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* border: 2px solid red; */
 }
 
 .title-price {

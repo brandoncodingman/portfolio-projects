@@ -15,7 +15,7 @@ const img = document.getElementById('img');
           let data = await response.json();
           console.log(data);
         } catch (error) {
-          console.error('Error fetching data:', error); // Handle errors if the promise fails
+          console.error('Error fetching data:', error); 
         }
       }
       
@@ -26,7 +26,7 @@ const img = document.getElementById('img');
 
       const apiKey = process.env.API_KEY;
       
-      console.log(apiKey);  // For testing purposes
+      console.log(apiKey);  
       
 
 

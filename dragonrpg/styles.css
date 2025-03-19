@@ -1,21 +1,19 @@
-/* General body styling for dark fantasy */
 body {
   font-family: 'Arial', sans-serif;
   color: #fff;
   margin: 0;
   padding: 0;
   height: 100vh;
-  
-  /* Initial background image */
+
+  /* first background image */
   background-image: url('https://plus.unsplash.com/premium_photo-1733259715665-bc8255c5a822?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;  
   background-position: center;  
   background-repeat: no-repeat;  
   
   
-  animation: changeBackground 10s infinite alternate;  /* Change background every 10 seconds in alternating cycles */
+  animation: changeBackground 10s infinite alternate;  
 }
-
 
 @keyframes changeBackground {
   0% {

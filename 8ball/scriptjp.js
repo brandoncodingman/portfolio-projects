@@ -3,73 +3,63 @@ function toggleMusic() {
     var audio = document.getElementById("bg-music");
     var musicButton = document.getElementById("music-btn");
 
-    // Check if the audio is paused or playing
     if (audio.paused) {
-        audio.play();  // Play the audio
-        musicButton.innerHTML = "音楽を一時停止";  // Change button text to "Pause Music"
+        audio.play();  
+        musicButton.innerHTML = "音楽を一時停止";  
     } else {
-        audio.pause();  // Pause the audio
-        musicButton.innerHTML = "音楽を再生";  // Change button text to "Play Music"
+        audio.pause();  
+        musicButton.innerHTML = "音楽を再生";  
     }
 }
 
-// Ensure the button text is updated based on the audio state when the page loads
 window.onload = function() {
     var audio = document.getElementById("bg-music");
     var musicButton = document.getElementById("music-btn");
 
     if (!audio.paused) {
-        musicButton.innerHTML = "音楽を一時停止";  // Music is autoplaying, so show "Pause Music"
+        musicButton.innerHTML = "音楽を一時停止";  
     } else {
-        musicButton.innerHTML = "音楽を再生";  // Music is paused initially
+        musicButton.innerHTML = "音楽を再生"; 
     }
 };
 
-// Handle form submission with JavaScript (No server-side)
 function submitQuestion(event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); 
     const questionInput = document.querySelector('input[name="question"]');
     const question = questionInput.value;
 
-    if (!question) return; // Avoid submitting empty questions
+    if (!question) return; 
 
-    // Store the question in local storage (simulating database)
+  
     storeQuestion(question);
 
-    // Show the Magic 8 Ball's answer
     showMagic8BallAnswer(question);
 
-    // Clear the input field
     questionInput.value = '';
 }
 
-// Simulate storing questions in local storage
 function storeQuestion(question) {
     let questions = JSON.parse(localStorage.getItem('questions')) || [];
     questions.push(question);
     localStorage.setItem('questions', JSON.stringify(questions));
 }
 
-// Show the Magic 8 Ball answer
 function showMagic8BallAnswer(question) {
     const randomNumber = Math.floor(Math.random() * 20);
     const answer = getMagic8BallAnswer(randomNumber);
     
     const container = document.querySelector('.container');
     
-    // Display the question
     const questionDiv = document.createElement('div');
     questionDiv.className = 'question';
     questionDiv.textContent = `あなたが聞いたのは: ${question}`;
     container.appendChild(questionDiv);
 
-    // Display the answer
     const answerDiv = document.createElement('div');
     answerDiv.className = 'answer';
     answerDiv.textContent = answer;
     container.appendChild(answerDiv);
 
-    // Display a prompt for another question
     const messageDiv = document.createElement('div');
     messageDiv.className = 'message';
     messageDiv.textContent = 'もう一度質問しますか？';

@@ -10,13 +10,6 @@
 }
 
 
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
@@ -39,7 +32,6 @@ form {
     flex-direction: column;
 }
 
-/* Fieldset Styling */
 fieldset {
     border: none;
     margin-bottom: 20px;
@@ -60,7 +52,6 @@ legend {
     height: auto;
 }
 
-/* Label Styling */
 label {
     font-size: 1rem;
     margin-bottom: 5px;
@@ -87,7 +78,6 @@ label {
     background-color: white;
 }
 
-/* Input Fields Styling */
 input[type="text"],
 input[type="email"],
 input[type="number"],
@@ -115,7 +105,6 @@ input::placeholder {
     color: #aaa;
 }
 
-/* Submit Button Styling */
 button {
     background-color: #4CAF50;
     color: #fff;
@@ -132,7 +121,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Small Styling Tweaks for mobile and responsiveness */
 @media (max-width: 768px) {
     .form-container {
         padding: 15px;

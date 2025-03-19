@@ -100,7 +100,7 @@ const startRound = () => {
   numClosedDoors = 3;
   currentlyPlaying = true;
   startButton.innerText = '頑張って！';
-  randomChoreDoorGenerator(); // Initialize random doors
+  randomChoreDoorGenerator(); 
 }
 
 startRound();

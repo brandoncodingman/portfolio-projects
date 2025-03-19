@@ -4,13 +4,13 @@ footstepSound.volume = 0.5;
 
 document.addEventListener('DOMContentLoaded', function() {
     const player = document.getElementById('player');
-    const ghostImg = player.querySelector('.ghost'); // Get the ghost image
+    const ghostImg = player.querySelector('.ghost'); 
     const container = document.querySelector('.game-container');
 
     let playerX = 375;
     let playerY = 275;
     let isMoving = false;  
-    let facingLeft = false; // Track ghost direction
+    let facingLeft = false; 
 
     updatePlayerPosition();
 

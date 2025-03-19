@@ -29,7 +29,6 @@ body {
     --POPPING-RED: #fcf800;
 }
 
-/* Remove underline from links */
 a {
     text-decoration: none;
 }
@@ -120,7 +119,6 @@ a {
 .wolf {
     width: 150px;
     height: auto;
-    /* Maintain the aspect ratio */
 }
 
 /* Projects Section */
@@ -142,7 +140,6 @@ a {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     text-align: center;
     text-decoration: none;
-    /* No underline */
     font-size: 2em;
 }
 
@@ -318,7 +315,6 @@ a {
 .dark-mode .section__first h1,
 .dark-mode .section__p {
     color: #ffffff;
-    /* Changes text color to white in dark mode */
 }
 
 .dark-mode .footer__link {
@@ -329,8 +325,6 @@ a {
     color: white;
 }
 
-/* Dark Mode Specific: Toggle Button Position */
 button {
     z-index: 9999;
-    /* Ensure the dark mode button is above all other elements */
 }

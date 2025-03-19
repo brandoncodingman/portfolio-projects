@@ -28,7 +28,7 @@ const textLines = [
 let lineIndex = 0;
 let charIndex = 0;
 let typingIntervalId;
-const typingSpeed = 50; // Adjust the typing speed (lower value for faster typing).
+const typingSpeed = 50; 
 
 function writeToTerminal(text) {
     terminalOutput.innerHTML += text;

@@ -54,7 +54,6 @@
     backdrop-filter: blur(10px);
 }
 
-/* Placeholder positioning */
 #placeholder-text {
     top: 30%;
     left: 50%;
@@ -154,7 +153,7 @@
     width: 350px;
 };
 
-/* Language Toggle and Music Toggle styles */
+/* Language Toggle and Music Toggle  */
 
 #language-toggle-button  {
     background-color: #4CAF50;
@@ -214,14 +213,14 @@
 
 /* Styling when language is toggled to Japanese */
 .language-toggle-button.toggled {
-  background-color: #e00303;  /* Change to a different color when Japanese is toggled */
-  color: rgb(196, 196, 196);  /* Change text color */
-  font-weight: bold;  /* Make the text bold */
+  background-color: #e00303; 
+  color: rgb(196, 196, 196);  
+  font-weight: bold;  
 }
 
 /* Music toggle button styles */
 #music-toggle button.toggled {
-  background-color: #2196F3; /* Example styling when music is on */
+  background-color: #2196F3; 
   color: white;
 }
 
@@ -257,7 +256,6 @@
     right: 20px;
 }
 
-/* Default music button styling */
 #music-toggle button {
     background-color: #4CAF50;
     color: white;
@@ -270,13 +268,10 @@
     opacity: .5;
 }
 
-/* Styling when music is on (button is toggled) */
 #music-toggle button.toggled {
     background-color: #F44336;
-    /* Red when music is playing */
 }
 
-/* Optional: Add hover effect for the button */
 #music-toggle button:hover {
     background-color: #464646;
     color: rgb(255, 255, 255);
@@ -288,16 +283,16 @@
     width: 100vw;
     height: 100vh;
     z-index: 9999;
-    display: block; /* Initially visible */
+    display: block; 
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    background-color: rgba(0, 0, 0, 0.6); /* Slight background for better visibility */
+    background-color: rgba(0, 0, 0, 0.6); 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     opacity: 1;
-    transition: opacity 2s ease-out; /* Smooth transition for fade-out */
-    overflow: hidden; /* Ensure no overflow from the pseudo-element */
+    transition: opacity 2s ease-out; 
+    overflow: hidden;
   }
   
   #loadingScreen::before {
@@ -308,17 +303,17 @@
     width: 100%;
     height: 100%;
 background-color: black;   
-    filter: blur(10px); /* Apply the blur effect only to the background */
-    z-index: -1; /* Ensure it stays behind the content */
+    filter: blur(10px); 
+    z-index: -1; 
   }
   
-  /* Centering the loading gif */
+  /* Loading gif */
   .loading-gif {
     position: relative;
     object-fit: contain;
-    width: 250px; /* Control the size */
+    width: 250px; 
     height: auto;
-    animation: rotate 2s linear infinite; /* Continuous rotating effect */
+    animation: rotate 2s linear infinite; 
   }
   
   /* Pulse effect for the loading text */
@@ -332,10 +327,9 @@ background-color: black;
     font-weight: 400;
     font-style: normal;
     margin-top: 20px;
-    animation: pulse 1.5s ease-in-out infinite; /* Pulsing effect */
+    animation: pulse 1.5s ease-in-out infinite; 
   }
   
-  /* Pulsing effect for text */
   @keyframes pulse {
     0% {
       opacity: 0.8;
@@ -361,29 +355,27 @@ background-color: black;
     }
   } */
   
-  /* Background container to hide initially */
+  /* Background hide initially */
   #background-container {
     display: none;
   }
   
-  /* Fade out the loading screen once content is ready */
   body.loading #loadingScreen {
-    opacity: 0; /* Fade out the screen */
-    pointer-events: none; /* Prevent interaction with the loading screen */
+    opacity: 0; 
+    pointer-events: none; 
   }
   
-  /* Ensure that the content shows after the loading screen fades out */
   body.loading #background-container {
     display: block;
   }
   
   #placeholder-text-10 {
-    position: absolute; /* Changed from relative to absolute */
+    position: absolute; 
     width: 470px;
     height: auto;
     top: 65%;
-    left: 80%; /* Changed from right to left */
-    transform: translate(-50%, -50%); /* Adjusted to center the element */
+    left: 80%; 
+    transform: translate(-50%, -50%); 
   }
 
   #placeholder-text-10 #strong {

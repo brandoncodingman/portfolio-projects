@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const leftArrow = container.querySelector(".left-arrow");
         const rightArrow = container.querySelector(".right-arrow");
 
-        let currentIndex = 0; // Track current slide index
+        let currentIndex = 0; 
 
         function updateSlide() {
             // Hide all slides

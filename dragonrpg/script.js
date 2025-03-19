@@ -116,20 +116,17 @@ function update(location) {
   button3.onclick = location["button functions"][2];
   text.innerHTML = location.text;
 
-  // Dynamically add an image under the text based on the current location
   const img = document.createElement('img');
-  img.src = location.image;  // Use the image URL specific to the location
-  img.alt = location.name + ' Image';  // Alt text for accessibility
-  img.style.width = '100%';  // Style as needed
-  img.style.marginTop = '20px';  // Add some space between the text and image
+  img.src = location.image;  
+  img.alt = location.name + ' Image';  
+  img.style.width = '100%';  
+  img.style.marginTop = '20px';  
 
-  // Check if an image already exists and remove it before adding a new one
   const existingImage = document.querySelector('#text img');
   if (existingImage) {
     existingImage.remove();
   }
 
-  // Append the image to the text div
   text.appendChild(img);
 }
 
@@ -314,23 +311,20 @@ function pick(guess) {
   }
 }
 
-// Music toggle elements
-const musicButton = document.querySelector("#musicButton");  // Button to toggle music
+// Music toggle 
+const musicButton = document.querySelector("#musicButton"); 
 let musicPlaying = true;
-const audio = new Audio('fortuneTeller.mp3');  // Path to your MP3 file
+const audio = new Audio('fortuneTeller.mp3');  
 
-// Start the music on page load
-audio.loop = true;  // Loop the music indefinitely
-audio.play();  // Play the music
+audio.loop = true;  
+audio.play(); 
 
-// Toggle music play/pause
 musicButton.addEventListener("click", () => {
   if (musicPlaying) {
-    audio.pause();  // Pause the music
-    musicButton.innerText = "Play Music";  // Change button text
-  } else {
-    audio.play();  // Play the music
-    musicButton.innerText = "Pause Music";  // Change button text
+    audio.pause();  
+    musicButton.innerText = "Play Music";  
+    audio.play();  
+    musicButton.innerText = "Pause Music";  
   }
-  musicPlaying = !musicPlaying;  // Toggle the state of music
+  musicPlaying = !musicPlaying;  
 });

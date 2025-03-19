@@ -14,7 +14,7 @@ body {
 }
 
 :root {
-    --fbc-blue-70: #003eaa; /* Dark blue (Pokémon blue) */
+    --fbc-blue-70: #003eaa;
     --fbc-gray-20: #ededf0;
     --fbc-light-gray: #f0f0f4;
     --fbc-white: #ffffff;
@@ -22,18 +22,16 @@ body {
     --fbc-borders: 1px solid #ededf0;
     --fbc-primary-text: #15141a;
     --fbc-secondary-text: #86868f;
-    
-    /* Pokémon-inspired colors */
-    --poke-red: #ff0000;  /* Red (Pokéball red) */
-    --poke-yellow: #ffcc00; /* Yellow (Pikachu yellow) */
-    --poke-blue: #007bff; /* Blue (Squirtle blue) */
-    --poke-green: #1dbf73; /* Green (Bulbasaur green) */
-    --poke-orange: #ff7300; /* Orange (Charmander orange) */
-    --poke-purple: #9c27b0; /* Purple (Mewtwo purple) */
-    --poke-pink: #f06292; /* Pink (Jigglypuff pink) */
-    --poke-brown: #8b4513; /* Brown (Eevee brown) */
-    --poke-gray: #bdbdbd; /* Gray (Pikachu's cheeks) */
-    --poke-light-gray: #e3f2fd; /* Light gray */
+    --poke-red: #ff0000;
+    --poke-yellow: #ffcc00;
+    --poke-blue: #007bff;
+    --poke-green: #1dbf73;
+    --poke-orange: #ff7300;
+    --poke-purple: #9c27b0;
+    --poke-pink: #f06292;
+    --poke-brown: #8b4513;
+    --poke-gray: #bdbdbd;
+    --poke-light-gray: #e3f2fd;
 }
 
 #op{
@@ -60,7 +58,7 @@ body {
     display: flex;
     justify-content: center;
     font-family: 'Verdana', Geneva, Tahoma, sans-serif;
-    background: var(--poke-blue); /* Blue (Squirtle blue) */
+    background: var(--poke-blue);
 }
 
 main h1 {
@@ -68,20 +66,20 @@ main h1 {
     font-size: 2.4rem;
     font-weight: bold;
     line-height: 2.5em;
-    color: var(--poke-orange); /* Charmander's orange color */
+    color: var(--poke-orange);
     text-shadow: 1px 1px 2px black;
 }
 
 .container {
     padding: 1em;
     border-radius: 0.5em;
-    background: var(--poke-yellow); /* Container background is now black */
+    background: var(--poke-yellow);
     border: 5px solid black;
 }
 
 .container form {
-    background: black; /* Form area also set to black */
-    color: var(--fbc-white); /* Text color inside form will be white */
+    background: black;
+    color: var(--fbc-white);
     padding: 1em;
     border-radius: 0.5em;
 }
@@ -91,7 +89,7 @@ main h1 {
     text-align: center;
     font-size: 1.125rem;
     line-height: 2.5em;
-    color: var(--poke-yellow); /* Label color set to yellow */
+    color: var(--poke-yellow);
 }
 
 .container form input {
@@ -101,7 +99,7 @@ main h1 {
     border-radius: 0.25em;
     border: 1px solid var(--poke-gray);
     outline: none;
-    background: var(--fbc-white); /* Input background color remains white for contrast */
+    background: var(--fbc-white);
 }
 
 .container form button {
@@ -139,13 +137,13 @@ main h1 {
 table {
     border-collapse: collapse;
     width: 100%;
-    background: var(--poke-orange); /* Orange for Charmander-inspired background */
+    background: var(--poke-orange);
     color: var(--fbc-white);
     margin-block: .8em;
 }
 
 tr {
-    border-bottom: 5px solid black; /* Changed from white to black */
+    border-bottom: 5px solid black;
 }
 
 td, th {
@@ -154,7 +152,7 @@ td, th {
 }
 
 th:nth-child(2n), td:nth-child(2n) {
-    border-left: 5px solid black; /* Changed from white to black */
+    border-left: 5px solid black;
 }
 
 img {
@@ -169,7 +167,7 @@ img {
     text-transform: uppercase;
     font-size: 1.25rem;
     font-weight: 500;
-    color: var(--poke-yellow); /* Highlight Pokémon name in yellow */
+    color: var(--poke-yellow);
 }
 
 .size {
@@ -190,88 +188,86 @@ img {
 }
 
 span {
-    color: white; /*height & weight*/
+    color: white;
 }
 
-/* Pokémon Type colors */
 .normal {
-    background-color: #b7b7aa; /* Normal type - neutral color */
+    background-color: #b7b7aa;
 }
 
 .fire {
-    background-color: var(--poke-red); /* Fire type - red */
+    background-color: var(--poke-red);
 }
 
 .water {
-    background-color: var(--poke-blue); /* Water type - blue */
+    background-color: var(--poke-blue);
 }
 
 .electric {
-    background-color: var(--poke-yellow); /* Electric type - yellow */
+    background-color: var(--poke-yellow);
 }
 
 .grass {
-    background-color: var(--poke-green); /* Grass type - green */
+    background-color: var(--poke-green);
 }
 
 .ice {
-    background-color: #66ccfe; /* Ice type - icy blue */
+    background-color: #66ccfe;
 }
 
 .fighting {
-    background-color: #d3887e; /* Fighting type - earthy brown */
+    background-color: #d3887e;
 }
 
 .poison {
-    background-color: var(--poke-purple); /* Poison type - purple */
+    background-color: var(--poke-purple);
 }
 
 .ground {
-    background-color: #dfba52; /* Ground type - earthy gold */
+    background-color: #dfba52;
 }
 
 .flying {
-    background-color: #8899ff; /* Flying type - sky blue */
+    background-color: #8899ff;
 }
 
 .psychic {
-    background-color: var(--poke-pink); /* Psychic type - pink */
+    background-color: var(--poke-pink);
 }
 
 .bug {
-    background-color: #aabb23; /* Bug type - insect green */
+    background-color: #aabb23;
 }
 
 .rock {
-    background-color: #baaa66; /* Rock type - rocky brown */
+    background-color: #baaa66;
 }
 
 .ghost {
-    background-color: #9995d0; /* Ghost type - spooky purple */
+    background-color: #9995d0;
 }
 
 .dragon {
-    background-color: var(--poke-purple); /* Dragon type - purple */
+    background-color: var(--poke-purple);
 }
 
 .dark {
-    background-color: #b59682; /* Dark type - brownish */
+    background-color: #b59682;
 }
 
 .steel {
-    background-color: #abaabb; /* Steel type - metallic gray */
+    background-color: #abaabb;
 }
 
 .fairy {
-    background-color: var(--poke-pink); /* Fairy type - soft pink */
+    background-color: var(--poke-pink);
 }
 
-/* Add a few Pokémon-themed hover effects */
 .type:hover {
     transform: scale(1.1);
     transition: transform 0.2s ease-in-out;
 }
 
 button:focus, input:focus {
-    outline: 2px solid var(--poke-blue); /* Blue outline on focus for clarity */
+    outline: 2px solid var(--poke-blue);
 }

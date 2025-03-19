@@ -5,18 +5,18 @@ body {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     color: white; 
-    height: 100%; /* Ensure the body takes up full height */
-    position: relative; /* So other elements don't overlap the body */
-    margin: 0; /* Remove any extra space around the body */
+    height: 100%; 
+    position: relative; 
+    margin: 0; 
 }
 
 .nav-link {
     color: black;
     text-decoration: none;
-    padding: 2px 6px; /* Reduced padding around navbar links */
+    padding: 2px 6px; 
     font-weight: bold;
-    border: none; /* Remove any borders around the nav links */
-    margin: 0; /* Reset margin to ensure no extra space around links */
+    border: none; 
+    margin: 0; 
 }
 
 .nav-link:hover {
@@ -32,7 +32,7 @@ body {
     justify-content: center;
     flex-wrap: nowrap;
     align-self: center;
-    font-size: 2em !important; /* Increase font size to 1.5 times the original size */
+    font-size: 2em !important; 
 }
 
   
@@ -56,7 +56,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-flow: column wrap;
-    margin-top: 100px; /* Add space below the fixed navbar */
+    margin-top: 100px; 
 }
 
 #title {
@@ -175,21 +175,20 @@ button:hover {
     border: 2mm solid rgba(255, 0, 61, .8);
 }
 
-/* Fixed Navbar Styles */
 body {
-    padding-top: 6vh; /* To prevent the content from being hidden behind the navbar */
+    padding-top: 6vh;
 }
 
 .navi {
-    position: fixed; /* Ensure navbar stays fixed at the top */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    background-color: lightblue; /* Matching the body background */
-    z-index: 1000; /* Ensure navbar is above all content */
+    background-color: lightblue; 
+    z-index: 1000; 
     display: flex;
-    justify-content: space-around; /* Space out navbar links */
-    padding: 2px 0; /* Reduced padding in navbar to make it more compact */
+    justify-content: space-around;
+    padding: 2px 0; 
 }
 
 #topnav {
@@ -201,9 +200,9 @@ body {
 .nav-link {
     color: black;
     text-decoration: none;
-    padding: 2px 6px; /* Reduced padding for compact navbar links */
+    padding: 2px 6px; 
     font-weight: bold;
-    border: none; /* Removed border around nav links */
+    border: none; 
 }
 
 .nav-link:hover {
@@ -212,16 +211,16 @@ body {
 }
 
 a.nav-link {
-    display: flex;                /* Make the link a flex container */
-    justify-content: center;      /* Center the text horizontally */
-    align-items: center;          /* Center the text vertically */
-    text-align: center;           /* Ensure the text inside is centered */
-    width: 100%;                  /* Make sure the link takes up the full width of its container */
-    padding: 10px 0;              /* Adjust padding as needed */
+    display: flex;                
+    justify-content: center;      
+    align-items: center;         
+    text-align: center;           
+    width: 100%;                  
+    padding: 10px 0;              
 }
 
 
 #logo {
-    font-size: 1.5rem; /* Adjusted font size for logo */
-    padding-left: 10px; /* Reduced left padding on logo */
+    font-size: 1.5rem; 
+    padding-left: 10px; 
 }

@@ -30,7 +30,6 @@ function getWeather() {
             temperatureElem.textContent = `Temperature: ${temp}°C`;
             descriptionElem.textContent = `Description: ${description}`;
 
-            // AI-based suggestion
             let suggestion = '';
 
             // Suggestion based on weather description
@@ -51,7 +50,7 @@ function getWeather() {
                 img.src = 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3NtbnI2aWt2bW5ka3NhajMxcmFvbWhyaDJiMzM5cDMxbzl0aWJ1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lopx9eUi34rbq/giphy.gif';
             }
 
-            // Additional suggestion based on temperature
+            // Additional suggestion temperature
             if (temp < 0) {
                 suggestion = "<br>It's freezing cold outside, make sure to bundle up!";
                 img.src = 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2w5MTVrNmR6N2tiaGZsdWpiY3kwa2xqZ3k5MzZhb3BndGxzbHBzZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/s4Bi420mMDRBK/giphy.gif';
@@ -67,7 +66,7 @@ function getWeather() {
                 img.src = 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3NtbnI2aWt2bW5ka3NhajMxcmFvbWhyaDJiMzM5cDMxbzl0aWJ1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lopx9eUi34rbq/giphy.gif';
             }
 
-            // Additional suggestion based on wind speed
+            // Additional suggestion wind speed
             if (windSpeed > 35) {
                 suggestion = "<br>It's too late, save yourself!";
                 img.src = 'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzNXhybTYxbHJiMHF1d2JobTFsbmJhYzc5djFkNmFpc3lwbHE5eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4cwCcAjfX9Yw8/giphy.gif';
@@ -77,7 +76,7 @@ function getWeather() {
                 suggestion += "<br>It's a bit windy, a light jacket should do.";
             }
 
-            suggestionElem.innerHTML = suggestion; // Use innerHTML to render the <br> tag
+            suggestionElem.innerHTML = suggestion; 
             weatherInfo.style.display = 'block';
         })
         .catch(err => {
@@ -86,10 +85,8 @@ function getWeather() {
         });
 }
 
-// Event listener for button click
 getWeatherBtn.addEventListener('click', getWeather);
 
-// Event listener for Enter key press (key code 13)
 cityInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
         getWeather();
@@ -101,10 +98,8 @@ cityInput.addEventListener('keyup', (event) => {
 // monster random position
 
 
-// Select the monster element
 const monster = document.getElementById('monster');
 
-// Function to move the monster randomly
 function moveMonster() {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;

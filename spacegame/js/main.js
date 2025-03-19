@@ -26,7 +26,7 @@ bgLayer5.src = './img/layer-5.png';
 const speedSlider = document.getElementById('speedSlider');
 const showGameSpeed = document.getElementById('showGameSpeed');
 
-// Set initial value
+// Set first value
 speedSlider.value = gameSpeed;
 showGameSpeed.innerHTML = "Normal";
 

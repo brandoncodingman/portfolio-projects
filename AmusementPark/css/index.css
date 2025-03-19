@@ -60,7 +60,7 @@
 
 .map-link {
     position: absolute;
-    background: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+    background: rgba(255, 255, 255, 0.6); 
     padding: 5px 10px;
     border-radius: 5px;
     font-weight: bold;
@@ -70,7 +70,7 @@
 }
 
 .map-link:hover {
-    background: rgba(255, 255, 255, 0.973); /* Highlight on hover */
+    background: rgba(255, 255, 255, 0.973); 
     transform: scale(1.5);
 }
 
@@ -78,7 +78,7 @@
     background: rgba(126, 247, 190, 0.973);
 }
 
-/* Adjust these positions manually based on your image */
+/* label positions not sure how to make this more responsive */
 .castle { top: 450px; right: 50px; }
 .rollercoaster { top: 150px; left: 450px; }
 .waterpark { top: 450px; left: 600px; }

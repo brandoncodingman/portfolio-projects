@@ -224,54 +224,40 @@ a {
 
 
 /* typing box */
-/* Container around about-wrapper */
 .box {
   max-height: 400px;
-  /* Set a maximum height for the box (adjust as needed) */
   overflow-y: auto;
-  /* Enable vertical scrolling inside the box */
   padding: 10px;
-  /* Add some padding to the box */
   background-color: black;
 }
 
 .box::-webkit-scrollbar {
   width: 10px;
-  /* Width of the scrollbar */
   height: 10px;
-  /* Height of the horizontal scrollbar */
 }
 
-/* Track (background of the scrollbar) */
 .box::-webkit-scrollbar-track {
   background: #000000;
-  /* Light grey background for the scrollbar track */
   border-radius: 10px;
   width: 33px;
   ;
 }
 
-/* Handle (the draggable part of the scrollbar) */
+/* Handle  */
 .box::-webkit-scrollbar-thumb {
   background: #ff0000;
-  /* Green color for the scrollbar thumb */
   border-radius: 10px;
-  /* Rounded corners */
   width: 33px;
 }
 
-/* Hover effect on the thumb */
 .box::-webkit-scrollbar-thumb:hover {
   background: #f6ff00;
-  /* Darker green when hovered */
 }
 
-/* Optional: Customize the corner where the horizontal and vertical scrollbars meet */
 .box::-webkit-scrollbar-corner {
   background: #f1f1f1;
 }
 
-/* The about-wrapper with dynamic content */
 .about-wrapper {
   text-align: center;
   background-color: black;
@@ -280,7 +266,6 @@ a {
   padding-left: 150px;
   padding-right: 150px;
   white-space: pre-wrap;
-  /* Ensure the text inside the span respects line breaks */
 }
 
 .typeing {
@@ -288,7 +273,7 @@ a {
   font-family: monospace;
 }
 
-/* Blinking cursor for typing effect */
+/* Blinking cursor typing effect */
 .blinker {
   opacity: 1;
   margin-bottom: -2px;
@@ -319,12 +304,9 @@ a {
 
 /* music player */
 
-/* Style for the music toggle button */
 #music-toggle {
   background-color: rgba(0, 255, 0, 0.6);
-  /* Green background */
   color: rgb(0, 0, 0);
-  /* White text */
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -335,64 +317,53 @@ a {
 #music-toggle:hover {
   background-color: rgba(0, 255, 0, 1.0);
   color: white;
-  /* Darker green when hovered */
 }
 
 
 @media screen and (max-width: 768px) {
-  /* Adjust the font size of navigation links */
   .fixed-nav ul a {
-    font-size: 24px;  /* Reduce the font size for smaller screens */
+    font-size: 24px;  
   }
 
-  /* Stack the navbar items vertically instead of horizontally */
   .fixed-nav ul {
     flex-direction: column;
-    align-items: center; /* Center-align the items */
+    align-items: center; 
   }
 
-  /* Adjust header-wrapper to take up less height */
   .header-wrapper {
     height: 300px;
     background-size: contain;
   }
 
-  /* Adjust the caption text size inside the images */
   .caption {
     font-size: 18px;
     padding: 8px;
   }
 
-  /* Stack images vertically in the game-wrapper for smaller screens */
   .game-wrapper {
     flex-direction: column;
     align-items: center;
   }
 
-  /* Reduce image size inside .image-block for better mobile display */
   .image-block a img {
     width: 200px;
     height: 200px;
   }
 
-  /* Reduce padding and margin for smaller screens */
   .image-block {
     margin: 10px;
   }
 
-  /* Adjust the about-wrapper text layout */
   .about-wrapper {
     font-size: 18px;
     padding-left: 20px;
     padding-right: 20px;
   }
 
-  /* Make the footer links smaller */
   .nav ul li a {
     font-size: 16px;
   }
 
-  /* Style for the music toggle button */
   #music-toggle {
     padding: 8px 16px;
     font-size: 14px;

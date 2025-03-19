@@ -18,9 +18,9 @@
     justify-content: center;
     align-items: center;
     width: auto;
-    height: 500px; /* Adjust height based on image sizes */
-    position: relative; /* Ensures images stay within this div */
-    overflow: hidden; /* Prevents overflow */
+    height: 500px; 
+    position: relative; 
+    overflow: hidden; 
     z-index: 2;
     margin-top: 50px;
 }
@@ -57,11 +57,11 @@
 }
 
 .zoom-in {
-    transform: scale(1.4); /* Zoom in effect */
+    transform: scale(1.4);
     filter: saturate(1.2);
 }
 
 .zoom-out {
-    transform: scale(0.6); /* Zoom out effect */
+    transform: scale(0.6); 
     filter: saturate(0.8);
 }
