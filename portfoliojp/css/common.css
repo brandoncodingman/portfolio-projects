@@ -27,6 +27,12 @@ main {
   height: 100vh;          
   object-fit: cover;      
   z-index: 9979;          
+  transition: 0.7s ease-in-out;
+}
+
+#op:hover {
+  opacity: .8;
+  cursor:grab;
 }
 /* op-header center */
 #op-header {
@@ -160,6 +166,7 @@ ul li a+a {
   font-weight: bold;
   /* Optional styling */
   text-align: center;
+  cursor: crosshair;
 }
 
 
