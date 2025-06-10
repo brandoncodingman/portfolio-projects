@@ -19,6 +19,26 @@ main {
   margin-right: auto;
 }
 
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: white;
+  font-size: 50px;
+  font-family: "Nosifer", serif;
+}
+
+.title h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 50px;
+  font-family: "Nosifer", serif;
+}
+
 #op {
   position: fixed;        
   top: 0;                
