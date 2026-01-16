@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball: Capsule Corp Energy Crisis - 日本語マンガ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: #1a1a2e; color: #e0e0e0; line-height: 1.7; }
+        
+        /* Dragon Ball Orange/Blue Theme */
+        :root {
+            --db-orange: #ff6b00;
+            --db-blue: #1e90ff;
+            --db-yellow: #ffd700;
+            --db-red: #ff3333;
+            --db-green: #32cd32;
+            --db-purple: #9370db;
+            --db-dark: #0f0f1a;
+        }
+        
+        .header { 
+            text-align: center; 
+            padding: 40px 20px; 
+            background: linear-gradient(180deg, #2a1a00, #1a0a00); 
+            border-bottom: 4px solid var(--db-orange); 
+        }
+        .header h1 { 
+            font-size: 2.2rem; 
+            color: var(--db-orange); 
+            text-shadow: 0 0 30px var(--db-orange), 2px 2px 0 #000; 
+            letter-spacing: 2px;
+        }
+        .header h2 { color: var(--db-yellow); margin-top: 8px; }
+        .header p { color: var(--db-blue); margin-top: 10px; }
+        .header .note { color: #888; font-size: 0.9rem; margin-top: 15px; }
+        
+        .container { max-width: 720px; margin: 0 auto; padding: 20px; }
+        
+        .day { margin-bottom: 50px; background: #12121a; border-radius: 15px; overflow: hidden; border: 2px solid #333; }
+        .day-header { 
+            background: linear-gradient(90deg, #2a1500, #001a2a); 
+            padding: 20px; 
+            border-bottom: 3px solid var(--db-orange); 
+        }
+        .day-header.boss { 
+            background: linear-gradient(90deg, #2a0000, #1a0020); 
+            border-color: var(--db-red); 
+        }
+        .day-num { font-size: 1.4rem; color: var(--db-orange); font-weight: bold; }
+        .day-num.boss { color: var(--db-red); }
+        .day-title { color: #fff; margin-top: 5px; font-size: 1.1rem; }
+        .day-location { color: var(--db-yellow); font-size: 0.9rem; margin-top: 5px; }
+        
+        .panels { padding: 10px; background: #000; }
+        
+        .panel { background: #1a1a2a; padding: 20px; margin-bottom: 8px; border-radius: 5px; }
+        .panel:last-child { margin-bottom: 0; }
+        .panel.capsule { background: linear-gradient(180deg, #1a2a3a, #0a1520); }
+        .panel.outdoor { background: linear-gradient(180deg, #1a3a1a, #0a200a); }
+        .panel.battle { background: linear-gradient(180deg, #3a1a1a, #200a0a); }
+        .panel.sky { background: linear-gradient(180deg, #1a2a4a, #0a1530); }
+        
+        .narration { font-style: italic; color: #aaa; text-align: center; padding: 10px; }
+        .narration.alert { color: #ff6666; background: rgba(255,0,0,0.1); border-radius: 8px; padding: 15px; }
+        
+        .dialogue { display: flex; gap: 15px; align-items: flex-start; margin: 15px 0; }
+        
+        .portrait { 
+            width: 55px; 
+            height: 55px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.5rem; 
+            border: 3px solid var(--db-orange); 
+            background: var(--db-dark); 
+            flex-shrink: 0; 
+        }
+        .portrait.goku { border-color: var(--db-orange); background: linear-gradient(135deg, #2a1500, #1a0a00); }
+        .portrait.vegeta { border-color: var(--db-blue); background: linear-gradient(135deg, #001a2a, #000a15); }
+        .portrait.bulma { border-color: var(--db-purple); background: linear-gradient(135deg, #2a1a3a, #150a20); }
+        .portrait.piccolo { border-color: var(--db-green); background: linear-gradient(135deg, #1a2a1a, #0a150a); }
+        .portrait.gohan { border-color: var(--db-yellow); background: linear-gradient(135deg, #2a2a1a, #15150a); }
+        .portrait.krillin { border-color: #ff9933; background: linear-gradient(135deg, #2a2010, #151005); }
+        
+        .bubble { background: rgba(0,0,0,0.85); border: 2px solid #444; border-radius: 12px; padding: 12px; flex: 1; }
+        .speaker { font-weight: bold; font-size: 0.85rem; margin-bottom: 5px; }
+        .speaker.goku { color: var(--db-orange); }
+        .speaker.vegeta { color: var(--db-blue); }
+        .speaker.bulma { color: var(--db-purple); }
+        .speaker.piccolo { color: var(--db-green); }
+        .speaker.gohan { color: var(--db-yellow); }
+        .speaker.krillin { color: #ff9933; }
+        
+        .jp { margin-bottom: 5px; }
+        .en { color: #888; font-size: 0.85rem; font-style: italic; }
+        
+        .vocab { 
+            color: var(--db-yellow); 
+            font-weight: bold; 
+            background: rgba(255,215,0,0.15); 
+            padding: 1px 5px; 
+            border-radius: 3px; 
+            border-bottom: 2px dotted var(--db-yellow);
+        }
+        
+        .vcard { 
+            background: linear-gradient(135deg, #2a2a10, #15150a); 
+            border: 2px solid var(--db-yellow); 
+            border-radius: 10px; 
+            padding: 15px; 
+            margin: 15px 0; 
+            text-align: center; 
+        }
+        .vcard-word { font-size: 1.8rem; color: var(--db-yellow); }
+        .vcard-reading { color: var(--db-blue); }
+        .vcard-meaning { background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; display: inline-block; margin-top: 5px; }
+        
+        .dragonball-msg { 
+            background: linear-gradient(135deg, #2a2a00, #151500); 
+            border: 2px solid var(--db-yellow); 
+            border-radius: 10px; 
+            padding: 20px; 
+            margin: 15px 0; 
+            position: relative; 
+        }
+        .dragonball-msg::before { 
+            content: '🐉 DRAGON BALL WISH'; 
+            position: absolute; 
+            top: -10px; 
+            left: 15px; 
+            background: var(--db-yellow); 
+            color: #000; 
+            padding: 2px 10px; 
+            font-size: 0.7rem; 
+            font-weight: bold; 
+            border-radius: 3px; 
+        }
+        .dragonball-msg p { font-style: italic; color: #ddd; }
+        
+        .boss-appear { text-align: center; padding: 30px; }
+        .boss-sprite { font-size: 5rem; animation: float 2s ease-in-out infinite; }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .boss-name { font-size: 1.5rem; color: var(--db-red); text-shadow: 0 0 20px var(--db-red); margin-top: 10px; }
+        
+        .action { font-size: 1.5rem; font-weight: bold; text-align: center; padding: 15px; color: var(--db-orange); text-shadow: 0 0 15px var(--db-orange); }
+        .action.kamehameha { color: var(--db-blue); text-shadow: 0 0 20px var(--db-blue); }
+        .action.victory { color: var(--db-green); text-shadow: 0 0 15px var(--db-green); }
+        
+        .ki-blast { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin: 10px 0; 
+            animation: pulse 0.5s infinite; 
+        }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+        
+        .summary { background: #0a0a15; padding: 20px; border-top: 2px solid var(--db-orange); }
+        .summary h3 { color: var(--db-orange); margin-bottom: 15px; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+        .summary-item { background: rgba(255,107,0,0.1); border: 1px solid var(--db-orange); border-radius: 5px; padding: 10px; text-align: center; }
+        .summary-word { font-size: 1.2rem; color: var(--db-yellow); }
+        .summary-reading { color: var(--db-blue); font-size: 0.85rem; }
+        .summary-meaning { color: #aaa; font-size: 0.75rem; }
+        
+        .footer { text-align: center; padding: 30px; color: #666; }
+        .footer .title { color: var(--db-orange); font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1>🐉 DRAGON BALL Z 🐉</h1>
+    <h2>Capsule Corp Energy Crisis</h2>
+    <p>カプセルコーポレーションのエネルギー危機</p>
+    <p class="note">📖 Read: Top to bottom, left to right<br>Characters speak in their authentic personalities!</p>
+</header>
+
+<div class="container">
+
+<!-- ============ DAY 1 ============ -->
+<section class="day" id="day1">
+    <div class="day-header">
+        <div class="day-num">EPISODE 1</div>
+        <div class="day-title">Emergency at Capsule Corp!</div>
+        <div class="day-location">📍 West City - Capsule Corporation HQ</div>
+    </div>
+    
+    <div class="panels">
+        
+        <div class="panel capsule">
+            <div class="narration">Alarms blare throughout Capsule Corporation. The company's revolutionary solar energy grid—which powers half of West City—is failing. Dr. Brief has called in Earth's mightiest heroes for help.</div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait bulma">👩‍🔬</div>
+                <div class="bubble">
+                    <div class="speaker bulma">BULMA</div>
+                    <div class="jp">大変なことになったわ！まずエラーログの<span class="vocab">有無</span>を確認しないと。システム全体がクラッシュする前に原因を見つけなきゃ！</div>
+                    <div class="en">"This is terrible! First, we need to check for the presence or absence of error logs. We have to find the cause before the whole system crashes!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">有無</div>
+                <div class="vcard-reading">うむ</div>
+                <div class="vcard-meaning">presence or absence</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">うーん、難しいことはわかんねぇけど...ブルマ、ソーラーパネルの<span class="vocab">枚数</span>って何枚あるんだ？オラ、数えるの得意だぞ！</div>
+                    <div class="en">"Hmm, I don't get the complicated stuff... Bulma, how many solar panels are there? I'm good at counting!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">枚数</div>
+                <div class="vcard-reading">まいすう</div>
+                <div class="vcard-meaning">number of flat things</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait bulma">👩‍🔬</div>
+                <div class="bubble">
+                    <div class="speaker bulma">BULMA</div>
+                    <div class="jp">悟空、これは数える問題じゃないの！でもありがとう...とにかく、API仕様書に詳細を<span class="vocab">記述</span>したから、みんなで確認して。</div>
+                    <div class="en">"Goku, this isn't a counting problem! But thanks... Anyway, I've documented the details in the API spec, so let's all check it."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">記述</div>
+                <div class="vcard-reading">きじゅつ</div>
+                <div class="vcard-meaning">documentation; description</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait vegeta">🦸‍♂️</div>
+                <div class="bubble">
+                    <div class="speaker vegeta">VEGETA</div>
+                    <div class="jp">ふん！サイヤ人の王子である俺に、こんな下らない機械の問題を...待て、CPU使用率が<span class="vocab">閾値</span>を超えているぞ！</div>
+                    <div class="en">"Hmph! Making the Prince of Saiyans deal with such trivial machine problems... Wait, the CPU usage is exceeding the threshold!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">閾値</div>
+                <div class="vcard-reading">いきち</div>
+                <div class="vcard-meaning">threshold</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait bulma">👩‍🔬</div>
+                <div class="bubble">
+                    <div class="speaker bulma">BULMA</div>
+                    <div class="jp">ベジータ、あなた意外とちゃんと見てるのね！そうよ、これは深刻だわ...</div>
+                    <div class="en">"Vegeta, you're actually paying attention! Yes, this is serious..."</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait gohan">📚</div>
+                <div class="bubble">
+                    <div class="speaker gohan">GOHAN</div>
+                    <div class="jp">お母さんに教わった通り、データを整理しましょう。故障をエリアごとに<span class="vocab">分類</span>すれば、パターンが見えるかもしれません。</div>
+                    <div class="en">"Just like Mom taught me, let's organize the data. If we classify failures by area, we might see a pattern."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">分類</div>
+                <div class="vcard-reading">ぶんるい</div>
+                <div class="vcard-meaning">classification</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait piccolo">👽</div>
+                <div class="bubble">
+                    <div class="speaker piccolo">PICCOLO</div>
+                    <div class="jp">...悟飯の言う通りだ。入力データの<span class="vocab">妥当性</span>を検証する必要がある。偽のデータが混入している可能性がある。</div>
+                    <div class="en">"...Gohan is right. We need to verify the validity of input data. Fake data may have been mixed in."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">妥当性</div>
+                <div class="vcard-reading">だとうせい</div>
+                <div class="vcard-meaning">validity</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">なあピッコロ、「偽のデータ」って誰かがわざとやってるってことか？敵がいるのか！？</div>
+                    <div class="en">"Hey Piccolo, 'fake data' means someone's doing this on purpose? Is there an enemy!?"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait piccolo">👽</div>
+                <div class="bubble">
+                    <div class="speaker piccolo">PICCOLO</div>
+                    <div class="jp">...おそらくな。発電データを<span class="vocab">毎時</span>収集しているが、異常パターンが増加している。これは自然な故障ではない。</div>
+                    <div class="en">"...Probably. We're collecting power data hourly, and abnormal patterns are increasing. This isn't natural failure."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">毎時</div>
+                <div class="vcard-reading">まいじ</div>
+                <div class="vcard-meaning">hourly</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait gohan">📚</div>
+                <div class="bubble">
+                    <div class="speaker gohan">GOHAN</div>
+                    <div class="jp">見てください！パラメータが<span class="vocab">可変</span>になっています。誰かがコア設定を外部から変更しているんです！</div>
+                    <div class="en">"Look! The parameters have become variable. Someone is changing the core settings from outside!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">可変</div>
+                <div class="vcard-reading">かへん</div>
+                <div class="vcard-meaning">variable; changeable</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait vegeta">🦸‍♂️</div>
+                <div class="bubble">
+                    <div class="speaker vegeta">VEGETA</div>
+                    <div class="jp">ならば戦いだ！バックアップシステムは<span class="vocab">利用可能</span>か？敵を見つけるまで時間を稼ぐ必要がある！</div>
+                    <div class="en">"Then it's a fight! Is the backup system available? We need to buy time until we find the enemy!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">利用可能</div>
+                <div class="vcard-reading">りようかのう</div>
+                <div class="vcard-meaning">available</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait bulma">👩‍🔬</div>
+                <div class="bubble">
+                    <div class="speaker bulma">BULMA</div>
+                    <div class="jp">緊急バッテリーを<span class="vocab">充電</span>して！48時間以内に解決しないと、西の都全体が停電するわ！</div>
+                    <div class="en">"Charge the emergency batteries! If we don't solve this in 48 hours, all of West City will lose power!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">充電</div>
+                <div class="vcard-reading">じゅうでん</div>
+                <div class="vcard-meaning">charging</div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">よーし！わかった！敵を見つけて、ぶっ飛ばせばいいんだな！オラ、ワクワクしてきたぞ！</div>
+                    <div class="en">"Alright! Got it! We just need to find the enemy and beat 'em up! I'm getting excited!"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="narration">The Z Fighters prepare to investigate. Somewhere, a mysterious enemy is sabotaging Capsule Corp's energy grid. But who—and why?</div>
+        </div>
+        
+    </div>
+    
+    <div class="summary">
+        <h3>📚 Episode 1 Vocabulary</h3>
+        <div class="summary-grid">
+            <div class="summary-item"><div class="summary-word">有無</div><div class="summary-reading">うむ</div><div class="summary-meaning">presence/absence</div></div>
+            <div class="summary-item"><div class="summary-word">枚数</div><div class="summary-reading">まいすう</div><div class="summary-meaning">count (flat things)</div></div>
+            <div class="summary-item"><div class="summary-word">記述</div><div class="summary-reading">きじゅつ</div><div class="summary-meaning">documentation</div></div>
+            <div class="summary-item"><div class="summary-word">閾値</div><div class="summary-reading">いきち</div><div class="summary-meaning">threshold</div></div>
+            <div class="summary-item"><div class="summary-word">分類</div><div class="summary-reading">ぶんるい</div><div class="summary-meaning">classification</div></div>
+            <div class="summary-item"><div class="summary-word">妥当性</div><div class="summary-reading">だとうせい</div><div class="summary-meaning">validity</div></div>
+            <div class="summary-item"><div class="summary-word">毎時</div><div class="summary-reading">まいじ</div><div class="summary-meaning">hourly</div></div>
+            <div class="summary-item"><div class="summary-word">可変</div><div class="summary-reading">かへん</div><div class="summary-meaning">variable</div></div>
+            <div class="summary-item"><div class="summary-word">利用可能</div><div class="summary-reading">りようかのう</div><div class="summary-meaning">available</div></div>
+            <div class="summary-item"><div class="summary-word">充電</div><div class="summary-reading">じゅうでん</div><div class="summary-meaning">charging</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ DAY 2 ============ -->
+<section class="day" id="day2">
+    <div class="day-header">
+        <div class="day-num">EPISODE 2</div>
+        <div class="day-title">Tracking the Signal</div>
+        <div class="day-location">📍 Mountains - Solar Array Alpha</div>
+    </div>
+    
+    <div class="panels">
+        
+        <div class="panel outdoor">
+            <div class="narration">The Z Fighters fly to the mountain solar array. Goku senses a faint ki signature among the panels—but something feels wrong.</div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">みんな、気を感じる<span class="vocab">範囲</span>を広げてくれ！弱いけど、何かいるぞ！</div>
+                    <div class="en">"Everyone, expand your ki sensing range! It's weak, but something's here!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">範囲</div>
+                <div class="vcard-reading">はんい</div>
+                <div class="vcard-meaning">range; scope</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait gohan">📚</div>
+                <div class="bubble">
+                    <div class="speaker gohan">GOHAN</div>
+                    <div class="jp">お父さん、データ通信を追跡しています。この<span class="vocab">変数</span>に敵のIPアドレスを記録しました。</div>
+                    <div class="en">"Dad, I'm tracking the data transmission. I've recorded the enemy's IP address in this variable."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">変数</div>
+                <div class="vcard-reading">へんすう</div>
+                <div class="vcard-meaning">variable</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait vegeta">🦸‍♂️</div>
+                <div class="bubble">
+                    <div class="speaker vegeta">VEGETA</div>
+                    <div class="jp">フン、地球人の技術か。いいだろう、被害データを<span class="vocab">集計</span>して敵の目的を分析するぞ。</div>
+                    <div class="en">"Hmph, Earthling technology. Fine, let's aggregate the damage data and analyze the enemy's purpose."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">集計</div>
+                <div class="vcard-reading">しゅうけい</div>
+                <div class="vcard-meaning">aggregation</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait piccolo">👽</div>
+                <div class="bubble">
+                    <div class="speaker piccolo">PICCOLO</div>
+                    <div class="jp">...このシステムの<span class="vocab">実装</span>は古い。セキュリティホールがある。敵はそこを突いている。</div>
+                    <div class="en">"...This system's implementation is old. There are security holes. The enemy is exploiting them."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">実装</div>
+                <div class="vcard-reading">じっそう</div>
+                <div class="vcard-meaning">implementation</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="narration alert">⚡ ALERT! Corrupted data floods the network! The solar panels begin to overload!</div>
+            <div class="ki-blast">⚡💥⚡💥⚡</div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait bulma">👩‍🔬</div>
+                <div class="bubble">
+                    <div class="speaker bulma">BULMA (通信)</div>
+                    <div class="jp">みんな、大変！アプリ<span class="vocab">配信</span>システムがハッキングされたわ！敵がウイルスを送り込んでる！</div>
+                    <div class="en">"Everyone, this is bad! The app deployment system has been hacked! The enemy is sending viruses!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">配信</div>
+                <div class="vcard-reading">はいしん</div>
+                <div class="vcard-meaning">deployment; distribution</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">よし、オラが気の<span class="vocab">加減</span>を調整してパネルを守る！悟飯、システムは任せた！</div>
+                    <div class="en">"Alright, I'll adjust my ki balance to protect the panels! Gohan, I'm leaving the system to you!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">加減</div>
+                <div class="vcard-reading">かげん</div>
+                <div class="vcard-meaning">adjustment; balance</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait vegeta">🦸‍♂️</div>
+                <div class="bubble">
+                    <div class="speaker vegeta">VEGETA</div>
+                    <div class="jp">チッ、攻撃の<span class="vocab">上限</span>を超えている！このままでは全滅だ！</div>
+                    <div class="en">"Tch, the attacks are exceeding the upper limit! At this rate, we'll be wiped out!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">上限</div>
+                <div class="vcard-reading">じょうげん</div>
+                <div class="vcard-meaning">upper limit</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait gohan">📚</div>
+                <div class="bubble">
+                    <div class="speaker gohan">GOHAN</div>
+                    <div class="jp">ログを<span class="vocab">検索</span>中...見つけました！攻撃の発信源は東の廃墟です！</div>
+                    <div class="en">"Searching the logs... Found it! The attack source is the ruins to the east!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">検索</div>
+                <div class="vcard-reading">けんさく</div>
+                <div class="vcard-meaning">search</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait piccolo">👽</div>
+                <div class="bubble">
+                    <div class="speaker piccolo">PICCOLO</div>
+                    <div class="jp">破損ファイルを<span class="vocab">削除</span>する。悟空、ベジータ、お前たちは敵を追え。</div>
+                    <div class="en">"I'll delete the corrupted files. Goku, Vegeta, you two pursue the enemy."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">削除</div>
+                <div class="vcard-reading">さくじょ</div>
+                <div class="vcard-meaning">deletion</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">よし！でもその前に、エネルギー消費を<span class="vocab">削減</span>しておこう。持久戦になるかもしれねぇからな！</div>
+                    <div class="en">"Right! But first, let's reduce energy consumption. This might turn into a long battle!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">削減</div>
+                <div class="vcard-reading">さくげん</div>
+                <div class="vcard-meaning">reduction</div>
+            </div>
+        </div>
+        
+        <div class="panel outdoor">
+            <div class="narration">The Z Fighters split up. Goku and Vegeta head toward the eastern ruins, where a mysterious enemy awaits...</div>
+        </div>
+        
+    </div>
+    
+    <div class="summary">
+        <h3>📚 Episode 2 Vocabulary</h3>
+        <div class="summary-grid">
+            <div class="summary-item"><div class="summary-word">範囲</div><div class="summary-reading">はんい</div><div class="summary-meaning">range</div></div>
+            <div class="summary-item"><div class="summary-word">変数</div><div class="summary-reading">へんすう</div><div class="summary-meaning">variable</div></div>
+            <div class="summary-item"><div class="summary-word">集計</div><div class="summary-reading">しゅうけい</div><div class="summary-meaning">aggregation</div></div>
+            <div class="summary-item"><div class="summary-word">実装</div><div class="summary-reading">じっそう</div><div class="summary-meaning">implementation</div></div>
+            <div class="summary-item"><div class="summary-word">配信</div><div class="summary-reading">はいしん</div><div class="summary-meaning">deployment</div></div>
+            <div class="summary-item"><div class="summary-word">加減</div><div class="summary-reading">かげん</div><div class="summary-meaning">adjustment</div></div>
+            <div class="summary-item"><div class="summary-word">上限</div><div class="summary-reading">じょうげん</div><div class="summary-meaning">upper limit</div></div>
+            <div class="summary-item"><div class="summary-word">検索</div><div class="summary-reading">けんさく</div><div class="summary-meaning">search</div></div>
+            <div class="summary-item"><div class="summary-word">削除</div><div class="summary-reading">さくじょ</div><div class="summary-meaning">deletion</div></div>
+            <div class="summary-item"><div class="summary-word">削減</div><div class="summary-reading">さくげん</div><div class="summary-meaning">reduction</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ DAY 3: BOSS ============ -->
+<section class="day" id="day3">
+    <div class="day-header boss">
+        <div class="day-num boss">⚔️ EPISODE 3 - BOSS BATTLE</div>
+        <div class="day-title">Android 21's Attack!</div>
+        <div class="day-location">📍 Eastern Ruins - Hidden Laboratory</div>
+    </div>
+    
+    <div class="panels">
+        
+        <div class="panel battle">
+            <div class="boss-appear">
+                <div class="boss-sprite">🤖</div>
+                <div class="boss-name">ANDROID 21</div>
+                <div style="color:var(--db-yellow);margin-top:5px;">Red Ribbon Army's Final Creation</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="narration alert">A beautiful but deadly android emerges from the shadows! She has been draining Capsule Corp's energy to power her resurrection machine!</div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="action">⚔️ BATTLE POWER RISING! ⚔️</div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">すげぇ気だ！でもストレージ<span class="vocab">容量</span>に余裕がないって悟飯が言ってたな...短期決戦だ！</div>
+                    <div class="en">"Incredible ki! But Gohan said there's no storage capacity margin... We need a quick battle!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">容量</div>
+                <div class="vcard-reading">ようりょう</div>
+                <div class="vcard-meaning">capacity</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait vegeta">🦸‍♂️</div>
+                <div class="bubble">
+                    <div class="speaker vegeta">VEGETA</div>
+                    <div class="jp">フン、この問題の<span class="vocab">根本</span>原因はお前か！サイヤ人の王子が直々に始末してやる！</div>
+                    <div class="en">"Hmph, so you're the root cause of this problem! The Prince of Saiyans will personally dispose of you!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">根本</div>
+                <div class="vcard-reading">こんぽん</div>
+                <div class="vcard-meaning">root; fundamental</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait gohan">📚</div>
+                <div class="bubble">
+                    <div class="speaker gohan">GOHAN (通信)</div>
+                    <div class="jp">お父さん、ベジータさん！彼女のシステムは二段階<span class="vocab">認証</span>で守られています。物理攻撃だけでは倒せません！</div>
+                    <div class="en">"Dad, Vegeta! Her system is protected by two-factor authentication. You can't defeat her with physical attacks alone!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">認証</div>
+                <div class="vcard-reading">にんしょう</div>
+                <div class="vcard-meaning">authentication</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">あれ？ディスク<span class="vocab">余裕</span>がないって...でもオラたちには気がある！</div>
+                    <div class="en">"Huh? No disk margin... But we have ki!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">余裕</div>
+                <div class="vcard-reading">よゆう</div>
+                <div class="vcard-meaning">margin; leeway</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait piccolo">👽</div>
+                <div class="bubble">
+                    <div class="speaker piccolo">PICCOLO (通信)</div>
+                    <div class="jp">...見つけた。彼女の防御システムに<span class="vocab">不具合</span>がある。左肩のセンサーが故障している。</div>
+                    <div class="en">"...Found it. There's a defect in her defense system. The sensor on her left shoulder is malfunctioning."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">不具合</div>
+                <div class="vcard-reading">ふぐあい</div>
+                <div class="vcard-meaning">defect; bug</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait vegeta">🦸‍♂️</div>
+                <div class="bubble">
+                    <div class="speaker vegeta">VEGETA</div>
+                    <div class="jp">なるほど、その弱点に<span class="vocab">対応</span>した攻撃をすればいいわけだな！カカロット、合わせろ！</div>
+                    <div class="en">"I see, we just need an attack that corresponds to that weakness! Kakarot, match my timing!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">対応</div>
+                <div class="vcard-reading">たいおう</div>
+                <div class="vcard-meaning">correspondence; support</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait bulma">👩‍🔬</div>
+                <div class="bubble">
+                    <div class="speaker bulma">BULMA (通信)</div>
+                    <div class="jp">待って！彼女のシステムは<span class="vocab">整数</span>しか処理できないわ！小数点のあるデータを送れば混乱するはず！</div>
+                    <div class="en">"Wait! Her system can only process integers! If we send data with decimals, it should confuse her!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">整数</div>
+                <div class="vcard-reading">せいすう</div>
+                <div class="vcard-meaning">integer</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait gohan">📚</div>
+                <div class="bubble">
+                    <div class="speaker gohan">GOHAN</div>
+                    <div class="jp">了解！データ送信<span class="vocab">作業</span>を開始します！お父さん、今です！</div>
+                    <div class="en">"Roger! Starting data transmission operation! Dad, now!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">作業</div>
+                <div class="vcard-reading">さぎょう</div>
+                <div class="vcard-meaning">operation; work</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="action kamehameha">💙 KAMEHAMEHA!!! 💙</div>
+            <div class="ki-blast">🔵💥🔵💥🔵</div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">今だ！脆弱性を<span class="vocab">修正</span>してやる！...いや、ぶっ壊す！</div>
+                    <div class="en">"Now! I'll fix that vulnerability! ...No, I'll smash it!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">修正</div>
+                <div class="vcard-reading">しゅうせい</div>
+                <div class="vcard-meaning">fix; correction</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait piccolo">👽</div>
+                <div class="bubble">
+                    <div class="speaker piccolo">PICCOLO</div>
+                    <div class="jp">...システムが異常パターンの消失を<span class="vocab">認めて</span>いる。やったな、悟空。</div>
+                    <div class="en">"...The system is detecting the disappearance of abnormal patterns. You did it, Goku."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">認める</div>
+                <div class="vcard-reading">みとめる</div>
+                <div class="vcard-meaning">to recognize; detect</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="action victory">🎉 VICTORY! 🎉</div>
+            <div class="narration" style="color:var(--db-green);">Android 21 is defeated! The energy drain stops, and Capsule Corp's systems begin to recover!</div>
+        </div>
+        
+        <div class="panel sky">
+            <div class="dialogue">
+                <div class="portrait goku">🦸</div>
+                <div class="bubble">
+                    <div class="speaker goku">GOKU</div>
+                    <div class="jp">ふぅ、終わったな！なあベジータ、腹減らねぇか？ブルマんとこでメシ食おうぜ！</div>
+                    <div class="en">"Phew, it's over! Hey Vegeta, aren't you hungry? Let's go eat at Bulma's place!"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel sky">
+            <div class="dialogue">
+                <div class="portrait vegeta">🦸‍♂️</div>
+                <div class="bubble">
+                    <div class="speaker vegeta">VEGETA</div>
+                    <div class="jp">フン...まあいい。サイヤ人は戦いの後に食事をするものだ。</div>
+                    <div class="en">"Hmph... Fine. Saiyans eat after battle."</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="narration">Peace returns to West City. But somewhere in the universe, new threats are always emerging. The Z Fighters must remain vigilant...</div>
+            <div style="text-align:center;margin-top:15px;color:var(--db-yellow);">TO BE CONTINUED... 🐉</div>
+        </div>
+        
+    </div>
+    
+    <div class="summary">
+        <h3>📚 Episode 3 Vocabulary (Boss Battle!)</h3>
+        <div class="summary-grid">
+            <div class="summary-item"><div class="summary-word">容量</div><div class="summary-reading">ようりょう</div><div class="summary-meaning">capacity</div></div>
+            <div class="summary-item"><div class="summary-word">根本</div><div class="summary-reading">こんぽん</div><div class="summary-meaning">root</div></div>
+            <div class="summary-item"><div class="summary-word">認証</div><div class="summary-reading">にんしょう</div><div class="summary-meaning">authentication</div></div>
+            <div class="summary-item"><div class="summary-word">余裕</div><div class="summary-reading">よゆう</div><div class="summary-meaning">margin</div></div>
+            <div class="summary-item"><div class="summary-word">不具合</div><div class="summary-reading">ふぐあい</div><div class="summary-meaning">defect/bug</div></div>
+            <div class="summary-item"><div class="summary-word">対応</div><div class="summary-reading">たいおう</div><div class="summary-meaning">correspondence</div></div>
+            <div class="summary-item"><div class="summary-word">整数</div><div class="summary-reading">せいすう</div><div class="summary-meaning">integer</div></div>
+            <div class="summary-item"><div class="summary-word">作業</div><div class="summary-reading">さぎょう</div><div class="summary-meaning">operation</div></div>
+            <div class="summary-item"><div class="summary-word">修正</div><div class="summary-reading">しゅうせい</div><div class="summary-meaning">fix</div></div>
+            <div class="summary-item"><div class="summary-word">認める</div><div class="summary-reading">みとめる</div><div class="summary-meaning">to recognize</div></div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p class="title">🐉 DRAGON BALL Z: Capsule Corp Energy Crisis 🐉</p>
+    <p style="color:var(--db-green);margin-top:10px;">Arc 1 Complete! Episodes 1-3 | 30 vocabulary words!</p>
+    <p style="margin-top:15px;">📖 Read: Top to bottom, left to right</p>
+    <p>🟡 Yellow words = vocabulary to learn</p>
+    <div style="margin-top:20px;">
+        <a href="DragonBall-Episode4.html" style="display:inline-block;padding:12px 30px;background:linear-gradient(135deg,#9370db,#6a3093);color:#fff;text-decoration:none;border-radius:10px;font-weight:bold;border:2px solid #00ffff;transition:all 0.3s;">Arc 2: Episode 4 →</a>
+    </div>
+    <p style="margin-top:15px;color:#666;font-size:0.85rem;">Total Progress: 30/140+ vocabulary words</p>
+</footer>
+
+</div>
+</body>
+</html>

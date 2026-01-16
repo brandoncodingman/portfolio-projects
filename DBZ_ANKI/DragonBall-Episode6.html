@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball Z - Episode 6: Golden Frieza (BOSS)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Noto Sans JP',sans-serif;background:#1a1a2e;color:#e0e0e0;line-height:1.7}
+        :root{--db-orange:#ff6b00;--db-blue:#1e90ff;--db-yellow:#ffd700;--db-green:#32cd32;--db-purple:#9370db;--db-dark:#0f0f1a;--db-gold:#ffaa00;--db-cyan:#00ffff}
+        .header{text-align:center;padding:25px 20px;background:linear-gradient(180deg,#2a0a00,#1a0000);border-bottom:4px solid var(--db-gold)}
+        .header h1{font-size:1.6rem;color:var(--db-gold);text-shadow:0 0 20px var(--db-gold)}
+        .header h2{color:#ff4444;margin-top:6px;font-size:1.1rem}
+        .legend{background:rgba(0,0,0,0.5);border-radius:8px;padding:8px;margin:12px auto;max-width:350px;display:flex;justify-content:center;gap:15px;font-size:0.8rem}
+        .legend-new{color:var(--db-yellow)}.legend-review{color:var(--db-green)}
+        .container{max-width:700px;margin:0 auto;padding:12px}
+        .ep-header{background:linear-gradient(90deg,#2a0000,#1a0020);padding:15px;border-radius:10px 10px 0 0;border-bottom:3px solid var(--db-gold)}
+        .ep-num{font-size:1.2rem;color:var(--db-gold);font-weight:bold}
+        .ep-title{color:#fff;margin-top:4px;font-size:0.95rem}
+        .ep-location{color:#ff6666;font-size:0.8rem;margin-top:4px}
+        .ep-vocab{display:inline-block;background:rgba(0,0,0,0.3);padding:4px 8px;border-radius:5px;margin-top:8px;font-size:0.75rem}
+        .ep-vocab .new{color:var(--db-yellow)}.ep-vocab .rev{color:var(--db-green)}
+        .panels{padding:8px;background:#000;border-radius:0 0 10px 10px}
+        .panel{background:#1a1a2a;padding:12px;margin-bottom:6px;border-radius:5px}
+        .panel.frieza{background:linear-gradient(180deg,#3a2a1a,#201505)}
+        .panel.battle{background:linear-gradient(180deg,#3a1a1a,#200a0a)}
+        .panel.sky{background:linear-gradient(180deg,#1a2a4a,#0a1530)}
+        .narration{font-style:italic;color:#aaa;text-align:center;padding:8px;font-size:0.9rem}
+        .boss-appear{text-align:center;padding:20px}
+        .boss-sprite{font-size:3.5rem;animation:float 2s ease-in-out infinite}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        .boss-name{font-size:1.2rem;color:var(--db-gold);text-shadow:0 0 15px var(--db-gold);margin-top:6px}
+        .boss-title{color:#aaa;font-size:0.8rem}
+        .action{font-size:1.1rem;font-weight:bold;text-align:center;padding:10px;color:var(--db-orange);text-shadow:0 0 12px var(--db-orange)}
+        .action.kamehameha{color:var(--db-blue)}.action.finalflash{color:var(--db-yellow)}.action.golden{color:var(--db-gold)}.action.victory{color:var(--db-green)}
+        .ki-blast{text-align:center;font-size:1.5rem;margin:6px 0;animation:pulse 0.5s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+        .dialogue{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+        .portrait{width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;border:3px solid var(--db-orange);background:var(--db-dark);flex-shrink:0}
+        .portrait.goku{border-color:var(--db-orange)}.portrait.vegeta{border-color:var(--db-blue)}.portrait.bulma{border-color:var(--db-purple)}.portrait.piccolo{border-color:var(--db-green)}.portrait.gohan{border-color:var(--db-yellow)}.portrait.frieza{border-color:var(--db-gold)}
+        .bubble{background:rgba(0,0,0,0.85);border:2px solid #444;border-radius:8px;padding:8px;flex:1}
+        .speaker{font-weight:bold;font-size:0.75rem;margin-bottom:3px}
+        .speaker.goku{color:var(--db-orange)}.speaker.vegeta{color:var(--db-blue)}.speaker.bulma{color:var(--db-purple)}.speaker.piccolo{color:var(--db-green)}.speaker.gohan{color:var(--db-yellow)}.speaker.frieza{color:var(--db-gold)}
+        .jp{margin-bottom:3px;font-size:0.9rem}.en{color:#888;font-size:0.75rem;font-style:italic}
+        .vocab{color:var(--db-yellow);font-weight:bold;background:rgba(255,215,0,0.15);padding:1px 3px;border-radius:3px;border-bottom:2px dotted var(--db-yellow)}
+        .vocab-review{color:var(--db-green);font-weight:bold;background:rgba(50,205,50,0.15);padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--db-green)}
+        .vcard{background:linear-gradient(135deg,#2a2a10,#15150a);border:2px solid var(--db-yellow);border-radius:6px;padding:10px;margin:10px 0;text-align:center}
+        .vcard.review{background:linear-gradient(135deg,#102a10,#0a150a);border-color:var(--db-green)}
+        .vcard-word{font-size:1.3rem;color:var(--db-yellow)}.vcard.review .vcard-word{color:var(--db-green)}
+        .vcard-reading{color:var(--db-blue);font-size:0.85rem}
+        .vcard-meaning{background:rgba(0,0,0,0.3);padding:3px 6px;border-radius:4px;display:inline-block;margin-top:3px;font-size:0.8rem}
+        .vcard-tag{font-size:0.6rem;padding:2px 4px;border-radius:3px;margin-left:4px}.vcard-tag.new{background:var(--db-yellow);color:#000}.vcard-tag.review{background:var(--db-green);color:#000}
+        .summary{background:#0a0a15;padding:15px;margin-top:15px;border-radius:8px;border:1px solid var(--db-gold)}
+        .summary h3{color:var(--db-gold);margin-bottom:12px;font-size:1rem}
+        .summary-section{margin-bottom:12px}
+        .summary-section h4{color:var(--db-yellow);margin-bottom:6px;font-size:0.8rem}.summary-section.review h4{color:var(--db-green)}
+        .summary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:6px}
+        .summary-item{background:rgba(255,215,0,0.1);border:1px solid var(--db-yellow);border-radius:4px;padding:5px;text-align:center}
+        .summary-item.review{background:rgba(50,205,50,0.1);border-color:var(--db-green)}
+        .summary-word{font-size:1rem;color:var(--db-yellow)}.summary-item.review .summary-word{color:var(--db-green)}
+        .summary-reading{font-size:0.7rem;color:var(--db-blue)}.summary-meaning{font-size:0.65rem;color:#aaa}
+        .srs-note{background:rgba(0,255,255,0.1);border:1px solid var(--db-cyan);border-radius:6px;padding:8px;margin-top:12px;font-size:0.75rem;color:var(--db-cyan)}
+        .arc-complete{background:linear-gradient(135deg,#1a1a00,#0a0a00);border:2px solid var(--db-gold);border-radius:10px;padding:15px;margin-top:15px;text-align:center}
+        .arc-complete h3{color:var(--db-gold);margin-bottom:8px;font-size:1.1rem}
+        .arc-complete p{color:#ccc;margin:4px 0;font-size:0.85rem}
+        .nav{display:flex;justify-content:space-between;padding:15px;margin-top:15px}
+        .nav-btn{padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:0.85rem;transition:all 0.3s}
+        .nav-btn.prev{background:linear-gradient(135deg,var(--db-orange),#cc5500);color:#fff;border:2px solid var(--db-yellow)}
+        .nav-btn.next{background:linear-gradient(135deg,var(--db-purple),#6a3093);color:#fff;border:2px solid var(--db-cyan)}
+        .nav-btn:hover{transform:translateY(-2px);box-shadow:0 0 12px currentColor}
+        .footer{text-align:center;padding:15px;color:#666;font-size:0.75rem;border-top:1px solid #333;margin-top:15px}
+    </style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+    <h1>🐉 DRAGON BALL Z 🐉</h1>
+    <h2>👾 BOSS BATTLE!</h2>
+    <div class="legend"><span class="legend-new">🟡 NEW</span><span class="legend-review">🟢 REVIEW</span></div>
+</header>
+
+<section>
+    <div class="ep-header">
+        <div class="ep-num">👾 EPISODE 6 - BOSS</div>
+        <div class="ep-title">ゴールデンフリーザ - Golden Frieza</div>
+        <div class="ep-location">📍 Earth - Wasteland</div>
+        <div class="ep-vocab"><span class="new">🟡 12 NEW</span> | <span class="rev">🟢 10 REVIEW</span></div>
+    </div>
+    
+    <div class="panels">
+        <div class="panel frieza">
+            <div class="boss-appear"><div class="boss-sprite">👾</div><div class="boss-name">GOLDEN FRIEZA</div><div class="boss-title">Emperor of the Universe</div></div>
+        </div>
+        
+        <div class="panel frieza">
+            <div class="dialogue"><div class="portrait frieza">👾</div><div class="bubble"><div class="speaker frieza">FRIEZA</div><div class="jp">私の<span class="vocab">劣化</span>を期待していた？残念！<span class="vocab-review">充電</span><span class="vocab-review">容量</span>を無限に拡張しました！</div><div class="en">"You expected my deterioration? Too bad! I've expanded my charging capacity infinitely!"</div></div></div>
+            <div class="vcard"><div class="vcard-word">劣化 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">れっか</div><div class="vcard-meaning">deterioration</div></div>
+            <div class="vcard review"><div class="vcard-word">充電 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">じゅうでん</div><div class="vcard-meaning">charging</div></div>
+        </div>
+        
+        <div class="panel frieza">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp"><span class="vocab">劣化</span>どころか<span class="vocab-review">変換</span>効率も上げたか。だが俺たちの<span class="vocab-review">蓄電</span>量も比べ物にならん！</div><div class="en">"Not just avoiding deterioration but improving conversion? But our storage is incomparable!"</div></div></div>
+            <div class="vcard review"><div class="vcard-word">変換 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">へんかん</div><div class="vcard-meaning">conversion</div></div>
+            <div class="vcard review"><div class="vcard-word">蓄電 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">ちくでん</div><div class="vcard-meaning">storage</div></div>
+        </div>
+        
+        <div class="panel battle"><div class="action golden">✨ GOLDEN TRANSFORMATION! ✨</div><div class="ki-blast">💛💛💛💛💛</div></div>
+        
+        <div class="panel frieza">
+            <div class="dialogue"><div class="portrait frieza">👾</div><div class="bubble"><div class="speaker frieza">FRIEZA</div><div class="jp">この形態での<span class="vocab">損失</span>はゼロ。<span class="vocab-review">放電</span>で<span class="vocab">損失</span>を出さない完璧な<span class="vocab">実装</span>です。</div><div class="en">"Zero loss in this form. Perfect implementation with no discharge loss."</div></div></div>
+            <div class="vcard"><div class="vcard-word">損失 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">そんしつ</div><div class="vcard-meaning">loss</div></div>
+            <div class="vcard review"><div class="vcard-word">放電 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">ほうでん</div><div class="vcard-meaning">discharge</div></div>
+            <div class="vcard"><div class="vcard-word">実装 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">じっそう</div><div class="vcard-meaning">implementation</div></div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">すげえ！その<span class="vocab">実装</span>、どうやって<span class="vocab">開発</span>したんだ？</div><div class="en">"Amazing! How did you develop that implementation?"</div></div></div>
+            <div class="vcard"><div class="vcard-word">開発 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">かいはつ</div><div class="vcard-meaning">development</div></div>
+        </div>
+        
+        <div class="panel frieza">
+            <div class="dialogue"><div class="portrait frieza">👾</div><div class="bubble"><div class="speaker frieza">FRIEZA</div><div class="jp">まず<span class="vocab">分析</span>から。弱点を<span class="vocab">分析</span>し、<span class="vocab">削減</span>すべき<span class="vocab">損失</span>を特定しました。</div><div class="en">"Started with analysis. Analyzed weaknesses and identified losses to reduce."</div></div></div>
+            <div class="vcard"><div class="vcard-word">分析 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">ぶんせき</div><div class="vcard-meaning">analysis</div></div>
+            <div class="vcard"><div class="vcard-word">削減 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">さくげん</div><div class="vcard-meaning">reduction</div></div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">おしゃべりは終わりだ！奴の<span class="vocab-review">電流</span><span class="vocab-review">上限</span>を超える攻撃だ！</div><div class="en">"Enough chat! Attack beyond his current upper limit!"</div></div></div>
+            <div class="vcard review"><div class="vcard-word">電流 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">でんりゅう</div><div class="vcard-meaning">current</div></div>
+            <div class="vcard review"><div class="vcard-word">上限 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">じょうげん</div><div class="vcard-meaning">upper limit</div></div>
+        </div>
+        
+        <div class="panel battle"><div class="action kamehameha">💙 KAMEHAMEHA! 💙</div><div class="action finalflash">💛 FINAL FLASH! 💛</div><div class="ki-blast">🔵💥💛💥🔵</div></div>
+        
+        <div class="panel frieza">
+            <div class="dialogue"><div class="portrait frieza">👾</div><div class="bubble"><div class="speaker frieza">FRIEZA</div><div class="jp">無駄！そのパターンは<span class="vocab-review">調査</span>済み。<span class="vocab">集計</span>データで攻撃<span class="vocab-review">範囲</span>は予測可能！</div><div class="en">"Useless! I've investigated that. Aggregated data predicts your attack range!"</div></div></div>
+            <div class="vcard review"><div class="vcard-word">調査 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">ちょうさ</div><div class="vcard-meaning">investigation</div></div>
+            <div class="vcard"><div class="vcard-word">集計 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">しゅうけい</div><div class="vcard-meaning">aggregation</div></div>
+            <div class="vcard review"><div class="vcard-word">範囲 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">はんい</div><div class="vcard-meaning">range</div></div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue"><div class="portrait gohan">📚</div><div class="bubble"><div class="speaker gohan">GOHAN (通信)</div><div class="jp">お父さん！<span class="vocab">分析</span>の結果、フリーザの<span class="vocab">動作</span>に<span class="vocab-review">不具合</span>が！高速<span class="vocab">動作</span>で<span class="vocab-review">電圧</span>不安定！</div><div class="en">"Dad! Analysis shows a bug in Frieza's operation! Voltage unstable at high-speed!"</div></div></div>
+            <div class="vcard"><div class="vcard-word">動作 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">どうさ</div><div class="vcard-meaning">operation</div></div>
+            <div class="vcard review"><div class="vcard-word">不具合 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">ふぐあい</div><div class="vcard-meaning">bug</div></div>
+            <div class="vcard review"><div class="vcard-word">電圧 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">でんあつ</div><div class="vcard-meaning">voltage</div></div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue"><div class="portrait bulma">👩‍🔬</div><div class="bubble"><div class="speaker bulma">BULMA (通信)</div><div class="jp">悟飯の<span class="vocab">分析</span>に<span class="vocab-review">加算</span>すると、<span class="vocab">動作</span><span class="vocab-review">不具合</span>は<span class="vocab">判定</span>ミスを起こすわ！</div><div class="en">"Adding to Gohan's analysis, that bug causes judgment errors!"</div></div></div>
+            <div class="vcard review"><div class="vcard-word">加算 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">かさん</div><div class="vcard-meaning">addition</div></div>
+            <div class="vcard"><div class="vcard-word">判定 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">はんてい</div><div class="vcard-meaning">judgment</div></div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">よし！新戦術を<span class="vocab">導入</span>だ！フリーザの<span class="vocab">判定</span><span class="vocab-review">系統</span>にバグを<span class="vocab">導入</span>する！</div><div class="en">"Right! Introducing new tactics! Introduce a bug into his judgment system!"</div></div></div>
+            <div class="vcard"><div class="vcard-word">導入 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">どうにゅう</div><div class="vcard-meaning">introduction</div></div>
+            <div class="vcard review"><div class="vcard-word">系統 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">けいとう</div><div class="vcard-meaning">system</div></div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">攻撃の<span class="vocab">定義</span>を変える！通常攻撃を<span class="vocab">削除</span>し、<span class="vocab-review">想定</span>外の<span class="vocab-review">次元</span>から攻める！</div><div class="en">"Change the definition of attack! Delete normal attacks, attack from unexpected dimension!"</div></div></div>
+            <div class="vcard"><div class="vcard-word">定義 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">ていぎ</div><div class="vcard-meaning">definition</div></div>
+            <div class="vcard"><div class="vcard-word">削除 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">さくじょ</div><div class="vcard-meaning">deletion</div></div>
+            <div class="vcard review"><div class="vcard-word">想定 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">そうてい</div><div class="vcard-meaning">assumption</div></div>
+            <div class="vcard review"><div class="vcard-word">次元 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">じげん</div><div class="vcard-meaning">dimension</div></div>
+        </div>
+        
+        <div class="panel frieza">
+            <div class="dialogue"><div class="portrait frieza">👾</div><div class="bubble"><div class="speaker frieza">FRIEZA</div><div class="jp">な、なに!? <span class="vocab">判定</span>エラー!? <span class="vocab">動作</span>の<span class="vocab">定義</span>が<span class="vocab">削除</span>された!?</div><div class="en">"Wh-what!? Judgment error!? The operation definition was deleted!?"</div></div></div>
+        </div>
+        
+        <div class="panel battle"><div class="action kamehameha">💙⚡ COMBINED ATTACK! ⚡💛</div><div class="ki-blast">🔵💛🔵💛🔵💛</div></div>
+        
+        <div class="panel battle">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">フリーザ！お前の<span class="vocab">実装</span>には<span class="vocab-review">根本</span>的な<span class="vocab-review">不具合</span>があった。<span class="vocab">劣化</span>を<span class="vocab">削減</span>しても、心が<span class="vocab">劣化</span>していた！</div><div class="en">"Frieza! Your implementation had a fundamental bug. Even reducing deterioration, your heart deteriorated!"</div></div></div>
+            <div class="vcard review"><div class="vcard-word">根本 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">こんぽん</div><div class="vcard-meaning">root</div></div>
+        </div>
+        
+        <div class="panel battle"><div class="action victory">🎉 VICTORY! 🎉</div><div class="narration" style="color:#32cd32;">Golden Frieza defeated! Earth is saved!</div></div>
+        
+        <div class="panel sky">
+            <div class="dialogue"><div class="portrait piccolo">👽</div><div class="bubble"><div class="speaker piccolo">PICCOLO</div><div class="jp">戦いの<span class="vocab">集計</span>データを<span class="vocab-review">送信</span>した。<span class="vocab">分析</span>を頼む。今後の<span class="vocab-review">対応</span>に役立つ。</div><div class="en">"Transmitted the aggregated battle data. Please analyze for future responses."</div></div></div>
+            <div class="vcard review"><div class="vcard-word">送信 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">そうしん</div><div class="vcard-meaning">transmission</div></div>
+            <div class="vcard review"><div class="vcard-word">対応 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">たいおう</div><div class="vcard-meaning">response</div></div>
+        </div>
+        
+        <div class="panel sky">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">だが<span class="vocab-review">検索</span>データによると、宇宙には俺たちより強い存在がいる。<span class="vocab">定義</span>を超えた存在が...</div><div class="en">"But search data shows beings stronger than us exist. Beings beyond definition..."</div></div></div>
+            <div class="vcard review"><div class="vcard-word">検索 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">けんさく</div><div class="vcard-meaning">search</div></div>
+        </div>
+        
+        <div class="panel sky">
+            <div class="narration">In the realm of the Gods, Beerus the Destroyer stirs from his slumber...</div>
+            <div style="text-align:center;margin-top:12px;color:var(--db-purple);font-size:1rem">ARC 2 COMPLETE! 🐉</div>
+            <div style="text-align:center;margin-top:6px;color:var(--db-cyan);font-size:0.9rem">Next: Arc 3 - Divine Training 🐱</div>
+        </div>
+    </div>
+</section>
+
+<div class="summary">
+    <h3>📚 Episode 6 Vocabulary (BOSS!)</h3>
+    <div class="summary-section">
+        <h4>🟡 NEW WORDS (12)</h4>
+        <div class="summary-grid">
+            <div class="summary-item"><div class="summary-word">劣化</div><div class="summary-reading">れっか</div><div class="summary-meaning">deterioration</div></div>
+            <div class="summary-item"><div class="summary-word">損失</div><div class="summary-reading">そんしつ</div><div class="summary-meaning">loss</div></div>
+            <div class="summary-item"><div class="summary-word">実装</div><div class="summary-reading">じっそう</div><div class="summary-meaning">implementation</div></div>
+            <div class="summary-item"><div class="summary-word">開発</div><div class="summary-reading">かいはつ</div><div class="summary-meaning">development</div></div>
+            <div class="summary-item"><div class="summary-word">分析</div><div class="summary-reading">ぶんせき</div><div class="summary-meaning">analysis</div></div>
+            <div class="summary-item"><div class="summary-word">削減</div><div class="summary-reading">さくげん</div><div class="summary-meaning">reduction</div></div>
+            <div class="summary-item"><div class="summary-word">集計</div><div class="summary-reading">しゅうけい</div><div class="summary-meaning">aggregation</div></div>
+            <div class="summary-item"><div class="summary-word">動作</div><div class="summary-reading">どうさ</div><div class="summary-meaning">operation</div></div>
+            <div class="summary-item"><div class="summary-word">判定</div><div class="summary-reading">はんてい</div><div class="summary-meaning">judgment</div></div>
+            <div class="summary-item"><div class="summary-word">導入</div><div class="summary-reading">どうにゅう</div><div class="summary-meaning">introduction</div></div>
+            <div class="summary-item"><div class="summary-word">定義</div><div class="summary-reading">ていぎ</div><div class="summary-meaning">definition</div></div>
+            <div class="summary-item"><div class="summary-word">削除</div><div class="summary-reading">さくじょ</div><div class="summary-meaning">deletion</div></div>
+        </div>
+    </div>
+    <div class="summary-section review">
+        <h4>🟢 REVIEW WORDS (10)</h4>
+        <div class="summary-grid">
+            <div class="summary-item review"><div class="summary-word">充電</div><div class="summary-meaning">charging</div></div>
+            <div class="summary-item review"><div class="summary-word">容量</div><div class="summary-meaning">capacity</div></div>
+            <div class="summary-item review"><div class="summary-word">変換</div><div class="summary-meaning">conversion</div></div>
+            <div class="summary-item review"><div class="summary-word">蓄電</div><div class="summary-meaning">storage</div></div>
+            <div class="summary-item review"><div class="summary-word">放電</div><div class="summary-meaning">discharge</div></div>
+            <div class="summary-item review"><div class="summary-word">電流</div><div class="summary-meaning">current</div></div>
+            <div class="summary-item review"><div class="summary-word">上限</div><div class="summary-meaning">upper limit</div></div>
+            <div class="summary-item review"><div class="summary-word">範囲</div><div class="summary-meaning">range</div></div>
+            <div class="summary-item review"><div class="summary-word">調査</div><div class="summary-meaning">investigation</div></div>
+            <div class="summary-item review"><div class="summary-word">加算</div><div class="summary-meaning">addition</div></div>
+        </div>
+    </div>
+    <div class="srs-note">💡 <strong>SRS Tip:</strong> Boss battles reinforce vocabulary naturally through combat dialogue!</div>
+</div>
+
+<div class="arc-complete">
+    <h3>🏆 ARC 2 COMPLETE! 🏆</h3>
+    <p>Episodes 4-6: Space Invader Arc</p>
+    <p><strong>32 NEW words learned!</strong></p>
+    <p>Total Progress: ~62/140 vocabulary words</p>
+</div>
+
+<nav class="nav">
+    <a href="DragonBall-Episode5.html" class="nav-btn prev">← Episode 5</a>
+    <a href="DragonBall-Episode7.html" class="nav-btn next">Episode 7 (Arc 3) →</a>
+</nav>
+
+<footer class="footer">
+    <p>🐉 Dragon Ball Z: IT Vocabulary Visual Novel 🐉</p>
+    <p>Arc 2 Complete! | Next: Divine Training Arc</p>
+</footer>
+
+</div>
+</body>
+</html>

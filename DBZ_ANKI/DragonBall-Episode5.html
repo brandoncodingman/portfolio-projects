@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball Z - Episode 5: Hyperbolic Time Chamber</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Noto Sans JP',sans-serif;background:#1a1a2e;color:#e0e0e0;line-height:1.7}
+        :root{--db-orange:#ff6b00;--db-blue:#1e90ff;--db-yellow:#ffd700;--db-red:#ff3333;--db-green:#32cd32;--db-purple:#9370db;--db-dark:#0f0f1a;--db-gold:#ffaa00;--db-cyan:#00ffff}
+        .header{text-align:center;padding:30px 20px;background:linear-gradient(180deg,#1a002a,#0a0020);border-bottom:4px solid var(--db-purple)}
+        .header h1{font-size:1.8rem;color:var(--db-gold);text-shadow:0 0 20px var(--db-gold),2px 2px 0 #000}
+        .header h2{color:var(--db-purple);margin-top:8px;font-size:1.2rem}
+        .header p{color:var(--db-cyan);margin-top:8px;font-size:0.9rem}
+        .legend{background:rgba(0,0,0,0.5);border:1px solid #444;border-radius:8px;padding:10px;margin:15px auto;max-width:400px;display:flex;justify-content:center;gap:20px;font-size:0.85rem}
+        .legend-new{color:var(--db-yellow)}
+        .legend-review{color:var(--db-green)}
+        .container{max-width:720px;margin:0 auto;padding:15px}
+        .ep-header{background:linear-gradient(90deg,#1a0030,#001a2a);padding:20px;border-radius:10px 10px 0 0;border-bottom:3px solid var(--db-purple)}
+        .ep-num{font-size:1.3rem;color:var(--db-purple);font-weight:bold}
+        .ep-title{color:#fff;margin-top:5px}
+        .ep-location{color:var(--db-cyan);font-size:0.85rem;margin-top:5px}
+        .ep-vocab{display:inline-block;background:rgba(0,0,0,0.3);padding:5px 10px;border-radius:5px;margin-top:10px;font-size:0.8rem}
+        .ep-vocab .new{color:var(--db-yellow)}
+        .ep-vocab .rev{color:var(--db-green)}
+        .panels{padding:10px;background:#000;border-radius:0 0 10px 10px}
+        .panel{background:#1a1a2a;padding:15px;margin-bottom:8px;border-radius:5px}
+        .panel:last-child{margin-bottom:0}
+        .panel.chamber{background:linear-gradient(180deg,#ffffff,#e8e8e8);color:#222}
+        .panel.chamber .en{color:#555}
+        .panel.sky{background:linear-gradient(180deg,#1a2a4a,#0a1530)}
+        .narration{font-style:italic;color:#aaa;text-align:center;padding:10px}
+        .panel.chamber .narration{color:#555}
+        .action{font-size:1.3rem;font-weight:bold;text-align:center;padding:12px;color:var(--db-orange);text-shadow:0 0 15px var(--db-orange)}
+        .action.power{color:var(--db-yellow);text-shadow:0 0 20px var(--db-yellow)}
+        .dialogue{display:flex;gap:12px;align-items:flex-start;margin:12px 0}
+        .portrait{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;border:3px solid var(--db-orange);background:var(--db-dark);flex-shrink:0}
+        .portrait.goku{border-color:var(--db-orange);background:linear-gradient(135deg,#2a1500,#1a0a00)}
+        .portrait.vegeta{border-color:var(--db-blue);background:linear-gradient(135deg,#001a2a,#000a15)}
+        .portrait.piccolo{border-color:var(--db-green);background:linear-gradient(135deg,#1a2a1a,#0a150a)}
+        .bubble{background:rgba(0,0,0,0.85);border:2px solid #444;border-radius:10px;padding:10px;flex:1}
+        .panel.chamber .bubble{background:rgba(255,255,255,0.9);border-color:#ccc}
+        .speaker{font-weight:bold;font-size:0.8rem;margin-bottom:4px}
+        .speaker.goku{color:var(--db-orange)}
+        .speaker.vegeta{color:var(--db-blue)}
+        .speaker.piccolo{color:var(--db-green)}
+        .jp{margin-bottom:4px;font-size:0.95rem}
+        .en{color:#888;font-size:0.8rem;font-style:italic}
+        .vocab{color:var(--db-yellow);font-weight:bold;background:rgba(255,215,0,0.15);padding:1px 4px;border-radius:3px;border-bottom:2px dotted var(--db-yellow)}
+        .panel.chamber .vocab{background:rgba(255,200,0,0.3)}
+        .vocab-review{color:var(--db-green);font-weight:bold;background:rgba(50,205,50,0.15);padding:1px 4px;border-radius:3px;border-bottom:2px solid var(--db-green)}
+        .panel.chamber .vocab-review{background:rgba(50,205,50,0.3)}
+        .vcard{background:linear-gradient(135deg,#2a2a10,#15150a);border:2px solid var(--db-yellow);border-radius:8px;padding:12px;margin:12px 0;text-align:center}
+        .vcard.review{background:linear-gradient(135deg,#102a10,#0a150a);border-color:var(--db-green)}
+        .vcard-word{font-size:1.5rem;color:var(--db-yellow)}
+        .vcard.review .vcard-word{color:var(--db-green)}
+        .vcard-reading{color:var(--db-blue);font-size:0.9rem}
+        .vcard-meaning{background:rgba(0,0,0,0.3);padding:4px 8px;border-radius:4px;display:inline-block;margin-top:4px;font-size:0.85rem}
+        .vcard-tag{font-size:0.65rem;padding:2px 5px;border-radius:3px;margin-left:5px;vertical-align:middle}
+        .vcard-tag.new{background:var(--db-yellow);color:#000}
+        .vcard-tag.review{background:var(--db-green);color:#000}
+        .summary{background:#0a0a15;padding:20px;margin-top:20px;border-radius:10px;border:1px solid #333}
+        .summary h3{color:var(--db-purple);margin-bottom:15px;font-size:1.1rem}
+        .summary-section{margin-bottom:15px}
+        .summary-section h4{color:var(--db-yellow);margin-bottom:8px;font-size:0.85rem}
+        .summary-section.review h4{color:var(--db-green)}
+        .summary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+        .summary-item{background:rgba(255,215,0,0.1);border:1px solid var(--db-yellow);border-radius:5px;padding:6px;text-align:center}
+        .summary-item.review{background:rgba(50,205,50,0.1);border-color:var(--db-green)}
+        .summary-word{font-size:1.1rem;color:var(--db-yellow)}
+        .summary-item.review .summary-word{color:var(--db-green)}
+        .summary-reading{font-size:0.75rem;color:var(--db-blue)}
+        .summary-meaning{font-size:0.7rem;color:#aaa}
+        .srs-note{background:rgba(0,255,255,0.1);border:1px solid var(--db-cyan);border-radius:6px;padding:10px;margin-top:15px;font-size:0.8rem;color:var(--db-cyan)}
+        .nav{display:flex;justify-content:space-between;padding:20px;margin-top:20px}
+        .nav-btn{padding:12px 25px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:0.9rem;transition:all 0.3s}
+        .nav-btn.prev{background:linear-gradient(135deg,var(--db-orange),#cc5500);color:#fff;border:2px solid var(--db-yellow)}
+        .nav-btn.next{background:linear-gradient(135deg,var(--db-purple),#6a3093);color:#fff;border:2px solid var(--db-cyan)}
+        .nav-btn:hover{transform:translateY(-2px);box-shadow:0 0 15px currentColor}
+        .footer{text-align:center;padding:20px;color:#666;font-size:0.8rem;border-top:1px solid #333;margin-top:20px}
+    </style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+    <h1>🐉 DRAGON BALL Z 🐉</h1>
+    <h2>Arc 2: Space Invader</h2>
+    <p>Japanese IT Vocabulary Visual Novel</p>
+    <div class="legend">
+        <span class="legend-new">🟡 NEW = Learn</span>
+        <span class="legend-review">🟢 REVIEW = Reinforce</span>
+    </div>
+</header>
+
+<section>
+    <div class="ep-header">
+        <div class="ep-num">EPISODE 5</div>
+        <div class="ep-title">精神と時の部屋 - Hyperbolic Time Chamber</div>
+        <div class="ep-location">📍 The Lookout - Hyperbolic Time Chamber</div>
+        <div class="ep-vocab"><span class="new">🟡 10 NEW</span> | <span class="rev">🟢 8 REVIEW</span></div>
+    </div>
+    
+    <div class="panels">
+        <div class="panel chamber"><div class="narration">The infinite white void of the Hyperbolic Time Chamber. One day outside = one year inside.</div></div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">よーし、まずは体の<span class="vocab">充電</span>からだな！この部屋は気の<span class="vocab-review">容量</span>を増やすのに最適だ！</div><div class="en">"Alright, first let's charge up! This room is perfect for increasing ki capacity!"</div></div></div>
+            <div class="vcard"><div class="vcard-word">充電 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">じゅうでん</div><div class="vcard-meaning">charging</div></div>
+            <div class="vcard review"><div class="vcard-word">容量 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">ようりょう</div><div class="vcard-meaning">capacity</div></div>
+        </div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">気の<span class="vocab">蓄電</span>効率を上げる必要がある。<span class="vocab">充電</span>だけでは足りない。気を<span class="vocab">蓄電</span>して、必要な時に<span class="vocab">放電</span>する技術だ。</div><div class="en">"We need to improve ki storage efficiency. Just charging isn't enough. It's the technique of storing ki and discharging when needed."</div></div></div>
+            <div class="vcard"><div class="vcard-word">蓄電 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">ちくでん</div><div class="vcard-meaning">electricity storage</div></div>
+            <div class="vcard"><div class="vcard-word">放電 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">ほうでん</div><div class="vcard-meaning">discharge</div></div>
+        </div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">なるほど！<span class="vocab">蓄電</span>か。でも<span class="vocab">放電</span>するときの<span class="vocab">電流</span>の<span class="vocab-review">制限</span>はどうするんだ？</div><div class="en">"I see! Storage huh. But how do we handle the current limitation when discharging?"</div></div></div>
+            <div class="vcard"><div class="vcard-word">電流 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">でんりゅう</div><div class="vcard-meaning">electric current</div></div>
+            <div class="vcard review"><div class="vcard-word">制限 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">せいげん</div><div class="vcard-meaning">restriction; limit</div></div>
+        </div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp"><span class="vocab-review">制限</span>を設けないのがポイントだ。<span class="vocab">電流</span>と<span class="vocab">電圧</span>を最大まで上げる。それがスーパーサイヤ人を超える鍵だ。</div><div class="en">"The point is not setting limits. Raise current and voltage to max. That's the key to surpassing Super Saiyan."</div></div></div>
+            <div class="vcard"><div class="vcard-word">電圧 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">でんあつ</div><div class="vcard-meaning">voltage</div></div>
+        </div>
+        
+        <div class="panel chamber"><div class="action">💥 INTENSE TRAINING BEGINS! 💥</div></div>
+        
+        <div class="panel chamber"><div class="narration">Three months pass inside the chamber (about 7 hours outside)...</div></div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">ベジータ、この<span class="vocab-review">変数</span>の<span class="vocab">変換</span>がうまくいかないんだ。気のエネルギーを物理的な力に<span class="vocab">変換</span>するコツは？</div><div class="en">"Vegeta, this variable conversion isn't working well. What's the trick to converting ki to physical power?"</div></div></div>
+            <div class="vcard review"><div class="vcard-word">変数 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">へんすう</div><div class="vcard-meaning">variable</div></div>
+            <div class="vcard"><div class="vcard-word">変換 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">へんかん</div><div class="vcard-meaning">conversion; transformation</div></div>
+        </div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">カカロット、<span class="vocab">変換</span>の<span class="vocab">範囲</span>を広げすぎだ。まずは狭い<span class="vocab">範囲</span>で<span class="vocab-review">調査</span>しろ。どの<span class="vocab-review">系統</span>が最も効率的か<span class="vocab-review">検索</span>するんだ。</div><div class="en">"Kakarot, you're expanding the conversion range too much. First investigate in a narrow range. Search for the most efficient system."</div></div></div>
+            <div class="vcard"><div class="vcard-word">範囲 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">はんい</div><div class="vcard-meaning">range; scope</div></div>
+            <div class="vcard review"><div class="vcard-word">調査 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">ちょうさ</div><div class="vcard-meaning">investigation</div></div>
+            <div class="vcard review"><div class="vcard-word">系統 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">けいとう</div><div class="vcard-meaning">system</div></div>
+            <div class="vcard review"><div class="vcard-word">検索 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">けんさく</div><div class="vcard-meaning">search</div></div>
+        </div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">分かった！<span class="vocab">範囲</span>を絞って、<span class="vocab">電流</span>の<span class="vocab">上限</span>を設定してみる！</div><div class="en">"Got it! I'll narrow the range and set an upper limit for the current!"</div></div></div>
+            <div class="vcard"><div class="vcard-word">上限 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">じょうげん</div><div class="vcard-meaning">upper limit</div></div>
+        </div>
+        
+        <div class="panel chamber"><div class="narration">Six months pass inside the chamber...</div></div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">カカロット、お前の<span class="vocab">蓄電</span><span class="vocab-review">容量</span>が増えてきたな。だが<span class="vocab">放電</span>時の<span class="vocab">電圧</span>がまだ不安定だ。</div><div class="en">"Kakarot, your storage capacity has increased. But the voltage during discharge is still unstable."</div></div></div>
+        </div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">うん、<span class="vocab">電圧</span>の<span class="vocab-review">制限</span>と<span class="vocab">上限</span>のバランスが難しいな。でも<span class="vocab">加算</span>していけば安定するはずだ！</div><div class="en">"Yeah, balancing voltage limitation and upper limit is hard. But if I keep adding, it should stabilize!"</div></div></div>
+            <div class="vcard"><div class="vcard-word">加算 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">かさん</div><div class="vcard-meaning">addition; adding</div></div>
+        </div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">単純な<span class="vocab">加算</span>じゃダメだ。<span class="vocab">変換</span>効率を考えろ。<span class="vocab-review">想定</span>した<span class="vocab">範囲</span>内で<span class="vocab">充電</span>と<span class="vocab">放電</span>を繰り返せ。</div><div class="en">"Simple addition won't work. Think about conversion efficiency. Repeat charging and discharging within the expected range."</div></div></div>
+            <div class="vcard review"><div class="vcard-word">想定 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">そうてい</div><div class="vcard-meaning">assumption</div></div>
+        </div>
+        
+        <div class="panel chamber"><div class="narration">Eleven months pass. Almost one year in the chamber...</div></div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">ベジータ！見てくれ！<span class="vocab">蓄電</span>から<span class="vocab">放電</span>への<span class="vocab">変換</span>が完璧になった！<span class="vocab">電流</span>も<span class="vocab">電圧</span>も<span class="vocab">上限</span>を超えてる！</div><div class="en">"Vegeta! Look! Conversion from storage to discharge is perfect! Current and voltage exceed the limit!"</div></div></div>
+        </div>
+        
+        <div class="panel chamber">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">フン...俺も<span class="vocab">充電</span><span class="vocab-review">容量</span>を三倍に<span class="vocab">加算</span>した。<span class="vocab-review">送信</span>されたデータの<span class="vocab-review">関連</span>から<span class="vocab-review">想定</span>すると、フリーザは相当強くなっているはずだ。</div><div class="en">"Hmph... I've tripled my charging capacity. Based on the transmitted data's relation, Frieza should be much stronger."</div></div></div>
+            <div class="vcard review"><div class="vcard-word">送信 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">そうしん</div><div class="vcard-meaning">transmission</div></div>
+            <div class="vcard review"><div class="vcard-word">関連 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">かんれん</div><div class="vcard-meaning">relation</div></div>
+        </div>
+        
+        <div class="panel chamber"><div class="action power">⚡ POWER LEVELS MAXIMIZED! ⚡</div></div>
+        
+        <div class="panel sky">
+            <div class="narration">Goku and Vegeta emerge from the Hyperbolic Time Chamber. Only one day has passed on Earth, but they've trained for a full year.</div>
+        </div>
+        
+        <div class="panel sky">
+            <div class="dialogue"><div class="portrait piccolo">👽</div><div class="bubble"><div class="speaker piccolo">PICCOLO</div><div class="jp">...悟空、ベジータ。ブルマからの<span class="vocab-review">配信</span>だ。フリーザの宇宙船が<span class="vocab-review">検索</span>レーダーに映った。あと3時間で地球に到着する。</div><div class="en">"...Goku, Vegeta. Message from Bulma. Frieza's ship appeared on search radar. 3 hours until arrival."</div></div></div>
+            <div class="vcard review"><div class="vcard-word">配信 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">はいしん</div><div class="vcard-meaning">distribution</div></div>
+        </div>
+        
+        <div class="panel sky">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">よし、ちょうどいいタイミングだ！今の俺たちなら、どんな<span class="vocab-review">次元</span>の敵にも<span class="vocab-review">対応</span>できる！</div><div class="en">"Alright, perfect timing! We can handle enemies of any dimension now!"</div></div></div>
+            <div class="vcard review"><div class="vcard-word">次元 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">じげん</div><div class="vcard-meaning">dimension</div></div>
+            <div class="vcard review"><div class="vcard-word">対応 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">たいおう</div><div class="vcard-meaning">correspondence</div></div>
+        </div>
+        
+        <div class="panel sky">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">フリーザ...今度こそ<span class="vocab-review">根本</span>から消し去ってやる。</div><div class="en">"Frieza... This time I'll erase you from the root."</div></div></div>
+            <div class="vcard review"><div class="vcard-word">根本 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">こんぽん</div><div class="vcard-meaning">root; foundation</div></div>
+        </div>
+        
+        <div class="panel sky">
+            <div class="narration">The final battle approaches. Golden Frieza vs the Saiyan Warriors!</div>
+            <div style="text-align:center;margin-top:15px;color:var(--db-gold);font-size:1.1rem">TO BE CONTINUED... 👾</div>
+        </div>
+    </div>
+</section>
+
+<div class="summary">
+    <h3>📚 Episode 5 Vocabulary Summary</h3>
+    <div class="summary-section">
+        <h4>🟡 NEW WORDS (10)</h4>
+        <div class="summary-grid">
+            <div class="summary-item"><div class="summary-word">充電</div><div class="summary-reading">じゅうでん</div><div class="summary-meaning">charging</div></div>
+            <div class="summary-item"><div class="summary-word">蓄電</div><div class="summary-reading">ちくでん</div><div class="summary-meaning">storage</div></div>
+            <div class="summary-item"><div class="summary-word">放電</div><div class="summary-reading">ほうでん</div><div class="summary-meaning">discharge</div></div>
+            <div class="summary-item"><div class="summary-word">電流</div><div class="summary-reading">でんりゅう</div><div class="summary-meaning">current</div></div>
+            <div class="summary-item"><div class="summary-word">電圧</div><div class="summary-reading">でんあつ</div><div class="summary-meaning">voltage</div></div>
+            <div class="summary-item"><div class="summary-word">変換</div><div class="summary-reading">へんかん</div><div class="summary-meaning">conversion</div></div>
+            <div class="summary-item"><div class="summary-word">範囲</div><div class="summary-reading">はんい</div><div class="summary-meaning">range</div></div>
+            <div class="summary-item"><div class="summary-word">上限</div><div class="summary-reading">じょうげん</div><div class="summary-meaning">upper limit</div></div>
+            <div class="summary-item"><div class="summary-word">加算</div><div class="summary-reading">かさん</div><div class="summary-meaning">addition</div></div>
+            <div class="summary-item"><div class="summary-word">制限</div><div class="summary-reading">せいげん</div><div class="summary-meaning">restriction</div></div>
+        </div>
+    </div>
+    <div class="summary-section review">
+        <h4>🟢 REVIEW WORDS (8) - From Episodes 1-4</h4>
+        <div class="summary-grid">
+            <div class="summary-item review"><div class="summary-word">容量</div><div class="summary-reading">ようりょう</div><div class="summary-meaning">capacity</div></div>
+            <div class="summary-item review"><div class="summary-word">変数</div><div class="summary-reading">へんすう</div><div class="summary-meaning">variable</div></div>
+            <div class="summary-item review"><div class="summary-word">調査</div><div class="summary-reading">ちょうさ</div><div class="summary-meaning">investigation</div></div>
+            <div class="summary-item review"><div class="summary-word">系統</div><div class="summary-reading">けいとう</div><div class="summary-meaning">system</div></div>
+            <div class="summary-item review"><div class="summary-word">検索</div><div class="summary-reading">けんさく</div><div class="summary-meaning">search</div></div>
+            <div class="summary-item review"><div class="summary-word">想定</div><div class="summary-reading">そうてい</div><div class="summary-meaning">assumption</div></div>
+            <div class="summary-item review"><div class="summary-word">送信</div><div class="summary-reading">そうしん</div><div class="summary-meaning">transmission</div></div>
+            <div class="summary-item review"><div class="summary-word">関連</div><div class="summary-reading">かんれん</div><div class="summary-meaning">relation</div></div>
+        </div>
+    </div>
+    <div class="srs-note">💡 <strong>SRS Tip:</strong> Electrical vocabulary (充電, 蓄電, 放電, 電流, 電圧) as a themed group improves retention! Notice how Episode 4's words were reviewed naturally in the dialogue.</div>
+</div>
+
+<nav class="nav">
+    <a href="DragonBall-Episode4.html" class="nav-btn prev">← Episode 4</a>
+    <a href="DragonBall-Episode6.html" class="nav-btn next">Episode 6 (BOSS) →</a>
+</nav>
+
+<footer class="footer">
+    <p>🐉 Dragon Ball Z: IT Vocabulary Visual Novel 🐉</p>
+    <p>Arc 2: Space Invader | Episode 5 of 9</p>
+    <p>Total Progress: ~50/140 vocabulary words</p>
+</footer>
+
+</div>
+</body>
+</html>

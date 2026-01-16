@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball Z - Episode 4: Signal from Space</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Noto Sans JP',sans-serif;background:#1a1a2e;color:#e0e0e0;line-height:1.7}
+        :root{--db-orange:#ff6b00;--db-blue:#1e90ff;--db-yellow:#ffd700;--db-red:#ff3333;--db-green:#32cd32;--db-purple:#9370db;--db-dark:#0f0f1a;--db-gold:#ffaa00;--db-cyan:#00ffff}
+        .header{text-align:center;padding:30px 20px;background:linear-gradient(180deg,#1a002a,#0a0020);border-bottom:4px solid var(--db-purple)}
+        .header h1{font-size:1.8rem;color:var(--db-gold);text-shadow:0 0 20px var(--db-gold),2px 2px 0 #000}
+        .header h2{color:var(--db-purple);margin-top:8px;font-size:1.2rem}
+        .header p{color:var(--db-cyan);margin-top:8px;font-size:0.9rem}
+        .legend{background:rgba(0,0,0,0.5);border:1px solid #444;border-radius:8px;padding:10px;margin:15px auto;max-width:400px;display:flex;justify-content:center;gap:20px;font-size:0.85rem}
+        .legend-new{color:var(--db-yellow)}
+        .legend-review{color:var(--db-green)}
+        .container{max-width:720px;margin:0 auto;padding:15px}
+        .ep-header{background:linear-gradient(90deg,#1a0030,#001a2a);padding:20px;border-radius:10px 10px 0 0;border-bottom:3px solid var(--db-purple)}
+        .ep-num{font-size:1.3rem;color:var(--db-purple);font-weight:bold}
+        .ep-title{color:#fff;margin-top:5px}
+        .ep-location{color:var(--db-cyan);font-size:0.85rem;margin-top:5px}
+        .ep-vocab{display:inline-block;background:rgba(0,0,0,0.3);padding:5px 10px;border-radius:5px;margin-top:10px;font-size:0.8rem}
+        .ep-vocab .new{color:var(--db-yellow)}
+        .ep-vocab .rev{color:var(--db-green)}
+        .panels{padding:10px;background:#000;border-radius:0 0 10px 10px}
+        .panel{background:#1a1a2a;padding:15px;margin-bottom:8px;border-radius:5px}
+        .panel:last-child{margin-bottom:0}
+        .panel.capsule{background:linear-gradient(180deg,#1a2a3a,#0a1520)}
+        .panel.sky{background:linear-gradient(180deg,#1a2a4a,#0a1530)}
+        .narration{font-style:italic;color:#aaa;text-align:center;padding:10px}
+        .narration.space{color:#aaccff;background:rgba(0,50,100,0.2);border-radius:8px;padding:12px}
+        .narration.alert{color:#ff6666;background:rgba(255,0,0,0.1);border-radius:8px;padding:12px}
+        .dialogue{display:flex;gap:12px;align-items:flex-start;margin:12px 0}
+        .portrait{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;border:3px solid var(--db-orange);background:var(--db-dark);flex-shrink:0}
+        .portrait.goku{border-color:var(--db-orange);background:linear-gradient(135deg,#2a1500,#1a0a00)}
+        .portrait.vegeta{border-color:var(--db-blue);background:linear-gradient(135deg,#001a2a,#000a15)}
+        .portrait.bulma{border-color:var(--db-purple);background:linear-gradient(135deg,#2a1a3a,#150a20)}
+        .portrait.piccolo{border-color:var(--db-green);background:linear-gradient(135deg,#1a2a1a,#0a150a)}
+        .portrait.gohan{border-color:var(--db-yellow);background:linear-gradient(135deg,#2a2a1a,#15150a)}
+        .bubble{background:rgba(0,0,0,0.85);border:2px solid #444;border-radius:10px;padding:10px;flex:1}
+        .speaker{font-weight:bold;font-size:0.8rem;margin-bottom:4px}
+        .speaker.goku{color:var(--db-orange)}
+        .speaker.vegeta{color:var(--db-blue)}
+        .speaker.bulma{color:var(--db-purple)}
+        .speaker.piccolo{color:var(--db-green)}
+        .speaker.gohan{color:var(--db-yellow)}
+        .jp{margin-bottom:4px;font-size:0.95rem}
+        .en{color:#888;font-size:0.8rem;font-style:italic}
+        .vocab{color:var(--db-yellow);font-weight:bold;background:rgba(255,215,0,0.15);padding:1px 4px;border-radius:3px;border-bottom:2px dotted var(--db-yellow)}
+        .vocab-review{color:var(--db-green);font-weight:bold;background:rgba(50,205,50,0.15);padding:1px 4px;border-radius:3px;border-bottom:2px solid var(--db-green)}
+        .vcard{background:linear-gradient(135deg,#2a2a10,#15150a);border:2px solid var(--db-yellow);border-radius:8px;padding:12px;margin:12px 0;text-align:center}
+        .vcard.review{background:linear-gradient(135deg,#102a10,#0a150a);border-color:var(--db-green)}
+        .vcard-word{font-size:1.5rem;color:var(--db-yellow)}
+        .vcard.review .vcard-word{color:var(--db-green)}
+        .vcard-reading{color:var(--db-blue);font-size:0.9rem}
+        .vcard-meaning{background:rgba(0,0,0,0.3);padding:4px 8px;border-radius:4px;display:inline-block;margin-top:4px;font-size:0.85rem}
+        .vcard-tag{font-size:0.65rem;padding:2px 5px;border-radius:3px;margin-left:5px;vertical-align:middle}
+        .vcard-tag.new{background:var(--db-yellow);color:#000}
+        .vcard-tag.review{background:var(--db-green);color:#000}
+        .summary{background:#0a0a15;padding:20px;margin-top:20px;border-radius:10px;border:1px solid #333}
+        .summary h3{color:var(--db-purple);margin-bottom:15px;font-size:1.1rem}
+        .summary-section{margin-bottom:15px}
+        .summary-section h4{color:var(--db-yellow);margin-bottom:8px;font-size:0.85rem}
+        .summary-section.review h4{color:var(--db-green)}
+        .summary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+        .summary-item{background:rgba(255,215,0,0.1);border:1px solid var(--db-yellow);border-radius:5px;padding:6px;text-align:center}
+        .summary-item.review{background:rgba(50,205,50,0.1);border-color:var(--db-green)}
+        .summary-word{font-size:1.1rem;color:var(--db-yellow)}
+        .summary-item.review .summary-word{color:var(--db-green)}
+        .summary-reading{font-size:0.75rem;color:var(--db-blue)}
+        .summary-meaning{font-size:0.7rem;color:#aaa}
+        .srs-note{background:rgba(0,255,255,0.1);border:1px solid var(--db-cyan);border-radius:6px;padding:10px;margin-top:15px;font-size:0.8rem;color:var(--db-cyan)}
+        .nav{display:flex;justify-content:space-between;padding:20px;margin-top:20px}
+        .nav-btn{padding:12px 25px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:0.9rem;transition:all 0.3s}
+        .nav-btn.prev{background:linear-gradient(135deg,var(--db-orange),#cc5500);color:#fff;border:2px solid var(--db-yellow)}
+        .nav-btn.next{background:linear-gradient(135deg,var(--db-purple),#6a3093);color:#fff;border:2px solid var(--db-cyan)}
+        .nav-btn:hover{transform:translateY(-2px);box-shadow:0 0 15px currentColor}
+        .nav-btn.disabled{opacity:0.3;pointer-events:none}
+        .footer{text-align:center;padding:20px;color:#666;font-size:0.8rem;border-top:1px solid #333;margin-top:20px}
+    </style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+    <h1>🐉 DRAGON BALL Z 🐉</h1>
+    <h2>Arc 2: Space Invader</h2>
+    <p>Japanese IT Vocabulary Visual Novel</p>
+    <div class="legend">
+        <span class="legend-new">🟡 NEW = Learn</span>
+        <span class="legend-review">🟢 REVIEW = Reinforce</span>
+    </div>
+</header>
+
+<section>
+    <div class="ep-header">
+        <div class="ep-num">EPISODE 4</div>
+        <div class="ep-title">宇宙からの信号 - Signal from Space</div>
+        <div class="ep-location">📍 Capsule Corp - Research Lab</div>
+        <div class="ep-vocab"><span class="new">🟡 10 NEW</span> | <span class="rev">🟢 5 REVIEW</span></div>
+    </div>
+    
+    <div class="panels">
+        <div class="panel capsule"><div class="narration space">Two weeks after Android 21's defeat. Peace has returned to Earth... or so it seemed.</div></div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait bulma">👩‍🔬</div><div class="bubble"><div class="speaker bulma">BULMA</div><div class="jp">みんな、大変よ！宇宙から奇妙な<span class="vocab">送信</span>を受信したわ！</div><div class="en">"Everyone, this is serious! We received a strange transmission from space!"</div></div></div>
+            <div class="vcard"><div class="vcard-word">送信 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">そうしん</div><div class="vcard-meaning">transmission; sending</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">宇宙から？その<span class="vocab">送信</span>の内容は何だ？敵か？強いやつか？</div><div class="en">"From space? What's the content of that transmission? An enemy? A strong one?"</div></div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait bulma">👩‍🔬</div><div class="bubble"><div class="speaker bulma">BULMA</div><div class="jp">まだ<span class="vocab">調査</span>中よ。データベースで<span class="vocab">検索</span>してるけど、この<span class="vocab">送信</span>パターンは初めて見るわ。</div><div class="en">"Still investigating. I'm searching the database, but this transmission pattern is new to me."</div></div></div>
+            <div class="vcard"><div class="vcard-word">調査 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">ちょうさ</div><div class="vcard-meaning">investigation; survey</div></div>
+            <div class="vcard"><div class="vcard-word">検索 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">けんさく</div><div class="vcard-meaning">search; lookup</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">フン、<span class="vocab">検索</span>なんかより、俺の<span class="vocab-review">認証</span>コードを使え。サイヤ人の宇宙通信<span class="vocab">系統</span>にアクセスできる。</div><div class="en">"Hmph, forget the search. Use my authentication code. I can access the Saiyan communication system."</div></div></div>
+            <div class="vcard review"><div class="vcard-word">認証 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">にんしょう</div><div class="vcard-meaning">authentication</div></div>
+            <div class="vcard"><div class="vcard-word">系統 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">けいとう</div><div class="vcard-meaning">system; lineage</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait gohan">📚</div><div class="bubble"><div class="speaker gohan">GOHAN</div><div class="jp">ブルマさん、この<span class="vocab">送信</span>データを<span class="vocab">調査</span>したら、複数の<span class="vocab">変数</span>が含まれています。座標データかも。</div><div class="en">"Bulma, when I investigated this transmission data, it contains multiple variables. Could be coordinates."</div></div></div>
+            <div class="vcard"><div class="vcard-word">変数 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">へんすう</div><div class="vcard-meaning">variable</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait bulma">👩‍🔬</div><div class="bubble"><div class="speaker bulma">BULMA</div><div class="jp">すごい悟飯！その<span class="vocab">変数</span>を<span class="vocab">検索</span><span class="vocab">系統</span>で分析すれば、<span class="vocab">送信</span>元を特定できるわ。<span class="vocab">引数</span>として座標計算に渡して。</div><div class="en">"Amazing Gohan! If we analyze those variables with the search system, we can locate the source. Pass them as arguments."</div></div></div>
+            <div class="vcard"><div class="vcard-word">引数 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">ひきすう</div><div class="vcard-meaning">argument (of a function)</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait piccolo">👽</div><div class="bubble"><div class="speaker piccolo">PICCOLO</div><div class="jp">...待て。この<span class="vocab">調査</span>結果を見ろ。<span class="vocab">送信</span>信号の<span class="vocab-review">対応</span>パターンが気になる。</div><div class="en">"...Wait. Look at this investigation result. The transmission signal's response pattern is concerning."</div></div></div>
+            <div class="vcard review"><div class="vcard-word">対応 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">たいおう</div><div class="vcard-meaning">correspondence; response</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait gohan">📚</div><div class="bubble"><div class="speaker gohan">GOHAN</div><div class="jp">ピッコロさん、確かに。この<span class="vocab">引数</span>と<span class="vocab">変数</span>の<span class="vocab-review">対応</span>関係を見ると、通常の三<span class="vocab">次元</span>座標じゃない気がします。</div><div class="en">"Piccolo, you're right. Looking at the correspondence between these arguments and variables, it doesn't seem like normal 3D coordinates."</div></div></div>
+            <div class="vcard"><div class="vcard-word">次元 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">じげん</div><div class="vcard-meaning">dimension</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">...四<span class="vocab">次元</span>だと？時間軸を含む座標か。これは<span class="vocab">想定</span>外だ。俺でも<span class="vocab">想定</span>していなかった。</div><div class="en">"...Four dimensions? Coordinates including time? This is unexpected. Even I didn't assume this."</div></div></div>
+            <div class="vcard"><div class="vcard-word">想定 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">そうてい</div><div class="vcard-meaning">assumption; expectation</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait bulma">👩‍🔬</div><div class="bubble"><div class="speaker bulma">BULMA</div><div class="jp">私もその<span class="vocab">想定</span>はしてなかったわ。でも<span class="vocab">検索</span><span class="vocab">系統</span>を更新すれば、四<span class="vocab">次元</span>データも<span class="vocab-review">対応</span>できるはず。</div><div class="en">"I wasn't expecting that either. But if we update the search system, it should handle 4D data."</div></div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">なあブルマ、その<span class="vocab">調査</span>と<span class="vocab">検索</span>、どのくらい時間かかるんだ？俺、修行したいんだけど。</div><div class="en">"Hey Bulma, how long will that investigation and search take? I wanna train."</div></div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait bulma">👩‍🔬</div><div class="bubble"><div class="speaker bulma">BULMA</div><div class="jp">悟空！これは<span class="vocab">関連</span>する全ての<span class="vocab">系統</span>を<span class="vocab">調査</span>する必要があるのよ！<span class="vocab">関連</span>データも膨大だし！</div><div class="en">"Goku! We need to investigate all related systems! The related data is enormous!"</div></div></div>
+            <div class="vcard"><div class="vcard-word">関連 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">かんれん</div><div class="vcard-meaning">relation; connection</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait piccolo">👽</div><div class="bubble"><div class="speaker piccolo">PICCOLO</div><div class="jp">...この<span class="vocab">送信</span>の<span class="vocab">関連</span>データを見ろ。エネルギー波形がフリーザ軍の<span class="vocab">系統</span>と一致している。</div><div class="en">"...Look at this transmission's related data. The energy waveform matches the Frieza Force's system."</div></div></div>
+        </div>
+        
+        <div class="panel capsule"><div class="narration alert">The room falls silent. Frieza's name echoes in everyone's mind...</div></div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">フリーザだと...？奴の<span class="vocab-review">認証</span><span class="vocab">系統</span>は俺が破壊したはずだ。まさか復活を<span class="vocab">想定</span>していたのか？</div><div class="en">"Frieza...? I should have destroyed his authentication system. Could he have anticipated a revival?"</div></div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait gohan">📚</div><div class="bubble"><div class="speaker gohan">GOHAN</div><div class="jp">この<span class="vocab">変数</span>の<span class="vocab">配信</span>パターンを見てください。<span class="vocab">引数</span>が定期的に地球に向けて<span class="vocab">送信</span>されています。</div><div class="en">"Look at this variable's distribution pattern. Arguments are being transmitted to Earth periodically."</div></div></div>
+            <div class="vcard"><div class="vcard-word">配信 <span class="vcard-tag new">NEW</span></div><div class="vcard-reading">はいしん</div><div class="vcard-meaning">distribution; streaming</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait bulma">👩‍🔬</div><div class="bubble"><div class="speaker bulma">BULMA</div><div class="jp"><span class="vocab">配信</span>されてる？つまり誰かがリアルタイムで<span class="vocab">配信</span>を受け取ってる？<span class="vocab-review">不具合</span>じゃなくて意図的ね...</div><div class="en">"Being distributed? Someone is receiving the distribution in real-time? Not a bug, but intentional..."</div></div></div>
+            <div class="vcard review"><div class="vcard-word">不具合 <span class="vcard-tag review">REVIEW</span></div><div class="vcard-reading">ふぐあい</div><div class="vcard-meaning">bug; defect</div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait goku">🦸</div><div class="bubble"><div class="speaker goku">GOKU</div><div class="jp">よし、分かった！フリーザが来るなら、俺たちも準備しなきゃな！ベジータ、精神と時の部屋で修行しようぜ！</div><div class="en">"Alright, got it! If Frieza is coming, we need to prepare! Vegeta, let's train in the Hyperbolic Time Chamber!"</div></div></div>
+        </div>
+        
+        <div class="panel capsule">
+            <div class="dialogue"><div class="portrait vegeta">🦸‍♂️</div><div class="bubble"><div class="speaker vegeta">VEGETA</div><div class="jp">フン...珍しくカカロットの<span class="vocab">想定</span>に同意する。<span class="vocab">調査</span>を待つより修行した方が<span class="vocab-review">対応</span>できる。</div><div class="en">"Hmph... Rare for me to agree with Kakarot's assumption. Training lets us respond better than waiting for investigation."</div></div></div>
+        </div>
+        
+        <div class="panel sky">
+            <div class="narration">Goku and Vegeta depart for the Lookout. The battle to protect Earth begins anew...</div>
+            <div style="text-align:center;margin-top:15px;color:var(--db-cyan);font-size:1.1rem">TO BE CONTINUED... ⏳</div>
+        </div>
+    </div>
+</section>
+
+<div class="summary">
+    <h3>📚 Episode 4 Vocabulary Summary</h3>
+    <div class="summary-section">
+        <h4>🟡 NEW WORDS (10)</h4>
+        <div class="summary-grid">
+            <div class="summary-item"><div class="summary-word">送信</div><div class="summary-reading">そうしん</div><div class="summary-meaning">transmission</div></div>
+            <div class="summary-item"><div class="summary-word">調査</div><div class="summary-reading">ちょうさ</div><div class="summary-meaning">investigation</div></div>
+            <div class="summary-item"><div class="summary-word">検索</div><div class="summary-reading">けんさく</div><div class="summary-meaning">search</div></div>
+            <div class="summary-item"><div class="summary-word">系統</div><div class="summary-reading">けいとう</div><div class="summary-meaning">system</div></div>
+            <div class="summary-item"><div class="summary-word">変数</div><div class="summary-reading">へんすう</div><div class="summary-meaning">variable</div></div>
+            <div class="summary-item"><div class="summary-word">引数</div><div class="summary-reading">ひきすう</div><div class="summary-meaning">argument</div></div>
+            <div class="summary-item"><div class="summary-word">次元</div><div class="summary-reading">じげん</div><div class="summary-meaning">dimension</div></div>
+            <div class="summary-item"><div class="summary-word">想定</div><div class="summary-reading">そうてい</div><div class="summary-meaning">assumption</div></div>
+            <div class="summary-item"><div class="summary-word">関連</div><div class="summary-reading">かんれん</div><div class="summary-meaning">relation</div></div>
+            <div class="summary-item"><div class="summary-word">配信</div><div class="summary-reading">はいしん</div><div class="summary-meaning">distribution</div></div>
+        </div>
+    </div>
+    <div class="summary-section review">
+        <h4>🟢 REVIEW WORDS (5) - From Arc 1</h4>
+        <div class="summary-grid">
+            <div class="summary-item review"><div class="summary-word">認証</div><div class="summary-reading">にんしょう</div><div class="summary-meaning">authentication</div></div>
+            <div class="summary-item review"><div class="summary-word">対応</div><div class="summary-reading">たいおう</div><div class="summary-meaning">correspondence</div></div>
+            <div class="summary-item review"><div class="summary-word">不具合</div><div class="summary-reading">ふぐあい</div><div class="summary-meaning">bug</div></div>
+        </div>
+    </div>
+    <div class="srs-note">💡 <strong>SRS Tip:</strong> Words like 送信, 検索, 変数, 系統 appeared multiple times in different contexts. This spaced repetition helps move vocabulary to long-term memory!</div>
+</div>
+
+<nav class="nav">
+    <a href="DragonBall-Episode3.html" class="nav-btn prev">← Episode 3</a>
+    <a href="DragonBall-Episode5.html" class="nav-btn next">Episode 5 →</a>
+</nav>
+
+<footer class="footer">
+    <p>🐉 Dragon Ball Z: IT Vocabulary Visual Novel 🐉</p>
+    <p>Arc 2: Space Invader | Episode 4 of 9</p>
+    <p>Total Progress: ~40/140 vocabulary words</p>
+</footer>
+
+</div>
+</body>
+</html>
