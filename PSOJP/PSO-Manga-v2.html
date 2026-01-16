@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSO: Pioneer 2's Energy Crisis - 日本語マンガ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: #0a0a12; color: #e0e0e0; line-height: 1.7; }
+        
+        .header { text-align: center; padding: 40px 20px; background: linear-gradient(180deg, #1a1a3e, #0a0a15); border-bottom: 3px solid #00ffff; }
+        .header h1 { font-size: 2rem; color: #00ffff; text-shadow: 0 0 30px #00ffff; }
+        .header h2 { color: #00ff88; margin-top: 5px; }
+        .header p { color: #ffaa00; margin-top: 10px; }
+        .header .note { color: #888; font-size: 0.9rem; margin-top: 15px; }
+        
+        .container { max-width: 700px; margin: 0 auto; padding: 20px; }
+        
+        .day { margin-bottom: 50px; background: #12121a; border-radius: 15px; overflow: hidden; border: 2px solid #333; }
+        .day-header { background: linear-gradient(90deg, #1a0a2a, #0a1a2a); padding: 20px; border-bottom: 3px solid #aa55ff; }
+        .day-header.boss { background: linear-gradient(90deg, #2a0a0a, #0a0a2a); border-color: #ff4444; }
+        .day-num { font-size: 1.4rem; color: #aa55ff; font-weight: bold; }
+        .day-num.boss { color: #ff4444; }
+        .day-title { color: #fff; margin-top: 5px; }
+        .day-location { color: #ffaa00; font-size: 0.9rem; margin-top: 5px; }
+        
+        .panels { padding: 10px; background: #000; }
+        
+        .panel { background: #1a1a2a; padding: 20px; margin-bottom: 8px; border-radius: 5px; }
+        .panel:last-child { margin-bottom: 0; }
+        .panel.pioneer { background: linear-gradient(180deg, #1a1a3a, #0a0a20); }
+        .panel.forest { background: linear-gradient(180deg, #0a2a0a, #051505); }
+        .panel.battle { background: linear-gradient(180deg, #2a0a0a, #150505); }
+        
+        .narration { font-style: italic; color: #aaa; text-align: center; padding: 10px; }
+        .narration.alert { color: #ff6666; background: rgba(255,0,0,0.1); border-radius: 8px; }
+        
+        .dialogue { display: flex; gap: 15px; align-items: flex-start; margin: 15px 0; }
+        .portrait { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; border: 3px solid #00ffff; background: #0a0a15; flex-shrink: 0; }
+        .portrait.tyrell { border-color: #ffff00; }
+        .portrait.ash { border-color: #ff4444; }
+        .portrait.bernie { border-color: #00ff88; }
+        .portrait.sophia { border-color: #ff66aa; }
+        .portrait.elenor { border-color: #aa55ff; }
+        
+        .bubble { background: rgba(0,0,0,0.85); border: 2px solid #444; border-radius: 12px; padding: 12px; flex: 1; }
+        .speaker { font-weight: bold; font-size: 0.8rem; margin-bottom: 5px; }
+        .speaker.tyrell { color: #ffff00; }
+        .speaker.ash { color: #ff4444; }
+        .speaker.bernie { color: #00ff88; }
+        .speaker.sophia { color: #ff66aa; }
+        .speaker.elenor { color: #aa55ff; }
+        .jp { margin-bottom: 5px; }
+        .en { color: #888; font-size: 0.85rem; font-style: italic; }
+        
+        .vocab { color: #ffff00; font-weight: bold; background: rgba(255,255,0,0.1); padding: 1px 5px; border-radius: 3px; }
+        
+        .vcard { background: linear-gradient(135deg, #1a1a0a, #0a0a05); border: 2px solid #ffff00; border-radius: 10px; padding: 15px; margin: 15px 0; text-align: center; }
+        .vcard-word { font-size: 1.8rem; color: #ffff00; }
+        .vcard-reading { color: #00ffff; }
+        .vcard-meaning { background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; display: inline-block; margin-top: 5px; }
+        
+        .rico { background: linear-gradient(135deg, #2a1a05, #150a02); border: 2px solid #ffaa00; border-radius: 10px; padding: 20px; margin: 15px 0; position: relative; }
+        .rico::before { content: '📜 RICO MESSAGE'; position: absolute; top: -10px; left: 15px; background: #ffaa00; color: #000; padding: 2px 10px; font-size: 0.7rem; font-weight: bold; border-radius: 3px; }
+        .rico p { font-style: italic; color: #ddd; }
+        
+        .boss-appear { text-align: center; padding: 30px; }
+        .boss-sprite { font-size: 5rem; animation: float 2s ease-in-out infinite; }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .boss-name { font-size: 1.5rem; color: #ff4444; text-shadow: 0 0 20px #ff4444; margin-top: 10px; }
+        
+        .action { font-size: 1.5rem; font-weight: bold; text-align: center; padding: 15px; color: #ff4444; text-shadow: 0 0 15px #ff4444; }
+        .action.victory { color: #00ff88; text-shadow: 0 0 15px #00ff88; }
+        
+        .summary { background: #0a0a15; padding: 20px; border-top: 2px solid #00ffff; }
+        .summary h3 { color: #00ffff; margin-bottom: 15px; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+        .summary-item { background: rgba(255,255,0,0.05); border: 1px solid #ffff00; border-radius: 5px; padding: 10px; text-align: center; }
+        .summary-word { font-size: 1.2rem; color: #ffff00; }
+        .summary-reading { color: #00ffff; font-size: 0.85rem; }
+        .summary-meaning { color: #aaa; font-size: 0.75rem; }
+        
+        .footer { text-align: center; padding: 30px; color: #666; }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1>PHANTASY STAR ONLINE</h1>
+    <h2>Pioneer 2's Energy Crisis</h2>
+    <p>パイオニア2のエネルギー危機</p>
+    <p class="note">📖 Read top to bottom, left to right (like English)<br>Characters talk TO each other in conversation</p>
+</header>
+
+<div class="container">
+
+<!-- ============ DAY 1 ============ -->
+<section class="day" id="day1">
+    <div class="day-header">
+        <div class="day-num">DAY 1</div>
+        <div class="day-title">The Emergency Meeting</div>
+        <div class="day-location">📍 Pioneer 2 - Central Command</div>
+    </div>
+    
+    <div class="panels">
+        
+        <div class="panel pioneer">
+            <div class="narration">Alarms blare through Pioneer 2. The colony's 30,000 residents depend on Ragol's solar grid—and something has gone terribly wrong.</div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait tyrell">👨‍✈️</div>
+                <div class="bubble">
+                    <div class="speaker tyrell">PRINCIPAL TYRELL</div>
+                    <div class="jp">緊急事態だ。まずエラーログの<span class="vocab">有無</span>を確認しろ。</div>
+                    <div class="en">"This is an emergency. First, check for the presence or absence of error logs."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">有無</div>
+                <div class="vcard-reading">うむ</div>
+                <div class="vcard-meaning">presence or absence</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait bernie">🤖</div>
+                <div class="bubble">
+                    <div class="speaker bernie">BERNIE</div>
+                    <div class="jp">了解です、Principal。確認しました。ソーラーパネルの<span class="vocab">枚数</span>によって発電量が変わりますが...現在30%が故障中です。</div>
+                    <div class="en">"Understood, Principal. I've checked. Power varies by panel count... currently 30% are malfunctioning."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">枚数</div>
+                <div class="vcard-reading">まいすう</div>
+                <div class="vcard-meaning">number of flat things</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait tyrell">👨‍✈️</div>
+                <div class="bubble">
+                    <div class="speaker tyrell">TYRELL</div>
+                    <div class="jp">30%だと!? それは深刻だ。原因は分かるか？</div>
+                    <div class="en">"30%!? That's serious. Do we know the cause?"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait elenor">👩‍💻</div>
+                <div class="bubble">
+                    <div class="speaker elenor">ELENOR</div>
+                    <div class="jp">私がAPI仕様書に詳細を<span class="vocab">記述</span>しました。異常なパターンを発見しています。これは単純な故障ではないようです...</div>
+                    <div class="en">"I've documented the details in the API spec. We're seeing abnormal patterns. This doesn't seem like a simple malfunction..."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">記述</div>
+                <div class="vcard-reading">きじゅつ</div>
+                <div class="vcard-meaning">documentation; description</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait sophia">🧝‍♀️</div>
+                <div class="bubble">
+                    <div class="speaker sophia">SOPHIA</div>
+                    <div class="jp">皆さん、大変です！CPU使用率が<span class="vocab">閾値</span>を超えています！</div>
+                    <div class="en">"Everyone, this is critical! CPU usage is exceeding the threshold!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">閾値</div>
+                <div class="vcard-reading">いきち</div>
+                <div class="vcard-meaning">threshold</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">落ち着け、Sophia。まず故障をゾーンごとに<span class="vocab">分類</span>しよう。優先順位をつけて対処すべきだ。</div>
+                    <div class="en">"Calm down, Sophia. First, let's classify the failures by zone. We should prioritize."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">分類</div>
+                <div class="vcard-reading">ぶんるい</div>
+                <div class="vcard-meaning">classification</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait elenor">👩‍💻</div>
+                <div class="bubble">
+                    <div class="speaker elenor">ELENOR</div>
+                    <div class="jp">いい考えです、Ash。私は入力データの<span class="vocab">妥当性</span>を検証するバリデーション処理を実装しました。</div>
+                    <div class="en">"Good idea, Ash. I've implemented validation to verify input data validity."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">妥当性</div>
+                <div class="vcard-reading">だとうせい</div>
+                <div class="vcard-meaning">validity</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait bernie">🤖</div>
+                <div class="bubble">
+                    <div class="speaker bernie">BERNIE</div>
+                    <div class="jp">待ってください。暗号化されたメッセージを発見しました。発信者は...「Rico」？</div>
+                    <div class="en">"Wait. I've found an encrypted message. The sender is... 'Rico'?"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="rico">
+                <p>"If you're receiving this, Pioneer 2's systems are in danger. I discovered something on Ragol... a dark presence corrupting our technology. The solar grid failures aren't accidents. Be careful, Hunters." — Rico</p>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait tyrell">👨‍✈️</div>
+                <div class="bubble">
+                    <div class="speaker tyrell">TYRELL</div>
+                    <div class="jp">Rico...パイオニア1の英雄か。彼女のメッセージが本当なら、状況は我々が思っていたより深刻だ。</div>
+                    <div class="en">"Rico... the hero of Pioneer 1. If her message is true, the situation is more serious than we thought."</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait bernie">🤖</div>
+                <div class="bubble">
+                    <div class="speaker bernie">BERNIE</div>
+                    <div class="jp">Principal、発電データを<span class="vocab">毎時</span>自動収集しています。異常パターンは確かに増加しています。</div>
+                    <div class="en">"Principal, we're collecting power data hourly. The abnormal patterns are definitely increasing."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">毎時</div>
+                <div class="vcard-reading">まいじ</div>
+                <div class="vcard-meaning">hourly</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait sophia">🧝‍♀️</div>
+                <div class="bubble">
+                    <div class="speaker sophia">SOPHIA</div>
+                    <div class="jp">見つけました！パラメータが<span class="vocab">可変</span>になっている...何かがコア設定を変更しています！</div>
+                    <div class="en">"Found it! The parameters have become variable... something is changing the core settings!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">可変</div>
+                <div class="vcard-reading">かへん</div>
+                <div class="vcard-meaning">variable; changeable</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">バックアップシステムは<span class="vocab">利用可能</span>か？最悪の場合に備える必要がある。</div>
+                    <div class="en">"Is the backup system available? We need to prepare for the worst."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">利用可能</div>
+                <div class="vcard-reading">りようかのう</div>
+                <div class="vcard-meaning">available</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait tyrell">👨‍✈️</div>
+                <div class="bubble">
+                    <div class="speaker tyrell">TYRELL</div>
+                    <div class="jp">緊急バッテリーを今すぐ<span class="vocab">充電</span>しろ！48時間以内に解決しなければ、生命維持システムが停止する。ハンターたち、ラグオルへ出発だ！</div>
+                    <div class="en">"Charge the emergency batteries NOW! If we don't solve this in 48 hours, life support fails. Hunters, deploy to Ragol!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">充電</div>
+                <div class="vcard-reading">じゅうでん</div>
+                <div class="vcard-meaning">charging</div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">了解です、Principal。チーム、準備しろ。パイオニア2を守る。</div>
+                    <div class="en">"Understood, Principal. Team, get ready. We'll protect Pioneer 2."</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel pioneer">
+            <div class="narration">The Hunter team prepares for deployment. On Ragol's surface, corrupted solar farms await—along with the mysterious threat Rico warned about...</div>
+        </div>
+        
+    </div>
+    
+    <div class="summary">
+        <h3>📚 Day 1 Vocabulary</h3>
+        <div class="summary-grid">
+            <div class="summary-item"><div class="summary-word">有無</div><div class="summary-reading">うむ</div><div class="summary-meaning">presence/absence</div></div>
+            <div class="summary-item"><div class="summary-word">枚数</div><div class="summary-reading">まいすう</div><div class="summary-meaning">number of flat things</div></div>
+            <div class="summary-item"><div class="summary-word">記述</div><div class="summary-reading">きじゅつ</div><div class="summary-meaning">documentation</div></div>
+            <div class="summary-item"><div class="summary-word">閾値</div><div class="summary-reading">いきち</div><div class="summary-meaning">threshold</div></div>
+            <div class="summary-item"><div class="summary-word">分類</div><div class="summary-reading">ぶんるい</div><div class="summary-meaning">classification</div></div>
+            <div class="summary-item"><div class="summary-word">妥当性</div><div class="summary-reading">だとうせい</div><div class="summary-meaning">validity</div></div>
+            <div class="summary-item"><div class="summary-word">毎時</div><div class="summary-reading">まいじ</div><div class="summary-meaning">hourly</div></div>
+            <div class="summary-item"><div class="summary-word">可変</div><div class="summary-reading">かへん</div><div class="summary-meaning">variable</div></div>
+            <div class="summary-item"><div class="summary-word">利用可能</div><div class="summary-reading">りようかのう</div><div class="summary-meaning">available</div></div>
+            <div class="summary-item"><div class="summary-word">充電</div><div class="summary-reading">じゅうでん</div><div class="summary-meaning">charging</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ DAY 2 ============ -->
+<section class="day" id="day2">
+    <div class="day-header">
+        <div class="day-num">DAY 2</div>
+        <div class="day-title">Landing on Ragol</div>
+        <div class="day-location">📍 Ragol - Forest</div>
+    </div>
+    
+    <div class="panels">
+        
+        <div class="panel forest">
+            <div class="narration">The shuttle descends through Ragol's atmosphere. Lush forests stretch below, but corrupted energy pulses beneath the canopy.</div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">全員、装備の検知<span class="vocab">範囲</span>を確認しろ。何が出てくるか分からない。</div>
+                    <div class="en">"Everyone, check your detection range. We don't know what might appear."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">範囲</div>
+                <div class="vcard-reading">はんい</div>
+                <div class="vcard-meaning">range; scope</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait sophia">🧝‍♀️</div>
+                <div class="bubble">
+                    <div class="speaker sophia">SOPHIA</div>
+                    <div class="jp">了解、Ash。この<span class="vocab">変数</span>に全員のハンターIDを格納しました。通信準備完了。</div>
+                    <div class="en">"Roger, Ash. I've stored everyone's Hunter IDs in this variable. Comms ready."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">変数</div>
+                <div class="vcard-reading">へんすう</div>
+                <div class="vcard-meaning">variable</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait bernie">🤖</div>
+                <div class="bubble">
+                    <div class="speaker bernie">BERNIE</div>
+                    <div class="jp">まず被害状況を<span class="vocab">集計</span>しましょう。ソーラーファームは北東200メートルです。</div>
+                    <div class="en">"Let's aggregate the damage reports first. Solar farm is 200m northeast."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">集計</div>
+                <div class="vcard-reading">しゅうけい</div>
+                <div class="vcard-meaning">aggregation</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait elenor">👩‍💻</div>
+                <div class="bubble">
+                    <div class="speaker elenor">ELENOR</div>
+                    <div class="jp">このパネルの<span class="vocab">実装</span>は10年前...古すぎます。でも故障の原因は老朽化じゃない。何かが意図的に破壊している。</div>
+                    <div class="en">"These panels were implemented 10 years ago... too old. But the failures aren't from age. Something is intentionally destroying them."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">実装</div>
+                <div class="vcard-reading">じっそう</div>
+                <div class="vcard-meaning">implementation</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="narration alert">⚠️ ALERT! Corrupted data floods the network! The forest erupts with hostile creatures!</div>
+            <div style="text-align:center;font-size:2.5rem;margin:10px 0;">🐺 🐗 🦎</div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait bernie">🤖</div>
+                <div class="bubble">
+                    <div class="speaker bernie">BERNIE</div>
+                    <div class="jp">攻撃です！アプリ<span class="vocab">配信</span>システムがハッキングされています！</div>
+                    <div class="en">"We're under attack! The deployment system has been hacked!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">配信</div>
+                <div class="vcard-reading">はいしん</div>
+                <div class="vcard-meaning">deployment; distribution</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">戦闘準備！俺が前線を守る！Sophia、Elenor、システムを守れ！</div>
+                    <div class="en">"Battle stations! I'll hold the front! Sophia, Elenor, protect the systems!"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait sophia">🧝‍♀️</div>
+                <div class="bubble">
+                    <div class="speaker sophia">SOPHIA</div>
+                    <div class="jp">電力フローの<span class="vocab">加減</span>を調整中！バランスが崩れるとパネルが爆発します！</div>
+                    <div class="en">"Adjusting the power flow balance! If it gets disrupted, the panels will explode!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">加減</div>
+                <div class="vcard-reading">かげん</div>
+                <div class="vcard-meaning">adjustment; balance</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait bernie">🤖</div>
+                <div class="bubble">
+                    <div class="speaker bernie">BERNIE</div>
+                    <div class="jp">問題発生！APIリクエストの<span class="vocab">上限</span>に達しています！</div>
+                    <div class="en">"Problem! We're hitting the API request limit!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">上限</div>
+                <div class="vcard-reading">じょうげん</div>
+                <div class="vcard-meaning">upper limit</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait elenor">👩‍💻</div>
+                <div class="bubble">
+                    <div class="speaker elenor">ELENOR</div>
+                    <div class="jp">エラーログを<span class="vocab">検索</span>中...攻撃のソースを見つけないと！</div>
+                    <div class="en">"Searching the error logs... We need to find the attack source!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">検索</div>
+                <div class="vcard-reading">けんさく</div>
+                <div class="vcard-meaning">search</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait sophia">🧝‍♀️</div>
+                <div class="bubble">
+                    <div class="speaker sophia">SOPHIA</div>
+                    <div class="jp">見つけた！破損ファイルを<span class="vocab">削除</span>します！Elenor、バックアップを！</div>
+                    <div class="en">"Found it! Deleting corrupted files! Elenor, backup!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">削除</div>
+                <div class="vcard-reading">さくじょ</div>
+                <div class="vcard-meaning">deletion</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">敵を撃退した！でもエネルギー消費を<span class="vocab">削減</span>しないと、また攻撃される。</div>
+                    <div class="en">"Enemies repelled! But if we don't reduce energy consumption, we'll be attacked again."</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">削減</div>
+                <div class="vcard-reading">さくげん</div>
+                <div class="vcard-meaning">reduction</div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="narration">The first wave is defeated. But deeper in the forest, a greater threat awaits...</div>
+        </div>
+        
+    </div>
+    
+    <div class="summary">
+        <h3>📚 Day 2 Vocabulary</h3>
+        <div class="summary-grid">
+            <div class="summary-item"><div class="summary-word">範囲</div><div class="summary-reading">はんい</div><div class="summary-meaning">range</div></div>
+            <div class="summary-item"><div class="summary-word">変数</div><div class="summary-reading">へんすう</div><div class="summary-meaning">variable</div></div>
+            <div class="summary-item"><div class="summary-word">集計</div><div class="summary-reading">しゅうけい</div><div class="summary-meaning">aggregation</div></div>
+            <div class="summary-item"><div class="summary-word">実装</div><div class="summary-reading">じっそう</div><div class="summary-meaning">implementation</div></div>
+            <div class="summary-item"><div class="summary-word">配信</div><div class="summary-reading">はいしん</div><div class="summary-meaning">deployment</div></div>
+            <div class="summary-item"><div class="summary-word">加減</div><div class="summary-reading">かげん</div><div class="summary-meaning">adjustment</div></div>
+            <div class="summary-item"><div class="summary-word">上限</div><div class="summary-reading">じょうげん</div><div class="summary-meaning">upper limit</div></div>
+            <div class="summary-item"><div class="summary-word">検索</div><div class="summary-reading">けんさく</div><div class="summary-meaning">search</div></div>
+            <div class="summary-item"><div class="summary-word">削除</div><div class="summary-reading">さくじょ</div><div class="summary-meaning">deletion</div></div>
+            <div class="summary-item"><div class="summary-word">削減</div><div class="summary-reading">さくげん</div><div class="summary-meaning">reduction</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ DAY 3: BOSS ============ -->
+<section class="day" id="day3">
+    <div class="day-header boss">
+        <div class="day-num boss">⚔️ DAY 3 - BOSS BATTLE</div>
+        <div class="day-title">Hildebear Awakens!</div>
+        <div class="day-location">📍 Ragol - Forest Depths</div>
+    </div>
+    
+    <div class="panels">
+        
+        <div class="panel battle">
+            <div class="boss-appear">
+                <div class="boss-sprite">🐻</div>
+                <div class="boss-name">HILDEBEAR</div>
+                <div style="color:#ffaa00;margin-top:5px;">Forest Guardian - Corrupted by Dark Falz</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="narration alert">A massive bear-like creature crashes through the trees! Its eyes glow with Dark Falz's corruption!</div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="action">⚔️ BATTLE START! ⚔️</div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">でかい！ディスク容量に<span class="vocab">余裕</span>がない状態で戦うしかない！俺が注意を引く！</div>
+                    <div class="en">"It's huge! We have no storage margin but we have to fight! I'll draw its attention!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">余裕</div>
+                <div class="vcard-reading">よゆう</div>
+                <div class="vcard-meaning">margin; leeway</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait sophia">🧝‍♀️</div>
+                <div class="bubble">
+                    <div class="speaker sophia">SOPHIA</div>
+                    <div class="jp">この腐敗の<span class="vocab">根本</span>原因を見つけないと！Hildebearを倒しても、また別の生物が操られるだけ！</div>
+                    <div class="en">"We need to find the root cause! Even if we defeat Hildebear, another creature will just be controlled!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">根本</div>
+                <div class="vcard-reading">こんぽん</div>
+                <div class="vcard-meaning">root; fundamental</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait bernie">🤖</div>
+                <div class="bubble">
+                    <div class="speaker bernie">BERNIE</div>
+                    <div class="jp">ストレージ<span class="vocab">容量</span>が危険レベルです！腐敗データがシステムを圧迫しています！</div>
+                    <div class="en">"Storage capacity is critical! The corruption data is overwhelming the system!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">容量</div>
+                <div class="vcard-reading">ようりょう</div>
+                <div class="vcard-meaning">capacity</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait elenor">👩‍💻</div>
+                <div class="bubble">
+                    <div class="speaker elenor">ELENOR</div>
+                    <div class="jp">システムを守ります！二段階<span class="vocab">認証</span>を有効にして侵入をブロック！</div>
+                    <div class="en">"I'll protect the systems! Enabling two-factor authentication to block intrusion!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">認証</div>
+                <div class="vcard-reading">にんしょう</div>
+                <div class="vcard-meaning">authentication</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">待て！Hildebearの動きに<span class="vocab">不具合</span>がある！左足をかばっている！</div>
+                    <div class="en">"Wait! There's a defect in Hildebear's movement! It's protecting its left leg!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">不具合</div>
+                <div class="vcard-reading">ふぐあい</div>
+                <div class="vcard-meaning">defect; bug</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait sophia">🧝‍♀️</div>
+                <div class="bubble">
+                    <div class="speaker sophia">SOPHIA</div>
+                    <div class="jp">正解、Ash！私のスキャナーはその弱点に<span class="vocab">対応</span>しています。タイミングをお知らせします！</div>
+                    <div class="en">"Correct, Ash! My scanner supports targeting that weakness. I'll signal the timing!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">対応</div>
+                <div class="vcard-reading">たいおう</div>
+                <div class="vcard-meaning">support; compatibility</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait bernie">🤖</div>
+                <div class="bubble">
+                    <div class="speaker bernie">BERNIE</div>
+                    <div class="jp">発見！制御システムは<span class="vocab">整数</span>のみ受け付けます！小数を送れば混乱させられます！</div>
+                    <div class="en">"Found it! The control system only accepts integers! We can confuse it with decimals!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">整数</div>
+                <div class="vcard-reading">せいすう</div>
+                <div class="vcard-meaning">integer</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait elenor">👩‍💻</div>
+                <div class="bubble">
+                    <div class="speaker elenor">ELENOR</div>
+                    <div class="jp">いいアイデア、Bernie！デプロイ<span class="vocab">作業</span>を開始！小数データ送信！</div>
+                    <div class="en">"Great idea, Bernie! Starting deployment operation! Sending decimal data!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">作業</div>
+                <div class="vcard-reading">さぎょう</div>
+                <div class="vcard-meaning">operation; work</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="narration">The Hildebear roars in confusion! The decimal data overloads its control system!</div>
+            <div style="text-align:center;font-size:3rem;margin:10px 0;">🐻💫❓</div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">今だ！脆弱性を<span class="vocab">修正</span>してやる！Hildebearを腐敗から解放する！</div>
+                    <div class="en">"Now! I'll fix this vulnerability! Free Hildebear from the corruption!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">修正</div>
+                <div class="vcard-reading">しゅうせい</div>
+                <div class="vcard-meaning">fix; correction</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="action">💥 CRITICAL HIT! 💥</div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait sophia">🧝‍♀️</div>
+                <div class="bubble">
+                    <div class="speaker sophia">SOPHIA</div>
+                    <div class="jp">やりました！システムが異常パターンの消失を<span class="vocab">認めて</span>います！腐敗が消えていく！</div>
+                    <div class="en">"We did it! The system is detecting the disappearance of abnormal patterns! The corruption is fading!"</div>
+                </div>
+            </div>
+            <div class="vcard">
+                <div class="vcard-word">認める</div>
+                <div class="vcard-reading">みとめる</div>
+                <div class="vcard-meaning">to recognize; detect</div>
+            </div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="action victory">🎉 VICTORY! 🎉</div>
+            <div class="narration" style="color:#00ff88;">The Hildebear is freed! It looks at the team with grateful eyes before retreating peacefully into the forest.</div>
+        </div>
+        
+        <div class="panel battle">
+            <div class="dialogue">
+                <div class="portrait ash">⚔️</div>
+                <div class="bubble">
+                    <div class="speaker ash">ASH</div>
+                    <div class="jp">よくやった、みんな。だが、これはまだ始まりに過ぎない。Ricoによると、本当の脅威は遺跡の下にいる。先に進もう。</div>
+                    <div class="en">"Well done, everyone. But this is just the beginning. According to Rico, the real threat is beneath the Ruins. Let's move on."</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel forest">
+            <div class="narration">To be continued... Day 4: Into the Caves 🐉</div>
+        </div>
+        
+    </div>
+    
+    <div class="summary">
+        <h3>📚 Day 3 Vocabulary (Boss Battle!)</h3>
+        <div class="summary-grid">
+            <div class="summary-item"><div class="summary-word">余裕</div><div class="summary-reading">よゆう</div><div class="summary-meaning">margin</div></div>
+            <div class="summary-item"><div class="summary-word">根本</div><div class="summary-reading">こんぽん</div><div class="summary-meaning">root</div></div>
+            <div class="summary-item"><div class="summary-word">容量</div><div class="summary-reading">ようりょう</div><div class="summary-meaning">capacity</div></div>
+            <div class="summary-item"><div class="summary-word">認証</div><div class="summary-reading">にんしょう</div><div class="summary-meaning">authentication</div></div>
+            <div class="summary-item"><div class="summary-word">不具合</div><div class="summary-reading">ふぐあい</div><div class="summary-meaning">defect/bug</div></div>
+            <div class="summary-item"><div class="summary-word">対応</div><div class="summary-reading">たいおう</div><div class="summary-meaning">support</div></div>
+            <div class="summary-item"><div class="summary-word">整数</div><div class="summary-reading">せいすう</div><div class="summary-meaning">integer</div></div>
+            <div class="summary-item"><div class="summary-word">作業</div><div class="summary-reading">さぎょう</div><div class="summary-meaning">operation</div></div>
+            <div class="summary-item"><div class="summary-word">修正</div><div class="summary-reading">しゅうせい</div><div class="summary-meaning">fix</div></div>
+            <div class="summary-item"><div class="summary-word">認める</div><div class="summary-reading">みとめる</div><div class="summary-meaning">to recognize</div></div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p style="color:#00ffff;font-size:1.2rem;">🎮 PSO: Pioneer 2's Energy Crisis</p>
+    <p style="color:#00ff88;">Days 1-3 Complete! 30 vocabulary words!</p>
+    <p style="margin-top:15px;">📖 Read: Top to bottom, left to right</p>
+    <p>🟡 Yellow words = vocabulary</p>
+    <p style="margin-top:15px;color:#ffaa00;">Next: Day 4 - Caves & De Rol Le 🐉</p>
+</footer>
+
+</div>
+</body>
+</html>
